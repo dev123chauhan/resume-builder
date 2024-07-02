@@ -1,100 +1,3 @@
-// import loginImage from "../../assets/loginImage.jpg";
-// import TextField from "@mui/material/TextField";
-// import {
-//   FormGroup,
-//   IconButton,
-//   InputAdornment,
-// } from "@mui/material";
-// import { FcGoogle } from "react-icons/fc";
-// import { Link } from "react-router-dom";
-// import logo2image from "../../assets/logo2image.png";
-// import { useState } from "react";
-// import { Visibility, VisibilityOff } from "@material-ui/icons";
-
-// const Register = () => {
-//   const [showPassword, setShowPassword] = useState(false);
-//   return (
-//     <div className="containerLogin">
-//       <div className="left-side">
-//         <img src={loginImage} alt="Left Side Image" />
-//       </div>
-//       <div className="right-side">
-//         <img className="logoImage" src={logo2image} alt="" />
-//         <form className="loginForm" action="#" method="POST">
-//           <h2 className="loginFormText">Create your account</h2>
-//           <div className="form-group">
-//             <TextField
-//               id="name"
-//               label="Name"
-//               name="name"
-//               variant="outlined"
-//               fullWidth
-//               required
-//               margin="normal"
-//             />
-//           </div>
-
-//           <div className="form-group">
-//             <TextField
-//               id="email"
-//               label="Email"
-//               name="email"
-//               variant="outlined"
-//               fullWidth
-//               required
-//               margin="normal"
-//             />
-//           </div>
-
-//           <div className="form-group">
-//             <TextField
-//               id="password"
-//               label="Password"
-//               name="password"
-//               variant="outlined"
-//               fullWidth
-//               required
-//               margin="normal"
-//               type={showPassword ? "text" : "password"}
-//               InputProps={{
-//                 endAdornment: (
-//                   <InputAdornment position="end">
-//                     <IconButton onClick={() => setShowPassword(!showPassword)}>
-//                       {showPassword ? <Visibility /> : <VisibilityOff />}
-//                     </IconButton>
-//                   </InputAdornment>
-//                 ),
-//               }}
-//             />
-//           </div>
-//           <FormGroup>
-//           </FormGroup>
-//           <button className="loginBtn" type="submit">
-//             CREATE AN ACCOUNT
-//           </button>
-//         </form>
-//         <p>Or</p>
-//         <div>
-//           <button className="formBtn">
-//             <FcGoogle className="googleIcon" />
-//             Continue With Google
-//           </button>
-//           <p>
-//           Already have an account?{" "}
-//             <Link className="registerColor" to="/login">
-//               Sign in
-//             </Link>
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
-
-
 import loginImage from "../../assets/loginImage.jpg";
 import TextField from "@mui/material/TextField";
 import { FormGroup, IconButton, InputAdornment } from "@mui/material";
@@ -105,11 +8,13 @@ import { useState } from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -118,6 +23,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { name, email, password } = formData;
     try {
       await axios.post("http://localhost:5000/api/register", {
@@ -127,11 +33,13 @@ const Register = () => {
       });
       toast.success("Successfully registered");
       setTimeout(() => {
+        setLoading(false);
         navigate("/login");
       }, 2000);
     } catch (error) {
       toast.error("Registration failed");
       console.error("Error registering user:", error);
+      setLoading(false);
     }
   };
 
@@ -198,7 +106,7 @@ const Register = () => {
           </div>
           <FormGroup></FormGroup>
           <button className="loginBtn" type="submit">
-            CREATE AN ACCOUNT
+          {loading ? <ClipLoader size={20} color={"#fff"} /> : "CREATE AN ACCOUNT"}      
           </button>
         </form>
         <p>Or</p>

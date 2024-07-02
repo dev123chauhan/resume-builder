@@ -10,26 +10,31 @@ import loginImage from "../../assets/loginImage.jpg";
 import logo2image from "../../assets/logo2image.png";
 import "../../css/login.css";
 import { useAuth } from "../context/AuthContext";
-
+import { ClipLoader } from "react-spinners"; // Import the spinner component
+ 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false); // State to manage loading spinner
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true); // Show spinner
     try {
       const response = await axios.post('http://localhost:5000/api/login', { email, password });
       const token = response.data.token;
       login(token);
       toast.success('Successfully logged in!');
       setTimeout(() => {
+        setLoading(false); // Hide spinner
         navigate('/');
       }, 2000);
     } catch (error) {
       toast.error('Login failed. Please check your credentials.');
+      setLoading(false); // Hide spinner
     }
   };
 
@@ -83,8 +88,8 @@ const Login = () => {
           <FormGroup>
             <FormControlLabel control={<Checkbox />} label="Remember Me" />
           </FormGroup>
-          <button className="loginBtn" type="submit">
-            LOGIN
+          <button className="loginBtn" type="submit" disabled={loading}>
+            {loading ? <ClipLoader size={20} color={"#fff"} /> : "LOGIN"}
           </button>
         </form>
         <p>Or</p>
