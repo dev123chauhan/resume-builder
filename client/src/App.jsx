@@ -1,7 +1,7 @@
 import ScrollToTop from "react-scroll-to-top";
 import { ArrowUpwardRounded } from "@material-ui/icons";
 import { Route, Routes } from "react-router-dom";
-// import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home"
 import Register from "./components/Signup/Register";
@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/" element={<Home />}/>
+        <Route path="/dashboard" element={<Dashboard />}/>
       </Routes>
 
     </div>

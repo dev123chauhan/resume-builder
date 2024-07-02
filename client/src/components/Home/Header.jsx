@@ -1,16 +1,17 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import footer2logo from "../../assets/footer2logo.png";
 import logo2image from "../../assets/logo2image.png";
 import { Link } from "react-router-dom";
-import "../../css/header.css"
+import "../../css/header.css";
 import { useAuth } from "../context/AuthContext";
-import { Menu, MenuItem, IconButton, Avatar } from '@mui/material';
+import noProfile from "../../assets/noProfile.jpg"
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
 export default function Header() {
-
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -32,16 +33,26 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const { user, logout } = useAuth();
-  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
   const navLinks = [
     { name: "Home", url: "home" },
     { name: "About", url: "about" },
@@ -56,12 +67,12 @@ export default function Header() {
           <Link to="/">
             <img
               src={isScrolled ? footer2logo : logo2image}
-              id="logo" 
+              id="logo"
               className="logo"
               alt="Logo"
             />
           </Link>
-          {/* <nav>
+          <nav>
             <ul>
               {navLinks.map((link, index) => (
                 <li key={index}>
@@ -70,33 +81,29 @@ export default function Header() {
               ))}
             </ul>
           </nav>
-          <Link to="/login" className="loginButton">
-            Login
-          </Link> */}
 
           <nav>
-      {user ? (
-        <div>
-          <IconButton onClick={handleMenuOpen}>
-            <Avatar alt={user.name} src={user.profileImage || '../../assets/noProfile.jpg'} />
-          </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-          >
-            <MenuItem>{user.name}</MenuItem>
-            <MenuItem>{user.email}</MenuItem>
-            <MenuItem onClick={logout}>Logout</MenuItem>
-          </Menu>
-        </div>
-      ) : (
-        <Link to="/login" className="loginButton">
-          Login
-        </Link>
-      )}
-    </nav>
+            {user ? (
+              <div className="profile-menu" ref={dropdownRef}>
+                <img
+                  className="avatar"
+                  alt={user.name}
+                  src={user.profileImage || noProfile}
+                  onClick={toggleDropdown}
+                />
+                <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                  <Link to="/dashboard" className="dropdown-item"><MdOutlineSpaceDashboard className="profileIcon"/>Dashboard</Link>
+                  <div className="dropdown-item" onClick={logout}>
+                  <IoIosLogOut className="profileIcon"/> Logout
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login" className="loginButton">
+                Login
+              </Link>
+            )}
+          </nav>
 
           <div
             className="menu-icon"
@@ -109,15 +116,14 @@ export default function Header() {
         </div>
       </div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-          <img className="footerLogo" src={footer2logo} alt="" />
-            <ul>
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <Link to={link.url}>{link.name}</Link>
-                </li>
-              ))}
-            </ul>
-     
+        <img className="footerLogo" src={footer2logo} alt="" />
+        <ul>
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link to={link.url}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );
