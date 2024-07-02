@@ -1,0 +1,88 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+::-webkit-scrollbar-thumb {
+  background: #027b9a !important; /* Blue scrollbar thumb */
+  border-radius: 6px !important;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light grey background */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+ 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 60px 0;
+  background: #fff;
+  margin-bottom: 40px;
+}
+
+
+
+
+
+
+ 
+
+
+
+
+
+/* .resume-builder {
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.resumeText {
+  text-align: center;
+  color: #333;
+}
+
+.description {
+  text-align: center;
+  color: #666;
+  max-width: 350px;
+  margin: 20px auto;
+}
+.resumebuilderPara {
+  text-align: center;
+} */
+
+
+
+
+
+
+.scrollToTop {
+  background-color: #027b9a !important;
+}
+.upArrow {
+  color: white !important;
+}
+.caroselImage {
+  width: 100%;
+}

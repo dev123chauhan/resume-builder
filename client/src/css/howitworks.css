@@ -1,0 +1,47 @@
+.how-it-works-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #027b9a;
+    margin-bottom: 40px;
+    font-weight: bolder !important;
+  }
+  
+  .step-icon {
+    font-size: 3em;
+    color: #027b9a;
+    margin-bottom: 20px;
+  }
+  
+  .step-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .step-description {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .step-icon.fa-file-alt:before {
+    content: "\f15c";
+  }
+  
+  .step-icon.fa-edit:before {
+    content: "\f044";
+  }
+  
+  .step-icon.fa-download:before {
+    content: "\f019";
+  }

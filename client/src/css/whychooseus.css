@@ -1,0 +1,40 @@
+.why-choose-us {
+    background-color: #027b9a;
+    color: white;
+    text-align: center;
+    /* padding: 50px 20px; */
+    position: relative;
+  }
+  
+  .why-choose-us h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+  
+  .content-box {
+    /* Blue border */
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 20px;
+  }
+  
+  .content-box p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+  
+  .start-now {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .start-now:hover {
+    background-color: white;
+    color: #2e1a47;
+  }
