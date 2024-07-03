@@ -1,5 +1,5 @@
 import "../../css/addon.css"
-import template from "../../assets/template.png"
+import template from "../../assets/demo.png"
 const AddOn = () => {
   return (
     <div className="resume-feature container">

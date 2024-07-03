@@ -39,41 +39,6 @@ section {
   margin-bottom: 40px;
 }
 
-
-
- 
-
-
-
-
-
-/* .resume-builder {
-  font-family: Arial, sans-serif;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.resumeText {
-  text-align: center;
-  color: #333;
-}
-
-.description {
-  text-align: center;
-  color: #666;
-  max-width: 350px;
-  margin: 20px auto;
-}
-.resumebuilderPara {
-  text-align: center;
-} */
-
-
-
-
-
-
 .scrollToTop {
   background-color: #027b9a !important;
 }
@@ -82,4 +47,8 @@ section {
 }
 .caroselImage {
   width: 100%;
+}
+.buttonColor{
+  background-color: #027b9a !important;
+  color: white !important;
 }

@@ -2,7 +2,6 @@
     background-color: #027b9a;
     color: white;
     text-align: center;
-    /* padding: 50px 20px; */
     position: relative;
   }
   
@@ -12,7 +11,6 @@
   }
   
   .content-box {
-    /* Blue border */
     max-width: 600px;
     margin: 0 auto 30px;
     padding: 20px;
@@ -21,6 +19,7 @@
   .content-box p {
     font-size: 1.2em;
     line-height: 1.5;
+    color: white;
   }
   
   .start-now {
@@ -36,5 +35,5 @@
   
   .start-now:hover {
     background-color: white;
-    color: #2e1a47;
+    color: black;
   }

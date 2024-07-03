@@ -160,3 +160,7 @@ header {
     font-size: 1.5rem;
     margin-right: 0.5rem;
   }
+
+  .active {
+    color: #027b9a; 
+  }

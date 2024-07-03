@@ -1,17 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import footer2logo from "../../assets/footer2logo.png";
 import logo2image from "../../assets/logo2image.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../../css/header.css";
 import { useAuth } from "../context/AuthContext";
-import noProfile from "../../assets/noProfile.jpg"
+import noProfile from "../../assets/noProfile.jpg";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -54,10 +56,10 @@ export default function Header() {
   };
 
   const navLinks = [
-    { name: "Home", url: "home" },
-    { name: "About", url: "about" },
-    { name: "Features", url: "features" },
-    { name: "Contact", url: "contact" },
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Features", url: "/features" },
+    { name: "Contact", url: "/contact" },
   ];
 
   return (
@@ -76,7 +78,12 @@ export default function Header() {
             <ul>
               {navLinks.map((link, index) => (
                 <li key={index}>
-                  <Link to={link.url}>{link.name}</Link>
+                  <Link
+                    to={link.url}
+                    className={location.pathname === link.url ? "active" : ""}
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -94,7 +101,7 @@ export default function Header() {
                 <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
                   <Link to="/dashboard" className="dropdown-item"><MdOutlineSpaceDashboard className="profileIcon"/>Dashboard</Link>
                   <div className="dropdown-item" onClick={logout}>
-                  <IoIosLogOut className="profileIcon"/> Logout
+                    <IoIosLogOut className="profileIcon"/> Logout
                   </div>
                 </div>
               </div>

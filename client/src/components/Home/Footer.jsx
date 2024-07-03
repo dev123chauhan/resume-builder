@@ -1,26 +1,27 @@
 import { Facebook, Instagram, Twitter, YouTube } from "@material-ui/icons";
 import footer2logo from "../../assets/footer2logo.png"
 import "../../css/footer.css"
+import { Link } from "react-router-dom";
 export default function Footer() {
   const resources = [
-    { text: "Template", link: "#" },
-    { text: "Pricing", link: "#" },
-    { text: "Blog", link: "#" },
-    { text: "Help", link: "#" },
+    { text: "Template", link: "" },
+    { text: "Pricing", link: "" },
+    { text: "Blog", link: "" },
+    { text: "Help", link: "" },
   ];
 
   const company = [
-    { text: "About Us", link: "#" },
-    { text: "Careers", link: "#" },
-    { text: "Contact", link: "#" },
-    { text: "Review", link: "#" },
+    { text: "About Us", link: "/about" },
+    { text: "Careers", link: "" },
+    { text: "Contact", link: "/contact" },
+    { text: "Review", link: "" },
   ];
 
   const support = [
-    { text: "FAQs", link: "#" },
-    { text: "Terms", link: "#" },
-    { text: "Privacy", link: "#" },
-    { text: "Sitemap", link: "#" },
+    { text: "FAQs", link: "" },
+    { text: "Terms", link: "" },
+    { text: "Privacy", link: "" },
+    { text: "Sitemap", link: "" },
   ];
 
   const renderMenu = (title, items) => (
@@ -30,7 +31,7 @@ export default function Footer() {
         <ul className="footer-menu-list">
           {items.map((item, index) => (
             <li key={index} className="menu-item">
-              <a href={item.link}>{item.text}</a>
+              <Link to={item.link}>{item.text}</Link>
             </li>
           ))}
         </ul>

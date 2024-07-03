@@ -7,8 +7,6 @@ import ResumeBuilder from "./ResumeBuilder";
 import Template1 from "../../assets/Template1.jpg";
 import Template2 from "../../assets/Template2.jpg";
 import Template3 from "../../assets/Template3.jpg";
-import Footer from "./Footer";
-import Header from "./Header";
 import AddOn from "./AddOn";
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
@@ -29,14 +27,12 @@ export default function Home() {
   ];
   return (
     <div> 
-      <Header />
       <Banner />
       <Features />
       <HowItWorks activeStep={activeStep} setActiveStep={setActiveStep} />
       <WhyChooseUs />
       <ResumeBuilder resumes={resumes} />
       <AddOn/>
-      <Footer />
     </div>
   );
 }
