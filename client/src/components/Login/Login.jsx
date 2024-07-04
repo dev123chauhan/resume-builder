@@ -9,8 +9,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import loginImage from "../../assets/loginImage.jpg";
 import logo2image from "../../assets/logo2image.png";
 import "../../css/login.css";
-import { useAuth } from "../context/AuthContext";
 import { ClipLoader } from "react-spinners"; // Import the spinner component
+import useAuth from "../../hooks/useAuth";
+
  
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);

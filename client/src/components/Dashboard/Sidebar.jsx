@@ -12,19 +12,18 @@ import CheckIcon from "@mui/icons-material/Check";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import DownloadIcon from "@mui/icons-material/Download";
 import ShareIcon from "@mui/icons-material/Share";
-import HistoryIcon from "@mui/icons-material/History";
-import BrandingWatermarkIcon from "@mui/icons-material/BrandingWatermark";
-import { useAuth } from "../context/AuthContext";
 import noProfile from "../../assets/noProfile.jpg";
-import template1 from "../../assets/template 1.jpg"
-import template2 from "../../assets/template 2.jpg"
-import template3 from "../../assets/template 3.jpg"
-import template4 from "../../assets/template 4.jpg"
-import template5 from "../../assets/template 5.jpg"
-import template6 from "../../assets/template 6.jpg"
-import template7 from "../../assets/template 7.jpg"
-import template8 from "../../assets/template 8.jpg"
+import template1 from "../../assets/template 1.jpg";
+import template2 from "../../assets/template 2.jpg";
+import template3 from "../../assets/template 3.jpg";
+import template4 from "../../assets/template 4.jpg";
+import template5 from "../../assets/template 5.jpg";
+import template6 from "../../assets/template 6.jpg";
+import template7 from "../../assets/template 7.jpg";
+import template8 from "../../assets/template 8.jpg";
 import useStyles from "./Sidebar.styles";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   { text: "Add section", icon: <AddIcon /> },
@@ -36,23 +35,48 @@ const menuItems = [
   { text: "AI Assistant", icon: <AssistantIcon /> },
   { text: "Download", icon: <DownloadIcon /> },
   { text: "Share", icon: <ShareIcon /> },
-  { text: "History", icon: <HistoryIcon /> },
-  { text: "Branding", icon: <BrandingWatermarkIcon /> },
+];
+const templates = [
+  template1,
+  template2,
+  template3,
+  template4,
+  template5,
+  template6,
+  template7,
+  template8,
 ];
 
 const Sidebar = () => {
   const classes = useStyles();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [activeIndex, setActiveIndex] = useState(null);
   const [showTemplates, setShowTemplates] = useState(false);
+  const [activeTemplateIndex, setActiveTemplateIndex] = useState(null);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
 
   const handleItemClick = (index) => {
     setActiveIndex(index);
     if (menuItems[index].text === "Templates") {
       setShowTemplates(!showTemplates);
+      if (showTemplates) {
+        // If we're closing the templates panel, clear the selected template
+        setSelectedTemplate(null);
+        setActiveTemplateIndex(null);
+      }
     } else {
       setShowTemplates(false);
     }
+  };
+
+  const handleTemplateItemClick = (index) => {
+    setActiveTemplateIndex(index);
+    setSelectedTemplate(templates[index]);
+  };
+
+
+  const handleLogout = () => {
+    logout(); // Call the logout function from useAuth
   };
 
   return (
@@ -87,19 +111,38 @@ const Sidebar = () => {
             ))}
           </List>
         </aside>
+        <Link to="/" onClick={handleLogout}  className={classes.loginButtonSidebar}>
+          Logout
+        </Link>
       </div>
 
-      {/* Templates section with conditional rendering and animation */}
       <div
         className={`${classes.templatesContainer} ${
           showTemplates ? classes.templatesContainerVisible : ""
         }`}
       >
-         <div style={{ padding: "20px" }}>
+        <div style={{ padding: "20px" }}>
           <p>Select Template</p>
           <div className={classes.gridContainer}>
-            {[template1, template2, template3, template4, template5, template6, template7, template8].map((template, index) => (
-              <div key={index} className={classes.templateItem}>
+            {[
+              template1,
+              template2,
+              template3,
+              template4,
+              template5,
+              template6,
+              template7,
+              template8,
+            ].map((template, index) => (
+              <div
+                key={index}
+                className={`${classes.templateItem} ${
+                  activeTemplateIndex === index
+                    ? classes.activeTemplateItem
+                    : ""
+                }`}
+                onClick={() => handleTemplateItemClick(index)}
+              >
                 <img
                   src={template}
                   alt={`Template ${index + 1}`}
@@ -110,12 +153,18 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+
+      <div className={classes.selectedTemplateArea}>
+        {selectedTemplate && (
+          <img
+            src={selectedTemplate}
+            alt="Selected Template"
+            className={classes.selectedTemplateImage}
+          />
+        )}
+      </div>
     </div>
   );
 };
 
 export default Sidebar;
-
-
-
-

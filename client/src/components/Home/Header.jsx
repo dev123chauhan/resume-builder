@@ -3,10 +3,10 @@ import footer2logo from "../../assets/footer2logo.png";
 import logo2image from "../../assets/logo2image.png";
 import { Link, useLocation } from "react-router-dom";
 import "../../css/header.css";
-import { useAuth } from "../context/AuthContext";
 import noProfile from "../../assets/noProfile.jpg";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
+import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
