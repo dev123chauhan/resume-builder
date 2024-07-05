@@ -51,6 +51,7 @@ section {
 .buttonColor{
   background-color: #027b9a !important;
   color: white !important;
+  border-radius: 5px;
 }
 
 .css-h4y409-MuiList-root{
