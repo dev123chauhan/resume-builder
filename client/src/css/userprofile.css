@@ -1,0 +1,49 @@
+.userProfile {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .userProfile h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .section h3 {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .infoItem {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .infoItem span:first-child {
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .infoItem span:last-child {
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .infoGrid {
+      grid-template-columns: 1fr;
+    }
+  }

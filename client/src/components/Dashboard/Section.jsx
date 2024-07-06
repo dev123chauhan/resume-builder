@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionContent: {
     minHeight: '100px',
-    backgroundColor: '#f5f5f5',
+    // backgroundColor: '#f5f5f5',
     padding: theme.spacing(1),
   },
 }));

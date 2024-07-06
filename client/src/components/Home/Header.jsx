@@ -4,7 +4,7 @@ import logo2image from "../../assets/logo2image.png";
 import { Link, useLocation } from "react-router-dom";
 import "../../css/header.css";
 import noProfile from "../../assets/noProfile.jpg";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdOutlineAccountCircle, MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
 
@@ -99,6 +99,7 @@ export default function Header() {
                   onClick={toggleDropdown}
                 />
                 <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+                  <Link to="/account" className="dropdown-item"><MdOutlineAccountCircle className="profileIcon"/>Account</Link>
                   <Link to="/dashboard" className="dropdown-item"><MdOutlineSpaceDashboard className="profileIcon"/>Dashboard</Link>
                   <div className="dropdown-item" onClick={logout}>
                     <IoIosLogOut className="profileIcon"/> Logout

@@ -1,0 +1,60 @@
+.uploadPicture {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .uploadPicture h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .pictureContainer {
+    margin-bottom: 20px;
+  }
+  
+  .profileImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .uploadButton {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .uploadButton:hover {
+    background-color: #40a9ff;
+  }
+  
+  .helpText {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .saveButton {
+    background-color: #52c41a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .saveButton:hover {
+    background-color: #73d13d;
+  }
