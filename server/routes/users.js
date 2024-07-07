@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../middleware/auth');
 const router = express.Router();
-
+const path = require('path');
+const upload = require('../middleware/upload');
 // Registration Route
 router.post('/register', async (req, res) => {
   try {
@@ -70,6 +71,24 @@ router.post('/change-password', authMiddleware, async (req, res) => {
     console.error(error.message);
     res.status(500).send('Server error');
   }
+});
+
+router.post('/upload-profile-picture', authMiddleware, (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.status(400).json({ success: false, message: err });
+    }
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No file selected!' });
+    }
+
+    // Extract the filename using path.basename
+    const filename = path.basename(req.file.path);
+
+    User.findByIdAndUpdate(req.user.id, { profileImage: filename }, { new: true })
+      .then(user => res.json({ success: true, user }))
+      .catch(err => res.status(400).json({ success: false, message: err.message }));
+  });
 });
 
 

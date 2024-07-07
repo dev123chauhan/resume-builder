@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import "../../css/profilesidebar.css";
 import noProfile from "../../assets/noProfile.jpg"
+import useAuth from '../../hooks/useAuth';
 const ProfileSidebar = ({ activeTab, setActiveTab }) => {
+  const { user } = useAuth();
   return (
     <aside className="sidbar">
       <div className="profile">
-        <img src={noProfile} alt="Profile" className="profileImage" />
+      <img    src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile} alt="" />
+   
         <p className="username">@usreProfile</p>
       </div>
       <nav className="nav">

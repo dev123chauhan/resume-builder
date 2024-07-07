@@ -95,7 +95,7 @@ export default function Header() {
                 <img
                   className="avatar"
                   alt={user.name}
-                  src={user.profileImage || noProfile}
+                  src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile}
                   onClick={toggleDropdown}
                 />
                 <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
