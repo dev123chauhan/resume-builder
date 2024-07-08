@@ -90,6 +90,19 @@ router.post('/upload-profile-picture', authMiddleware, (req, res) => {
       .catch(err => res.status(400).json({ success: false, message: err.message }));
   });
 });
+router.post('/update-profile', authMiddleware, async (req, res) => {
+  try {
+    const { gender, mobileNumber, dateOfBirth, address } = req.body;
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { gender, mobileNumber, dateOfBirth, address },
+      { new: true }
+    );
+    res.json({ success: true, user });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
 
 
 

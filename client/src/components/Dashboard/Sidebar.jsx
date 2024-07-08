@@ -86,7 +86,7 @@ const Sidebar = () => {
           <img
             className={classes.avatar}
             alt={user?.name}
-            src={user?.profileImage || noProfile}
+            src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile}
           />
           <div className={classes.username}>{user?.username}</div>
           <div className={classes.email}>{user?.email}</div>
