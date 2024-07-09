@@ -11,12 +11,15 @@ import Layout from "./components/Layout/Layout";
 import FeaturesDetail from "./components/Features/FeaturesDetail";
 import Contact from "./components/Contact/Contact";
 import ProfileDashboard from "./components/Profile/ProfileDashboard";
-
+import TermsAndConditions from "./components/TermsAndCondition/TermsAndConditions";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import Faq from "./components/FAQ/Faq";
+import Blog from "./components/Blog/Blog";
 
 export default function App() {
   const location = useLocation();
 
-  // Scroll to top on route change
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -26,7 +29,7 @@ export default function App() {
       <ScrollToTop
         className="scrollToTop"
         smooth
-        component={<ArrowUpwardRounded className="upArrow" />} // Apply color to the arrow
+        component={<ArrowUpwardRounded className="upArrow" />} 
       />
       <Routes>
         <Route
@@ -65,7 +68,16 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/account" element={<Layout><ProfileDashboard /></Layout>} />
+        <Route path="/terms-and-conditions" element={<Layout><TermsAndConditions /></Layout>} />
+        <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
+        <Route path="/faq" element={<Layout><Faq /></Layout>} />
+        <Route path="/blog" element={<Layout><Blog /></Layout>} />
       </Routes>
     </div>
   );
 }
+
+
+
+
+

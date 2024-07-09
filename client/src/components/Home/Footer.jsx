@@ -6,7 +6,7 @@ export default function Footer() {
   const resources = [
     { text: "Template", link: "" },
     { text: "Pricing", link: "" },
-    { text: "Blog", link: "" },
+    { text: "Blog", link: "/blog" },
     { text: "Help", link: "" },
   ];
 
@@ -18,9 +18,9 @@ export default function Footer() {
   ];
 
   const support = [
-    { text: "FAQs", link: "" },
-    { text: "Terms", link: "" },
-    { text: "Privacy", link: "" },
+    { text: "FAQs", link: "/faq" },
+    { text: "Terms", link: "/terms-and-conditions" },
+    { text: "Privacy", link: "/privacy-policy" },
     { text: "Sitemap", link: "" },
   ];
 
