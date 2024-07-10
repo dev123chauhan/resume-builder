@@ -1,82 +1,13 @@
-// import PropTypes from "prop-types";
-// import "../../css/profilesidebar.css";
-// import noProfile from "../../assets/noProfile.jpg";
-// import useAuth from "../../hooks/useAuth";
-// import { Link } from "react-router-dom";
-// const ProfileSidebar = ({ activeTab, setActiveTab }) => {
-//   const { user, logout } = useAuth();
-
-//   const handleLogout = () => {
-//     logout(); // Call the logout function from useAuth
-//   };
-//   return (
-//     <aside className="sidbar">
-//       <div className="profile">
-//         <img
-//           className="avatar"
-//           src={
-//             user?.profileImage
-//               ? `http://localhost:5000/uploads/${user.profileImage}`
-//               : noProfile
-//           }
-//           alt=""
-//         />
-//         <p className="username">{user?.username}</p>
-//       </div>
-//       <nav className="nav">
-//         <button
-//           className={`${"navButton"} ${
-//             activeTab === "profile" ? "active" : ""
-//           }`}
-//           onClick={() => setActiveTab("profile")}
-//         >
-//           User Profile
-//         </button>
-//         <button
-//           className={`${"navButton"} ${activeTab === "update" ? "active" : ""}`}
-//           onClick={() => setActiveTab("update")}
-//         >
-//           Update Profile
-//         </button>
-//         <button
-//           className={`${"navButton"} ${
-//             activeTab === "picture" ? "active" : ""
-//           }`}
-//           onClick={() => setActiveTab("picture")}
-//         >
-//           Upload Picture
-//         </button>
-//         <button
-//           className={`${"navButton"} ${
-//             activeTab === "password" ? "active" : ""
-//           }`}
-//           onClick={() => setActiveTab("password")}
-//         >
-//           Change Password
-//         </button>
-//       </nav>
-//       <Link to="/" onClick={handleLogout}>
-//         <button className="logoutButton">Log Out</button>
-//       </Link>
-//     </aside>
-//   );
-// };
-
-// ProfileSidebar.propTypes = {
-//   activeTab: PropTypes.string.isRequired,
-//   setActiveTab: PropTypes.func.isRequired,
-// };
-
-// export default ProfileSidebar;
-
-
-
 import PropTypes from "prop-types";
 import "../../css/profilesidebar.css";
-// import '../../css/profilesection.css';
 import noProfile from "../../assets/noProfile.jpg";
 import useAuth from "../../hooks/useAuth";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { TbArrowsExchange } from "react-icons/tb";
+import { CiLogout } from "react-icons/ci";
 const ProfileSidebar = ({ activeTab, setActiveTab }) => {
   const { user, logout } = useAuth();
 
@@ -84,10 +15,8 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
     logout(); // Call the logout function from useAuth
   };
   return ( 
-    // <div className="containerProfileSection">
       <div className="profile-section">
       <div className="profile-header">
-      <h1>Profile</h1>
       <img
          className="profile-pic"
           src={
@@ -102,42 +31,41 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
       <div className="profile-options">
         <button
           className={`${"profile-option"} ${
-            activeTab === "profile" ? "active" : ""
+            activeTab === "profile" ? "activeSidebar" : ""
           }`}
           onClick={() => setActiveTab("profile")}
         >
-          User Profile
+        <MdOutlineAccountCircle className="profileIcon"/>  User Profile
         </button>
         <button
-          className={`${"profile-option"} ${activeTab === "update" ? "active" : ""}`}
+          className={`${"profile-option"} ${activeTab === "update" ? "activeSidebar" : ""}`}
           onClick={() => setActiveTab("update")}
         >
-          Update Profile
+        <CiEdit className="profileIcon"/>  Update Profile
         </button>
         <button
           className={`${"profile-option"} ${
-            activeTab === "picture" ? "active" : ""
+            activeTab === "picture" ? "activeSidebar" : ""
           }`}
           onClick={() => setActiveTab("picture")}
         >
-          Upload Picture
+       <IoCloudUploadOutline className="profileIcon"/>   Upload Picture
         </button>
         <button
           className={`${"profile-option"} ${
-            activeTab === "password" ? "active" : ""
+            activeTab === "password" ? "activeSidebar" : ""
           }`}
           onClick={() => setActiveTab("password")}
         >
-          Change Password
+       <TbArrowsExchange className="profileIcon"/>   Change Password
         </button>
-        <Link to="/" onClick={handleLogout}>
-        <button className="logoutButton">Log Out</button>
+        <Link to="/"  onClick={handleLogout}>
+        <button className="logoutButton"> <CiLogout className="profileIcon"/>Log Out</button>
       </Link>
       </div>
    
       </div>
-  
-    // </div>
+
   );
 };
 

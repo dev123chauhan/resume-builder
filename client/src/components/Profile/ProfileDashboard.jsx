@@ -5,7 +5,6 @@ import UserProfile from "./UserProfile";
 import UpdateProfile from "./UpdateProfile";
 import ChangePassword from "./ChangePassword";
 import UploadProfilePicture from "./UploadProfilePicture";
-// import ProfileSection from "./ProfileSection";
 export default function ProfileDashboard() {
   const [activeTab, setActiveTab] = useState("profile");
 
@@ -29,7 +28,6 @@ export default function ProfileDashboard() {
         <ProfileSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         <main className="contentProfile">{renderContent()}</main>
       </div>
-      {/* <ProfileSection /> */}
     </>
   );
 }

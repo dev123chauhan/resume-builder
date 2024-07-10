@@ -1,7 +1,7 @@
 /* UpdateProfile.module.css */
 .updateProfile {
-    background-color: white;
-    padding: 20px;
+    background-color: white; 
+    padding: 35px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
@@ -28,7 +28,6 @@
   
   .formGroup input,
   .formGroup select {
-    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
