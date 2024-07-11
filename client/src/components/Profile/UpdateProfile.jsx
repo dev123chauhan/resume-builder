@@ -1,27 +1,3 @@
-// import "../../css/updateprofile.css";
-
-// const UpdateProfile = () => {
-//   return (
-//     <div className="updateProfile">
-//       <h2>Update Profile</h2>
-//       <form className="form">
-//         <div className="formGroup">
-//           <label htmlFor="name">Name*</label>
-//           <input type="text" id="name" placeholder="Enter Name" />
-//         </div>
-//         <div className="formGroup">
-//           <label htmlFor="email">E-mail ID*</label>
-//           <input type="email" id="email" placeholder="Enter Email ID" />
-//         </div>
-//         {/* Add more form fields */}
-//         <button type="submit" className="saveButton">Save</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default UpdateProfile;
-
 import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
@@ -99,13 +75,41 @@ const UpdateProfile = () => {
           />
         </div>
         <div className="form-group">
-          <label>Gender</label>
-          <select type="radio" name="gender" value={formData.gender} onChange={handleChange}>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label>Gender: </label>
+            <label style={{ marginRight: "10px" }}>
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                checked={formData.gender === "Male"}
+                onChange={handleChange}
+              />
+              Male
+            </label>
+            <label style={{ marginRight: "10px" }}>
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                checked={formData.gender === "Female"}
+                onChange={handleChange}
+              />
+              Female
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="Other"
+                checked={formData.gender === "Other"}
+                onChange={handleChange}
+              />
+              Other
+            </label>
+          </div>
         </div>
+
         <div className="form-group">
           <label>Date of Birth</label>
           <input

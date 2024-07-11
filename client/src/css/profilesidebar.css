@@ -41,11 +41,7 @@
   justify-content: center;
 }
 
-.profile-option:hover,
-.log-out-button:hover {
-  background-color: #026b88;
-  color: white;
-}
+
 .activeSidebar{
   background-color: #026b88;
   color: white;
