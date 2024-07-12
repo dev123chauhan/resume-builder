@@ -22,7 +22,8 @@ const useStyles = makeStyles(() => ({
     background: '#e9ecef',
     padding: '20px',
     borderRadius: '10px',
-    border: '1px solid #027b9a',
+    // border: '1px solid #027b9a',
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     textAlign: 'center',
     width: '300px',
     height: "250px",
@@ -54,19 +55,19 @@ const useStyles = makeStyles(() => ({
 const steps = [
   {
     label: 'Choose a Template',
-    icon: 'fa fa-file-alt',
+    // icon: 'fa fa-file-alt',
     description: 'Browse through our library of professional templates and choose the one that best suits your needs.',
     bgImage: 'https://img.freepik.com/free-vector/sharing-content-social-media_23-2148508446.jpg?t=st=1719493721~exp=1719497321~hmac=4a06640d9c970fc21dd063829489cc034259433ecc1517a786eaf568aae67e62&w=740', // Update with your image paths
   },
   {
     label: 'Customize Your Resume',
-    icon: 'fa fa-edit',
+    // icon: 'fa fa-edit',
     description: 'Fill in your details, customize the design, and add sections that highlight your skills and experience.',
     bgImage: 'https://img.freepik.com/free-vector/online-certification-with-computer_23-2148571755.jpg?t=st=1719493871~exp=1719497471~hmac=aaa2e7d0dcf255e6eed0e618b22e32ea49c6e129eac04a75f5efde975964da8e&w=740',
   },
   {
     label: 'Download and Share',
-    icon: 'fa fa-download',
+    // icon: 'fa fa-download',
     description: 'Once you are satisfied with your resume, download it in your preferred format and start applying for jobs.',
     bgImage: 'https://img.freepik.com/free-vector/image-upload-concept-landing-page_23-2148298503.jpg?t=st=1719494061~exp=1719497661~hmac=9cffb7f81a8c8f230e775c091507020aba9763a8fbbd2a6f288e7d2f08ba554c&w=1060',
   },

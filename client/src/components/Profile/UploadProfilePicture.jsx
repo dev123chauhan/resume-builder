@@ -88,12 +88,13 @@ import axios from 'axios';
 import { IconButton, Avatar, Box } from '@mui/material';
 import { CiEdit } from "react-icons/ci";
 import useAuth from "../../hooks/useAuth";
+import "../../css/uploadprofile.css"
 
 const UploadProfilePicture = () => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const { user, setUser } = useAuth(); // Assuming useAuth hook provides user state
-
+ 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
@@ -131,7 +132,7 @@ const UploadProfilePicture = () => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
+    <Box  className='uploadPicture' display="flex" flexDirection="column" alignItems="center">
       <form onSubmit={handleSubmit}>
         <input
           accept="image/*"

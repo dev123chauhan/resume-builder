@@ -15,6 +15,7 @@ import TermsAndConditions from "./components/TermsAndCondition/TermsAndCondition
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Faq from "./components/FAQ/Faq";
 import Blog from "./components/Blog/Blog";
+import Review from "./components/Review/Review";
 
 export default function App() {
   const location = useLocation();
@@ -72,6 +73,7 @@ export default function App() {
         <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
         <Route path="/faq" element={<Layout><Faq /></Layout>} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />
+        <Route path="/review" element={<Layout><Review /></Layout>} />
       </Routes>
     </div>
   );

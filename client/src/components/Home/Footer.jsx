@@ -14,7 +14,7 @@ export default function Footer() {
     { text: "About Us", link: "/about" },
     { text: "Careers", link: "" },
     { text: "Contact", link: "/contact" },
-    { text: "Review", link: "" },
+    { text: "Review", link: "/review" },
   ];
 
   const support = [

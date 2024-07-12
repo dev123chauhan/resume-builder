@@ -127,7 +127,7 @@ const UpdateProfile = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Save Changes</button>
+        <button className="saveButton" type="submit">Save Changes</button>
       </form>
     </div>
   );

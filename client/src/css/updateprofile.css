@@ -1,9 +1,12 @@
 /* UpdateProfile.module.css */
 .updateProfile {
+  flex: 1 1 100%;
     background-color: white; 
-    padding: 35px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
   }
   
   .updateProfile h2 {
@@ -34,7 +37,7 @@
   }
   
   .saveButton {
-    background-color: #1890ff;
+    background-color: #026b88 !important;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -45,7 +48,7 @@
   }
   
   .saveButton:hover {
-    background-color: #40a9ff;
+    background-color: #026b88;
   }
   
   @media (min-width: 768px) {
