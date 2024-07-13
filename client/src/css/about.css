@@ -19,7 +19,7 @@
     float: right;
     width: 40%;
     margin-left: 20px;
-    margin-bottom: -100px; /* Adjust this value to control how much text wraps below */
+    margin-bottom: -100px; 
   }
   
   .image-container img {
@@ -34,7 +34,7 @@
     color: #555;
   }
   
-  /* Clear the float after the content */
+
   .content-wrapper::after {
     content: "";
     display: table;
@@ -51,4 +51,8 @@
        margin-bottom: 6rem;
       }
 
+  }
+  h2{
+    color: #027b9a;
+    margin-bottom: 20px;
   }

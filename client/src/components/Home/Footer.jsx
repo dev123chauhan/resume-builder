@@ -7,7 +7,7 @@ export default function Footer() {
     { text: "Template", link: "" },
     { text: "Pricing", link: "" },
     { text: "Blog", link: "/blog" },
-    { text: "Help", link: "" },
+    { text: "Help", link: "/help" },
   ];
 
   const company = [

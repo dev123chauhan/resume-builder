@@ -83,27 +83,124 @@
 
 
 
-import  { useState } from 'react';
+// import  { useState } from 'react';
+// import axios from 'axios';
+// import { IconButton, Avatar, Box } from '@mui/material';
+// import { CiEdit } from "react-icons/ci";
+// import useAuth from "../../hooks/useAuth";
+// import "../../css/uploadprofile.css"
+
+// const UploadProfilePicture = () => {
+//   const [file, setFile] = useState(null);
+//   const [preview, setPreview] = useState(null);
+//   const { user, setUser } = useAuth(); // Assuming useAuth hook provides user state
+ 
+//   const handleFileChange = (e) => {
+//     const selectedFile = e.target.files[0];
+//     if (selectedFile) {
+//       setFile(selectedFile);
+//       const reader = new FileReader();
+//       reader.onloadend = () => {
+//         setPreview(reader.result); // Read the file and set preview
+//       };
+//       reader.readAsDataURL(selectedFile); // Read file as data URL
+//     }
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     formData.append('profileImage', file);
+
+//     try {
+//       const token = localStorage.getItem('token'); // Adjust based on how you store the token
+//       const res = await axios.post('http://localhost:5000/api/upload-profile-picture', formData, {
+//         headers: {
+//           'Content-Type': 'multipart/form-data',
+//           'x-auth-token': token, // Pass the token in headers
+//         },
+//       });
+
+//       // Update the user context with the new profile image
+//       setUser(res.data.user);
+
+//       alert('Profile picture uploaded successfully');
+//     } catch (err) {
+//       console.error('Error Response:', err.response);
+//       alert('Error uploading profile picture');
+//     }
+//   };
+
+//   return (
+//     <Box  className='uploadPicture' display="flex" flexDirection="column" alignItems="center">
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           accept="image/*"
+//           style={{ display: 'none' }}
+//           id="profile-image-upload"
+//           type="file"
+//           onChange={handleFileChange}
+//         />
+//         <label htmlFor="profile-image-upload">
+//           <IconButton
+//             color="primary"
+//             aria-label="upload picture"
+//             component="span"
+//             style={{ position: 'relative', width: 'fit-content' }} // Ensure IconButton can be positioned relative
+//           >
+//             <Avatar
+//               alt="Profile Picture"
+//               src={preview || (user && user.profileImage) ? preview || `http://localhost:5000/uploads/${user.profileImage}` : ""}
+//               sx={{ width: 200, height: 200 }}
+//             />
+//            <CiEdit 
+//               style={{
+//                 position: 'absolute',
+//                 bottom: '33',
+//                 right: '34',
+//                 color:"white",
+//                 backgroundColor: '#027b9a',
+//                 borderRadius: '50%',
+//                 padding: '10px',
+//                 fontSize:"3rem"
+//               }}
+//             />
+//           </IconButton>
+//         </label>
+//         <h4 style={{ textAlign: "center" }}>Upload a profile picture</h4>
+//         <h5 style={{ textAlign: "center", fontWeight: "lighter" }}>Make sure the image is below 10mb</h5>
+//         <button type="submit" style={{ marginTop: '10px' }}>
+//           Upload
+//         </button>
+//       </form>
+//     </Box>
+//   );
+// };
+
+// export default UploadProfilePicture;
+
+
+
+import { useState } from 'react';
 import axios from 'axios';
-import { IconButton, Avatar, Box } from '@mui/material';
+import { IconButton, Avatar, Box, Button, Typography } from '@mui/material';
 import { CiEdit } from "react-icons/ci";
 import useAuth from "../../hooks/useAuth";
-import "../../css/uploadprofile.css"
 
 const UploadProfilePicture = () => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
-  const { user, setUser } = useAuth(); // Assuming useAuth hook provides user state
- 
+  const { user, setUser } = useAuth();
+
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result); // Read the file and set preview
+        setPreview(reader.result);
       };
-      reader.readAsDataURL(selectedFile); // Read file as data URL
+      reader.readAsDataURL(selectedFile);
     }
   };
 
@@ -113,17 +210,15 @@ const UploadProfilePicture = () => {
     formData.append('profileImage', file);
 
     try {
-      const token = localStorage.getItem('token'); // Adjust based on how you store the token
+      const token = localStorage.getItem('token');
       const res = await axios.post('http://localhost:5000/api/upload-profile-picture', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'x-auth-token': token, // Pass the token in headers
+          'x-auth-token': token,
         },
       });
 
-      // Update the user context with the new profile image
       setUser(res.data.user);
-
       alert('Profile picture uploaded successfully');
     } catch (err) {
       console.error('Error Response:', err.response);
@@ -132,7 +227,7 @@ const UploadProfilePicture = () => {
   };
 
   return (
-    <Box  className='uploadPicture' display="flex" flexDirection="column" alignItems="center">
+    <Box display="flex" flexDirection="column" alignItems="center" sx={{ mt: 4 }}>
       <form onSubmit={handleSubmit}>
         <input
           accept="image/*"
@@ -146,37 +241,39 @@ const UploadProfilePicture = () => {
             color="primary"
             aria-label="upload picture"
             component="span"
-            style={{ position: 'relative', width: 'fit-content' }} // Ensure IconButton can be positioned relative
+            sx={{ position: 'relative', width: 'fit-content' }}
           >
             <Avatar
               alt="Profile Picture"
               src={preview || (user && user.profileImage) ? preview || `http://localhost:5000/uploads/${user.profileImage}` : ""}
               sx={{ width: 200, height: 200 }}
             />
-           <CiEdit 
+            <CiEdit
               style={{
                 position: 'absolute',
-                bottom: '33',
-                right: '34',
-                color:"white",
+                bottom: 0,
+                right: 0,
+                color: "white",
                 backgroundColor: '#027b9a',
                 borderRadius: '50%',
                 padding: '10px',
-                fontSize:"3rem"
+                fontSize: "3rem"
               }}
             />
           </IconButton>
         </label>
-        <h4 style={{ textAlign: "center" }}>Upload a profile picture</h4>
-        <h5 style={{ textAlign: "center", fontWeight: "lighter" }}>Make sure the image is below 10mb</h5>
-        <button type="submit" style={{ marginTop: '10px' }}>
+        <Typography variant="h6" align="center" sx={{ mt: 2 }}>
+          Upload a profile picture
+        </Typography>
+        <Typography variant="body2" align="center" color="textSecondary">
+          Make sure the image is below 10MB
+        </Typography>
+        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
           Upload
-        </button>
+        </Button>
       </form>
     </Box>
   );
 };
 
 export default UploadProfilePicture;
-
-

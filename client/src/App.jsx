@@ -16,6 +16,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import Faq from "./components/FAQ/Faq";
 import Blog from "./components/Blog/Blog";
 import Review from "./components/Review/Review";
+import Help from "./components/Help/Help";
 
 export default function App() {
   const location = useLocation();
@@ -74,6 +75,7 @@ export default function App() {
         <Route path="/faq" element={<Layout><Faq /></Layout>} />
         <Route path="/blog" element={<Layout><Blog /></Layout>} />
         <Route path="/review" element={<Layout><Review /></Layout>} />
+        <Route path="/help" element={<Layout><Help /></Layout>} />
       </Routes>
     </div>
   );
