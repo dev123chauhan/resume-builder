@@ -97,16 +97,20 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import { Box, Button, CircularProgress, TextField, Typography } from '@mui/material';
+import { Box, CircularProgress, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false)
+  const [showNewPassword, setShowNewPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -137,7 +141,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <Box className="changePassword" sx={{ mt: 4 }}>
+    <Box className="changePassword" sx={{ mt: 4, mb:12 }}>
       <ToastContainer />
       <Typography variant="h4" gutterBottom>
         Change Password
@@ -147,39 +151,66 @@ const ChangePassword = () => {
           <TextField
             fullWidth
             label="Current Password"
-            type="password"
+            type={showCurrentPassword ? "text" : "password"}
             variant="outlined"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             required
+            InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowCurrentPassword(!showCurrentPassword)}>
+                      {showCurrentPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
           />
         </Box>
         <Box mb={2}>
           <TextField
             fullWidth
             label="New Password"
-            type="password"
+            type={showNewPassword ? "text" : "password"}
             variant="outlined"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
+            InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowNewPassword(!showNewPassword)}>
+                      {showNewPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
           />
         </Box>
         <Box mb={2}>
           <TextField
             fullWidth
             label="Confirm Password"
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             variant="outlined"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                      {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
           />
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-          <Button type="submit" variant="contained" color="primary" disabled={loading}>
+        <Box sx={{  mt: 2 }}>
+          <button style={{width:"100%"}} className='loginButton' type="submit" disabled={loading}>
             {loading ? <CircularProgress size={24} /> : 'Update'}
-          </Button>
+          </button>
         </Box>
       </form>
     </Box>

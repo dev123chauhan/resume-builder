@@ -57,3 +57,15 @@ section {
 .css-h4y409-MuiList-root{
   margin-bottom: 5rem !important;
 }
+
+
+.css-1fu7jd5-MuiButtonBase-root-MuiButton-root{
+  background-color: #027b9a !important;
+}
+
+
+.css-bshv44-MuiButtonBase-root-MuiListItem-root.Mui-selected {
+  background-color: #027b9a !important;
+  color: white !important;
+  border-radius: 3px;
+}

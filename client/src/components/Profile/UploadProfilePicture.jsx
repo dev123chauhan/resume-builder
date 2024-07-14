@@ -183,7 +183,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import { IconButton, Avatar, Box, Button, Typography } from '@mui/material';
+import { IconButton, Avatar, Box,  Typography } from '@mui/material';
 import { CiEdit } from "react-icons/ci";
 import useAuth from "../../hooks/useAuth";
 
@@ -227,7 +227,7 @@ const UploadProfilePicture = () => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" sx={{ mt: 4 }}>
+    <Box display="flex" flexDirection="column" alignItems="center" sx={{ mt: 4, mb:12 }}>
       <form onSubmit={handleSubmit}>
         <input
           accept="image/*"
@@ -251,8 +251,8 @@ const UploadProfilePicture = () => {
             <CiEdit
               style={{
                 position: 'absolute',
-                bottom: 0,
-                right: 0,
+                bottom: 32,
+                right: 31,
                 color: "white",
                 backgroundColor: '#027b9a',
                 borderRadius: '50%',
@@ -268,9 +268,9 @@ const UploadProfilePicture = () => {
         <Typography variant="body2" align="center" color="textSecondary">
           Make sure the image is below 10MB
         </Typography>
-        <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+        <button type="submit">
           Upload
-        </Button>
+        </button>
       </form>
     </Box>
   );

@@ -14,7 +14,7 @@
 //   const handleLogout = () => {
 //     logout(); // Call the logout function from useAuth
 //   };
-//   return ( 
+//   return (
 //       <div className="profile-section">
 //       <div className="profile-header">
 //       <img
@@ -66,7 +66,7 @@
 //       </Link>
 //         </div>
 //       </div>
-   
+
 //       </div>
 
 //   );
@@ -78,9 +78,6 @@
 // };
 
 // export default ProfileSidebar;
-
-
-
 
 // import "../../css/profilesidebar.css";
 // import PropTypes from "prop-types";
@@ -135,14 +132,23 @@
 
 // export default ProfileSidebar;
 
-
-
-
 import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
 import noProfile from "../../assets/noProfile.jpg";
-import { Avatar, Button, List, ListItem, ListItemText, Divider, Typography, Box } from "@mui/material";
-
+import {
+  Avatar,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Typography,
+  Box,
+} from "@mui/material";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
+import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 const ProfileSidebar = ({ activeTab, setActiveTab }) => {
   const { user, logout } = useAuth();
 
@@ -152,7 +158,14 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
 
   return (
     <Box sx={{ p: 2 }}>
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mb: 2,
+        }}
+      >
         <Avatar
           src={
             user?.profileImage
@@ -166,21 +179,53 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
         </Typography>
       </Box>
       <List>
-        <ListItem button selected={activeTab === "profile"} onClick={() => setActiveTab("profile")}>
-          <ListItemText primary="User Profile" />
+        <ListItem
+          button
+          selected={activeTab === "profile"}
+          onClick={() => setActiveTab("profile")}
+        >
+          <AccountCircleOutlinedIcon/>
+          <ListItemText
+            style={{ textAlign: "center" }}
+            primary="User Profile"
+          />
         </ListItem>
-        <ListItem button selected={activeTab === "update"} onClick={() => setActiveTab("update")}>
-          <ListItemText primary="Update Profile" />
+        <ListItem
+          button
+          selected={activeTab === "update"}
+          onClick={() => setActiveTab("update")}
+        >
+          <EditOutlinedIcon />
+          <ListItemText
+            style={{ textAlign: "center" }}
+            primary="Update Profile"
+          />
         </ListItem>
-        <ListItem button selected={activeTab === "picture"} onClick={() => setActiveTab("picture")}>
-          <ListItemText primary="Upload Picture" />
+        <ListItem
+          button
+          selected={activeTab === "picture"}
+          onClick={() => setActiveTab("picture")}
+        >
+          <CloudUploadOutlinedIcon />
+          <ListItemText
+            style={{ textAlign: "center" }}
+            primary="Upload Picture"
+          />
         </ListItem>
-        <ListItem button selected={activeTab === "password"} onClick={() => setActiveTab("password")}>
-          <ListItemText primary="Change Password" />
+        <ListItem
+          button
+          selected={activeTab === "password"}
+          onClick={() => setActiveTab("password")}
+        >
+          <ChangeCircleOutlinedIcon />
+          <ListItemText
+            style={{ textAlign: "center" }}
+            primary="Change Password"
+          />
         </ListItem>
       </List>
       <Divider sx={{ mt: 2, mb: 2 }} />
-      <Button variant="contained" color="secondary" fullWidth onClick={handleLogout}>
+      <Button variant="contained" fullWidth onClick={handleLogout}>
         Log Out
       </Button>
     </Box>

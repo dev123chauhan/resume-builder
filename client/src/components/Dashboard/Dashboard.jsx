@@ -1,11 +1,11 @@
-import EditableResume from "./EditResume";
+// import EditableResume from "./EditResume";
 import Sidebar from "./Sidebar";
 export default function Dashboard() {
   return (
     <div>
-      <div style={{display:"flex"}}>
+      <div>
         <Sidebar  />
-        <EditableResume/>
+        {/* <EditableResume/> */}
       </div>
     </div>
   );
