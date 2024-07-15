@@ -10,7 +10,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
-
+import WestIcon from '@mui/icons-material/West';
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
@@ -47,6 +47,7 @@ const Register = () => {
     <div className="containerLogin">
           <ToastContainer />
       <div className="left-side">
+      <Link style={{color:"#027b9a", display:"flex", alignItems:"center", gap:"10px"}} to="/"><WestIcon  style={{color:"#027b9a"}} />Back to Home</Link>
         <img src={loginImage} alt="Left Side Image" />
       </div>
       <div className="right-side">

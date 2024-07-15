@@ -9,7 +9,7 @@
   border-radius: 6px !important;
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   height: 12px;
 }
 
@@ -69,3 +69,4 @@ section {
   color: white !important;
   border-radius: 3px;
 }
+

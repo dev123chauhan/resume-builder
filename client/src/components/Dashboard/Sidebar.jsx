@@ -24,6 +24,8 @@ import template8 from "../../assets/template 8.jpg";
 import useStyles from "./Sidebar.styles";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import DesignPanel from "./DesignPanel";
+import AddSection from "./AddSection";
 
 const menuItems = [
   { text: "Add section", icon: <AddIcon /> },
@@ -54,18 +56,40 @@ const Sidebar = () => {
   const [showTemplates, setShowTemplates] = useState(false);
   const [activeTemplateIndex, setActiveTemplateIndex] = useState(null);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [showDesignPanel, setShowDesignPanel] = useState(false);
+  const [showAddSectionPopup, setShowAddSectionPopup] = useState(false);
+
+  // const handleItemClick = (index) => {
+  //   setActiveIndex(index);
+  //   if (menuItems[index].text === "Templates") {
+  //     setShowTemplates(!showTemplates);
+  //     if (showTemplates) {
+  //       setSelectedTemplate(null);
+  //       setActiveTemplateIndex(null);
+  //     }
+  //   } else if (menuItems[index].text === "Design & Font") {
+  //     setShowDesignPanel(!showDesignPanel);
+  //   } else {
+  //     setShowTemplates(false);
+  //     setShowDesignPanel(false);
+  //   }
+  // };
 
   const handleItemClick = (index) => {
     setActiveIndex(index);
-    if (menuItems[index].text === "Templates") {
+    if (menuItems[index].text === "Add section") {
+      setShowAddSectionPopup(true);
+    } else if (menuItems[index].text === "Templates") {
       setShowTemplates(!showTemplates);
       if (showTemplates) {
-        // If we're closing the templates panel, clear the selected template
         setSelectedTemplate(null);
         setActiveTemplateIndex(null);
       }
+    } else if (menuItems[index].text === "Design & Font") {
+      setShowDesignPanel(!showDesignPanel);
     } else {
       setShowTemplates(false);
+      setShowDesignPanel(false);
     }
   };
 
@@ -163,6 +187,22 @@ const Sidebar = () => {
           />
         )}
       </div>
+
+
+      <div
+        className={`${classes.panelContainer} ${
+          showDesignPanel ? classes.panelContainerVisible : ""
+        }`}
+      >
+        {showDesignPanel && <DesignPanel onClose={() => setShowDesignPanel(false)} />}
+      </div>
+
+      <div className={classes.container}>
+      {/* ... other components */}
+      {showAddSectionPopup && (
+        <AddSection onClose={() => setShowAddSectionPopup(false)} />
+      )}
+    </div>
     </div>
   );
 };

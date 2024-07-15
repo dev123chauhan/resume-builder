@@ -11,7 +11,7 @@ import logo2image from "../../assets/logo2image.png";
 import "../../css/login.css";
 import { ClipLoader } from "react-spinners"; // Import the spinner component
 import useAuth from "../../hooks/useAuth";
-
+import WestIcon from '@mui/icons-material/West';
  
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +43,7 @@ const Login = () => {
     <div className="containerLogin">
       <ToastContainer />
       <div className="left-side">
+        <Link style={{color:"#027b9a", display:"flex", alignItems:"center", gap:"10px"}} to="/"><WestIcon  style={{color:"#027b9a"}} />Back to Home</Link>
         <img src={loginImage} alt="Left Side Image" />
       </div>
       <div className="right-side">
