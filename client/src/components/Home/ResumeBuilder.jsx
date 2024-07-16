@@ -8,7 +8,7 @@ const ResumeBuilder = ({ resumes }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       goToNextSlide();
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [currentIndex, resumes.length]);

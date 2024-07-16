@@ -186,10 +186,13 @@ import axios from 'axios';
 import { IconButton, Avatar, Box,  Typography } from '@mui/material';
 import { CiEdit } from "react-icons/ci";
 import useAuth from "../../hooks/useAuth";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { ClipLoader } from 'react-spinners';
 const UploadProfilePicture = () => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { user, setUser } = useAuth();
 
   const handleFileChange = (e) => {
@@ -206,6 +209,7 @@ const UploadProfilePicture = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     formData.append('profileImage', file);
 
@@ -219,15 +223,20 @@ const UploadProfilePicture = () => {
       });
 
       setUser(res.data.user);
-      alert('Profile picture uploaded successfully');
+      setTimeout(() => {
+        setLoading(false); // Hide spinner
+      }, 1000);
+      toast.success('Profile Uploaded Successfully');
     } catch (err) {
       console.error('Error Response:', err.response);
-      alert('Error uploading profile picture');
+      toast.error('Please choose a file');
+      setLoading(false);
     }
   };
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" sx={{ mt: 4, mb:12 }}>
+          <ToastContainer />
       <form onSubmit={handleSubmit}>
         <input
           accept="image/*"
@@ -268,8 +277,8 @@ const UploadProfilePicture = () => {
         <Typography variant="body2" align="center" color="textSecondary">
           Make sure the image is below 10MB
         </Typography>
-        <button type="submit">
-          Upload
+        <button style={{borderRadius:"4px"}} type="submit">
+        {loading ? <ClipLoader size={20} color={"#fff"} /> : "Upload"} 
         </button>
       </form>
     </Box>

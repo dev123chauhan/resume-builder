@@ -97,10 +97,11 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import { Box, CircularProgress, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
+import { Box,  IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { ClipLoader } from 'react-spinners';
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -155,7 +156,6 @@ const ChangePassword = () => {
             variant="outlined"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            required
             InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -175,7 +175,6 @@ const ChangePassword = () => {
             variant="outlined"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            required
             InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -195,7 +194,6 @@ const ChangePassword = () => {
             variant="outlined"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
             InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -209,7 +207,7 @@ const ChangePassword = () => {
         </Box>
         <Box sx={{  mt: 2 }}>
           <button style={{width:"100%"}} className='loginButton' type="submit" disabled={loading}>
-            {loading ? <CircularProgress size={24} /> : 'Update'}
+          {loading ? <ClipLoader size={20} color={"#fff"} /> : "Update"} 
           </button>
         </Box>
       </form>

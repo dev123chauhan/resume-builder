@@ -251,6 +251,8 @@
 import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {
   TextField,
   // Radio,
@@ -263,13 +265,19 @@ import {
   Box,
   Grid,
   // Paper,
-  InputLabel,
-  Select,
-  MenuItem,
+  // InputLabel,
+  // Select,
+  // MenuItem,
+  FormControlLabel,
+  RadioGroup,
+  FormLabel,
+  Radio,
 } from "@mui/material";
+import { ClipLoader } from "react-spinners";
 
 const UpdateProfile = () => {
   const { user, setUser } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: user?.username || "",
     email: user?.email || "",
@@ -287,6 +295,7 @@ const UpdateProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
@@ -297,19 +306,25 @@ const UpdateProfile = () => {
         }
       );
       setUser(res.data.user);
-      alert("Profile updated successfully");
+      setTimeout(() => {
+        setLoading(false); // Hide spinner
+      }, 1000);
+      toast.success('User profile updated successfully');
     } catch (err) {
       console.error(
         "Error updating profile:",
         err.response?.data || err.message
       );
-      alert("Failed to update profile");
+      toast.error('Please update a field');
+      setLoading(false);
     }
+    // setLoading(false);
   };
 
   return (
     // <Container maxWidth="sm">
     <Box>
+          <ToastContainer />
       <Typography variant="h4" gutterBottom>
         Update Profile
       </Typography>
@@ -375,16 +390,16 @@ const UpdateProfile = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            {/* <FormControl component="fieldset" margin="normal">
+            <FormControl component="fieldset" margin="normal">
             <FormLabel component="legend">Gender</FormLabel>
             <RadioGroup row name="gender" value={formData.gender} onChange={handleChange}>
               <FormControlLabel value="Male" control={<Radio />} label="Male" />
               <FormControlLabel value="Female" control={<Radio />} label="Female" />
               <FormControlLabel value="Other" control={<Radio />} label="Other" />
             </RadioGroup>
-          </FormControl> */}
+          </FormControl>
 
-            <FormControl component="fieldset" margin="normal" fullWidth>
+            {/* <FormControl component="fieldset" margin="normal" fullWidth>
               <InputLabel id="gender-label">Gender</InputLabel>
               <Select
                 labelId="gender-label"
@@ -398,7 +413,7 @@ const UpdateProfile = () => {
                 <MenuItem value="Female">Female</MenuItem>
                 <MenuItem value="Other">Other</MenuItem>
               </Select>
-            </FormControl>
+            </FormControl> */}
           </Grid>
 
           <TextField
@@ -422,10 +437,10 @@ const UpdateProfile = () => {
             onChange={handleChange}
           />
           <button
-            style={{width:"100%"}}
+            style={{width:"100%", borderRadius:"4px"}}
             type="submit"
           >
-            Save Changes
+        {loading ? <ClipLoader size={20} color={"#fff"} /> : " Save Changes"}       
           </button>
         </Grid>
       </form>

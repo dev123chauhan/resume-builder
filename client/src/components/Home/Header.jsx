@@ -66,6 +66,7 @@ export default function Header() {
     <header id="header" className={isScrolled ? "scrolled" : ""}>
       <div className="container">
         <div className="header-content">
+        
           <Link to="/">
             <img
               src={isScrolled ? footer2logo : logo2image}

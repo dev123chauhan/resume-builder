@@ -145,10 +145,10 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
+// import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+// import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+// import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
+// import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 const ProfileSidebar = ({ activeTab, setActiveTab }) => {
   const { user, logout } = useAuth();
 
@@ -180,46 +180,46 @@ const ProfileSidebar = ({ activeTab, setActiveTab }) => {
       </Box>
       <List>
         <ListItem
+          style={{textAlign:"center"}}
           button
           selected={activeTab === "profile"}
           onClick={() => setActiveTab("profile")}
         >
-          <AccountCircleOutlinedIcon/>
+          {/* <AccountCircleOutlinedIcon/> */}
           <ListItemText
-            style={{ textAlign: "center" }}
             primary="User Profile"
           />
         </ListItem>
         <ListItem
+           style={{textAlign:"center"}}
           button
           selected={activeTab === "update"}
           onClick={() => setActiveTab("update")}
         >
-          <EditOutlinedIcon />
+          {/* <EditOutlinedIcon /> */}
           <ListItemText
-            style={{ textAlign: "center" }}
             primary="Update Profile"
           />
         </ListItem>
         <ListItem
+           style={{textAlign:"center"}}
           button
           selected={activeTab === "picture"}
           onClick={() => setActiveTab("picture")}
         >
-          <CloudUploadOutlinedIcon />
+          {/* <CloudUploadOutlinedIcon /> */}
           <ListItemText
-            style={{ textAlign: "center" }}
             primary="Upload Picture"
           />
         </ListItem>
         <ListItem
+           style={{textAlign:"center"}}
           button
           selected={activeTab === "password"}
           onClick={() => setActiveTab("password")}
         >
-          <ChangeCircleOutlinedIcon />
+          {/* <ChangeCircleOutlinedIcon /> */}
           <ListItemText
-            style={{ textAlign: "center" }}
             primary="Change Password"
           />
         </ListItem>

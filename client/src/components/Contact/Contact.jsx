@@ -123,20 +123,14 @@
 
 import { useState } from "react";
 import axios from "axios";
-import {
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Container, Grid, Paper, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import InputAdornment from "@mui/material/InputAdornment";
 import { CiUser } from "react-icons/ci";
 import { AiOutlineMail } from "react-icons/ai";
 import { toast, ToastContainer } from "react-toastify";
 import { ClipLoader } from "react-spinners";
-import contactImg from "../../assets/contact.jpg"
+import contactImg from "../../assets/contact.jpg";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -157,6 +151,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: "2rem !important",
     color: "#027b9a",
+    fontWeight: "bold !important",
   },
   getTitle: {
     marginBottom: "1rem !important",
@@ -168,12 +163,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "400px",
   },
-  contactImg:{
-      width:"100%"
+  contactImg: {
+    width: "100%",
   },
-  iconSize:{
-    fontSize:"1.5rem"
-  }
+  iconSize: {
+    fontSize: "1.5rem",
+  },
 }));
 
 const Contact = () => {
@@ -203,13 +198,13 @@ const Contact = () => {
       );
       console.log(res.data);
       setFormData({
-        name: '',
-        email: '',
-        message: '',
+        name: "",
+        email: "",
+        message: "",
       });
       toast.success("Thanks for contact");
       setTimeout(() => {
-        setLoading(false); 
+        setLoading(false);
       }, 1000);
     } catch (err) {
       console.error(err);
@@ -243,7 +238,7 @@ const Contact = () => {
                 InputProps={{
                   startAdornment: isNameFocused ? (
                     <InputAdornment position="start">
-                      <CiUser className={classes.iconSize}/>
+                      <CiUser className={classes.iconSize} />
                     </InputAdornment>
                   ) : null,
                 }}
@@ -261,7 +256,7 @@ const Contact = () => {
                 InputProps={{
                   startAdornment: isEmailFocused ? (
                     <InputAdornment position="start">
-                      <AiOutlineMail className={classes.iconSize}/>
+                      <AiOutlineMail className={classes.iconSize} />
                     </InputAdornment>
                   ) : null,
                 }}
@@ -277,8 +272,8 @@ const Contact = () => {
                 value={message}
                 onChange={handleChange}
               />
-              <button type="submit"  className="buttonColor">
-              {loading ? <ClipLoader size={20} color={"#fff"} /> : "SUBMIT"}
+              <button type="submit" className="buttonColor">
+                {loading ? <ClipLoader size={20} color={"#fff"} /> : "SUBMIT"}
               </button>
             </form>
           </Paper>
