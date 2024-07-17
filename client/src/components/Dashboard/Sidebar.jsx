@@ -59,21 +59,7 @@ const Sidebar = () => {
   const [showDesignPanel, setShowDesignPanel] = useState(false);
   const [showAddSectionPopup, setShowAddSectionPopup] = useState(false);
 
-  // const handleItemClick = (index) => {
-  //   setActiveIndex(index);
-  //   if (menuItems[index].text === "Templates") {
-  //     setShowTemplates(!showTemplates);
-  //     if (showTemplates) {
-  //       setSelectedTemplate(null);
-  //       setActiveTemplateIndex(null);
-  //     }
-  //   } else if (menuItems[index].text === "Design & Font") {
-  //     setShowDesignPanel(!showDesignPanel);
-  //   } else {
-  //     setShowTemplates(false);
-  //     setShowDesignPanel(false);
-  //   }
-  // };
+
 
   const handleItemClick = (index) => {
     setActiveIndex(index);

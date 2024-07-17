@@ -1,24 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Sample about us content
-// const aboutContent = {
-//   title:'About Us',
-//   description: "Our Resume Builder web app is a comprehensive tool designed to streamline the process of creating professional resumes. It features a user-friendly interface with customizable templates, allowing users to effortlessly input and format their personal and professional information. The app includes sections for work experience, education, skills, and achievements, along with tips and examples for each. Users can easily rearrange sections, choose from various design themes, and download their resumes in multiple formats (PDF, DOCX). Integrated with LinkedIn for easy import of professional details, our app also offers real-time previews and a built-in spell checker. Secure cloud storage ensures user data is protected and accessible anytime, anywhere.",
-//   vision: "To empower individuals in their career journeys by providing a seamless and efficient resume-building experience.",
-//   mission: "Our mission is to deliver a user-centric platform that simplifies resume creation while maintaining the highest standards of quality and design.",
-//   uniqueFeatures: [
-//     "Customizable templates tailored for different industries and roles.",
-//     "Real-time previews to see your resume as you build it.",
-//     "Integrated LinkedIn import for quick and accurate data entry.",
-//     "Built-in spell checker to ensure error-free resumes.",
-//     "Multiple download formats including PDF and DOCX.",
-//     "Secure cloud storage for easy access and data protection."
-//   ],
-//   journey: "Our journey began with a simple idea: to make the process of creating resumes as straightforward and stress-free as possible. Over the years, we have listened to the feedback of our users and continuously improved our app to meet their needs. From introducing new templates to enhancing the user interface, our commitment to excellence has driven our progress.",
-//   team: "We are a dedicated team of professionals with a passion for helping people achieve their career goals. Our team includes experienced software developers, UX/UI designers, and career advisors who work together to bring you the best resume-building experience. Each member brings a unique set of skills and a shared commitment to making resume building easy and accessible for everyone.",
-//   impact: "We believe that a well-crafted resume is a key to unlocking career opportunities. Our app has helped thousands of users create professional resumes that stand out. We take pride in knowing that our tool has played a part in their success stories. Whether you're a recent graduate, a seasoned professional, or someone looking to change careers, our resume builder is designed to help you present your best self to potential employers."
-// };
+
 
 
 const aboutContent = {
