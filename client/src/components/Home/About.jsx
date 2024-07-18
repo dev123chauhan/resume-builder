@@ -23,7 +23,7 @@ const About = () => {
 
   return (
     <div className="about-us-container">
-      <h1>About Us</h1>
+      <h1 className='aboutText'>About Us</h1>
       <div className="content-wrapper">
         <div className="image-container">
           <img src={aboutImg} alt="Resume builder illustration" />

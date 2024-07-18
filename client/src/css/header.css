@@ -1,5 +1,5 @@
-header {
-    padding: 20px 0;
+#header {
+    padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -42,11 +42,11 @@ header {
   }
   
   
-  header.scrolled {
+  #header.scrolled {
     background-color: #027b9a;
   }
   
-  header.scrolled nav ul li a {
+  #header.scrolled nav ul li a {
     color: #fff;
   }
   .sidebar {
@@ -55,7 +55,7 @@ header {
     left: -250px;
     width: 250px;
     height: 100%;
-    background-color: #066d98;
+    background-color: #027b9a;
     transition: 0.3s;
     padding-top: 60px;
     z-index: 1000;
@@ -80,7 +80,7 @@ header {
 
   .loginButton {
     display: inline-block;
-    background-color: #066d98;
+    background-color: #027b9a;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -101,9 +101,11 @@ header {
   }
   
   .avatar {
-    height: 40px;
-    width: 40px;
     border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    color: transparent;
   }
   
   .dropdown-menu {

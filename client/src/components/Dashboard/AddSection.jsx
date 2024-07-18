@@ -19,8 +19,9 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import Close from '@mui/icons-material/Close';
 
-const AddSection = ({ onClose }) => {
+const AddSection = ({ onClose, onAddSection }) => { // Accept onAddSection as a prop
   const sections = [
     { name: 'Education', icon: <SchoolIcon /> },
     { name: 'Experience', icon: <WorkIcon /> },
@@ -70,10 +71,12 @@ const AddSection = ({ onClose }) => {
     title: {
       fontWeight: 'bold',
       marginBottom: '10px',
+      color:"#027b9a"
     },
     subtitle: {
       color: 'grey',
       marginBottom: '20px',
+
     },
     sectionButton: {
       width: '100%',
@@ -83,21 +86,29 @@ const AddSection = ({ onClose }) => {
       borderRadius: '4px',
       padding: '10px',
       marginBottom: '10px',
+      color:"#027b9a"
     },
     icon: {
       marginRight: '10px',
+      color:"#027b9a"
     },
     closeButton: {
-      marginTop: '20px',
+      cursor:"pointer",
+      color:"#027b9a"
     },
   };
 
   return (
     <div style={styles.popupOverlay}>
       <div style={styles.popupContent}>
+      <div style={{display:"flex", justifyContent:"space-between"}}>
         <Typography variant="h6" style={styles.title}>
           Add a new section
         </Typography>
+        <span onClick={onClose} style={styles.closeButton}>
+         <Close/>
+        </span>
+      </div>
         <Typography variant="body2" style={styles.subtitle}>
           Click on a section to add it to your resume
         </Typography>
@@ -108,7 +119,7 @@ const AddSection = ({ onClose }) => {
                 variant="outlined"
                 style={styles.sectionButton}
                 onClick={() => {
-                  // Handle adding the section
+                  onAddSection({ title: section.name, content: '' }); // Pass the new section
                   onClose();
                 }}
               >
@@ -118,16 +129,14 @@ const AddSection = ({ onClose }) => {
             </Grid>
           ))}
         </Grid>
-        <Button variant="contained" color="primary" onClick={onClose} style={styles.closeButton}>
-          Close
-        </Button>
       </div>
     </div>
   );
 };
 
 AddSection.propTypes = {
-    onClose: PropTypes.func.isRequired,
-  };
+  onClose: PropTypes.func.isRequired,
+  onAddSection: PropTypes.func.isRequired, // Define prop type for onAddSection
+};
 
 export default AddSection;

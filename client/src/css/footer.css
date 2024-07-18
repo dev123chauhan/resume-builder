@@ -11,6 +11,7 @@
     background-color: #027b9a;
     color: #fff;
     margin-top: 3rem;
+    z-index: 1000 !important;
   }
   .footer-wave-svg {
     background-color: transparent;

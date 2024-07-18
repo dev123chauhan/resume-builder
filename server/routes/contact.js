@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   try {
     const newContact = new Contact({
       name,
-      email,
+      email, 
       message,
     });
 
@@ -20,3 +20,7 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+

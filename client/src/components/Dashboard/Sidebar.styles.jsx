@@ -54,12 +54,14 @@ const useStyles = makeStyles(() => ({
     padding: 16,
     textAlign: "center",
     width: "100%",
-    display: "block",
+    // display: "block",
+    display: "flex",
     backgroundColor: "#027b9a",
     color: "#fff",
     textDecoration: "none",
     marginTop: 16,
     cursor: "pointer",
+    gap:30
   },
   templatesContainer: {
     position: "fixed",

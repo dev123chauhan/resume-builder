@@ -10,6 +10,9 @@
     margin-bottom: 30px;
     color: #027b9a;
   }
+  .aboutText{
+    text-align: center;
+  }
   
   .content-wrapper {
     position: relative;

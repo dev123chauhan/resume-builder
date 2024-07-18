@@ -26,6 +26,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import DesignPanel from "./DesignPanel";
 import AddSection from "./AddSection";
+import { IoIosLogOut } from "react-icons/io";
 
 const menuItems = [
   { text: "Add section", icon: <AddIcon /> },
@@ -59,8 +60,6 @@ const Sidebar = () => {
   const [showDesignPanel, setShowDesignPanel] = useState(false);
   const [showAddSectionPopup, setShowAddSectionPopup] = useState(false);
 
-
-
   const handleItemClick = (index) => {
     setActiveIndex(index);
     if (menuItems[index].text === "Add section") {
@@ -84,9 +83,14 @@ const Sidebar = () => {
     setSelectedTemplate(templates[index]);
   };
 
-
   const handleLogout = () => {
     logout(); // Call the logout function from useAuth
+  };
+
+  const handleAddSection = (newSection) => {
+    console.log("New section added:", newSection);
+    // Add logic to handle the new section, e.g., update state
+    setShowAddSectionPopup(false); // Close the popup after adding the section
   };
 
   return (
@@ -119,10 +123,10 @@ const Sidebar = () => {
                 <ListItemText primary={item.text} />
               </ListItem>
             ))}
-          </List>
+          </List> 
         </aside>
-        <Link to="/" onClick={handleLogout}  className={classes.loginButtonSidebar}>
-          Logout
+        <Link to="/login" onClick={handleLogout} className={classes.loginButtonSidebar}>
+          <IoIosLogOut size={20}/> Logout
         </Link>
       </div>
 
@@ -134,22 +138,11 @@ const Sidebar = () => {
         <div style={{ padding: "20px" }}>
           <p>Select Template</p>
           <div className={classes.gridContainer}>
-            {[
-              template1,
-              template2,
-              template3,
-              template4,
-              template5,
-              template6,
-              template7,
-              template8,
-            ].map((template, index) => (
+            {templates.map((template, index) => (
               <div
                 key={index}
                 className={`${classes.templateItem} ${
-                  activeTemplateIndex === index
-                    ? classes.activeTemplateItem
-                    : ""
+                  activeTemplateIndex === index ? classes.activeTemplateItem : ""
                 }`}
                 onClick={() => handleTemplateItemClick(index)}
               >
@@ -174,7 +167,6 @@ const Sidebar = () => {
         )}
       </div>
 
-
       <div
         className={`${classes.panelContainer} ${
           showDesignPanel ? classes.panelContainerVisible : ""
@@ -184,11 +176,10 @@ const Sidebar = () => {
       </div>
 
       <div className={classes.container}>
-      {/* ... other components */}
-      {showAddSectionPopup && (
-        <AddSection onClose={() => setShowAddSectionPopup(false)} />
-      )}
-    </div>
+        {showAddSectionPopup && (
+          <AddSection onClose={() => setShowAddSectionPopup(false)} onAddSection={handleAddSection} />
+        )}
+      </div>
     </div>
   );
 };

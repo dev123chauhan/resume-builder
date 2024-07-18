@@ -1,13 +1,20 @@
-import  { useState } from 'react';
+
+
+
+
+
+import { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import { Button, Avatar, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from '@mui/material';
+import { Button, Avatar } from '@mui/material';
 import EditableDiv from './EditableDiv';
 import Section from './Section';
+import AddSection from './AddSection'; // Import the AddSection component
 
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(4),
     maxWidth: '800px',
+    // height:"700px",
     margin: '0 auto',
     backgroundColor: 'white',
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
@@ -46,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   addButton: {
-    backgroundColor: '#8e44ad',
+    backgroundColor: '#027b9a !important',
     color: 'white',
     '&:hover': {
-      backgroundColor: '#6c3483',
+      backgroundColor: '#027b9a !important',
     },
   },
   footer: {
@@ -72,32 +79,21 @@ const EditableResume = () => {
   const [linkedin, setLinkedin] = useState('');
   const [location, setLocation] = useState('');
   const [sections, setSections] = useState([]);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [newSectionTitle, setNewSectionTitle] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
 
   const handleEdit = (setter) => (e) => {
     setter(e.target.innerText);
-  };
-
-  const handleAddSection = () => {
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-    setNewSectionTitle('');
-  };
-
-  const handleSaveSection = () => {
-    setSections([...sections, { title: newSectionTitle, content: '' }]);
-    setOpenDialog(false);
-    setNewSectionTitle('');
   };
 
   const handleEditSection = (index, field) => (e) => {
     const newSections = [...sections];
     newSections[index][field] = e.target.innerText;
     setSections(newSections);
+  };
+
+  const handleAddSection = (newSection) => {
+    setSections([...sections, newSection]);
+    setIsPopupOpen(false); // Close the popup after adding the section
   };
 
   return (
@@ -117,7 +113,7 @@ const EditableResume = () => {
       </div>
       {sections.map((section, index) => (
         <Section
-          key={index}
+          key={index} 
           title={section.title}
           content={section.content}
           onEditTitle={handleEditSection(index, 'title')}
@@ -125,35 +121,19 @@ const EditableResume = () => {
         />
       ))}
       <Button
-        variant="contained"
-        onClick={handleAddSection}
+        variant='contained'
         className={classes.addButton}
+        onClick={() => setIsPopupOpen(true)} // Open the popup on button click
       >
         Add new section
       </Button>
-      <Dialog open={openDialog} onClose={handleCloseDialog} className={classes.dialog}>
-        <DialogTitle>Add New Section</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Section Title"
-            fullWidth
-            value={newSectionTitle}
-            onChange={(e) => setNewSectionTitle(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={handleSaveSection} color="primary">
-            Add Section
-          </Button>
-        </DialogActions>
-      </Dialog>
+
+      {isPopupOpen && (
+        <AddSection onClose={() => setIsPopupOpen(false)} onAddSection={handleAddSection} /> // Pass onAddSection prop
+      )}
     </div>
   );
 };
 
 export default EditableResume;
+
