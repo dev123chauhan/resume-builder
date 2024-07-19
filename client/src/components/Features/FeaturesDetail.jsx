@@ -1,5 +1,4 @@
-
-
+import  { useEffect, useState } from 'react';
 import {
   Container,
   Typography,
@@ -8,13 +7,14 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { makeStyles } from '@material-ui/core/styles';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(4),
-    backgroundColor: "#ebf9ff",
+    backgroundColor: "#f7fdff",
     minHeight: "100vh",
     marginTop: "5rem",
   },
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#027b9a",
     textAlign: "center",
     marginTop: "6rem !important",
-    fontWeight:"bold !important"
+    fontWeight: "bold !important",
   },
   accordion: {
     marginBottom: theme.spacing(4),
@@ -48,41 +48,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const features = [
-  {
-    title: "Easy to Use",
-    description:
-      "Our resume builder is user-friendly and easy to navigate. Simply enter your information, and the builder will take care of the rest.",
-  },
-  {
-    title: "Customizable Templates",
-    description:
-      "Choose from a variety of templates to match your style. Each template is fully customizable to ensure your resume stands out.",
-  },
-  {
-    title: "Download in Multiple Formats",
-    description:
-      "Download your resume in PDF, DOC, and more. We support various formats to ensure compatibility with different systems.",
-  },
-  {
-    title: "Auto-Save Feature",
-    description:
-      "Your progress is saved automatically, so you never have to worry about losing your data. Continue from where you left off, anytime.",
-  },
-  {
-    title: "Real-Time Preview",
-    description:
-      "See a real-time preview of your resume as you build it. This allows you to make instant adjustments and ensure everything looks perfect.",
-  },
-  {
-    title: "Professional Advice",
-    description:
-      "Get professional advice and tips on how to improve your resume. Our experts provide feedback to help you create the best resume possible.",
-  },
-];
-
 const FeaturesDetail = () => {
   const classes = useStyles();
+  const [features, setFeatures] = useState([]);
+
+  useEffect(() => {
+    const fetchFeatures = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/feature');
+        setFeatures(response.data);
+      } catch (error) {
+        console.error('Error fetching features:', error);
+      }
+    };
+
+    fetchFeatures();
+  }, []);
 
   return (
     <>
@@ -91,7 +72,7 @@ const FeaturesDetail = () => {
       </Typography>
       <Container className={classes.root}>
         <Grid container spacing={4}>
-          {features.map((feature, index) => (
+          {features?.map((feature, index) => (
             <Grid item xs={12} key={index}>
               <Accordion className={classes.accordion}>
                 <AccordionSummary
@@ -101,11 +82,11 @@ const FeaturesDetail = () => {
                   className={classes.accordionSummary}
                 >
                   <Typography variant="h5" className={classes.featureTitle}>
-                    {feature.title}
+                    {feature?.title}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails className={classes.accordionDetails}>
-                  <Typography variant="body1">{feature.description}</Typography>
+                  <Typography variant="body1">{feature?.description}</Typography>
                 </AccordionDetails>
               </Accordion>
             </Grid>

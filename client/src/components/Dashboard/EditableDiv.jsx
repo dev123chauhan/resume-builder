@@ -22,11 +22,15 @@ const EditableDiv = ({
 }) => {
   const classes = useStyles();
 
+  const handleBlur = (e) => {
+    onEdit(e.target.textContent);
+  };
+
   return (
     <div
       contentEditable
       suppressContentEditableWarning
-      onBlur={onEdit}
+      onBlur={handleBlur}
       className={`${classes.editable} ${className}`}
       data-placeholder={placeholder}
     >

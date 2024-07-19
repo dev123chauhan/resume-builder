@@ -56,7 +56,7 @@ const AddSection = ({ onClose, onAddSection }) => { // Accept onAddSection as a 
       bottom: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'end',
       alignItems: 'center',
       zIndex: 1000,
     },

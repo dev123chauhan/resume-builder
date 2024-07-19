@@ -17,7 +17,8 @@
 // import template7 from "../../assets/template 7.jpg";
 // import template8 from "../../assets/template 8.jpg";
 
-// const SelectTemplates = ({ open, onClose, onSelectTemplate }) => {
+
+// const SelectTemplates = ({ open, onClose, onSelectTemplate, activeTemplateId }) => {
 //   const templates = [
 //     { id: 1, name: 'Template 1', image: template1 },
 //     { id: 2, name: 'Template 2', image: template2 },
@@ -33,19 +34,27 @@
 //     <Drawer
 //       anchor="left"
 //       open={open}
-//     //   onClose={onClose}
+//       onClose={onClose}
+//       variant="persistent"
 //       sx={{
 //         '& .MuiDrawer-paper': {
 //           width: '80%',
 //           maxWidth: 300,
-//           height: 'calc(100% - 64px)',
-//           top: 64,
-//           zIndex: 1300,
+//           height: '100%',
+//           top: 64, // Height of AppBar
+//           zIndex: 1100, // Lower than the mini drawer
+//           position: 'absolute',
+//           left: 0,
+//           transition: theme => theme.transitions.create('transform', {
+//             easing: theme.transitions.easing.sharp,
+//             duration: theme.transitions.duration.enteringScreen,
+//           }),
+//           transform: open ? 'translateX(0)' : 'translateX(-100%)',
 //           marginLeft:"15rem"
-//         }
+//         },
 //       }}
 //     >
-//       <Box sx={{ p: 2 }}>
+//       <Box sx={{ p: 2, height: '100%', overflowY: 'auto' }}>
 //         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
 //           <Typography variant="h6" sx={{ flexGrow: 1 }}>Select Template</Typography>
 //           <IconButton onClick={onClose}>
@@ -55,8 +64,13 @@
 //         <Grid container spacing={2}>
 //           {templates.map((template) => (
 //             <Grid item xs={12} sm={6} key={template.id}>
-//               <Card>
-//                 <CardActionArea onClick={() => onSelectTemplate(template)}>
+//               <Card
+//                 sx={{
+//                   border: activeTemplateId === template.id ? '1px solid #027b9a !important' : 'none',
+//                   cursor: 'pointer',
+//                 }}
+//               >
+//                 <CardActionArea onClick={() => onSelectTemplate(template)} disableRipple>
 //                   <CardMedia
 //                     component="img"
 //                     height="140"
@@ -77,6 +91,7 @@
 //   open: PropTypes.bool.isRequired,
 //   onClose: PropTypes.func.isRequired,
 //   onSelectTemplate: PropTypes.func.isRequired,
+//   activeTemplateId: PropTypes.number,
 // };
 
 // export default SelectTemplates;
@@ -103,6 +118,7 @@ import template6 from "../../assets/template 6.jpg";
 import template7 from "../../assets/template 7.jpg";
 import template8 from "../../assets/template 8.jpg";
 
+
 const SelectTemplates = ({ open, onClose, onSelectTemplate, activeTemplateId }) => {
   const templates = [
     { id: 1, name: 'Template 1', image: template1 },
@@ -120,18 +136,27 @@ const SelectTemplates = ({ open, onClose, onSelectTemplate, activeTemplateId }) 
       anchor="left"
       open={open}
       onClose={onClose}
+      variant="persistent"
       sx={{
         '& .MuiDrawer-paper': {
           width: '80%',
           maxWidth: 300,
-          height: 'calc(100% - 64px)',
-          top: 64,
-          zIndex: 1300,
-          marginLeft: "15rem"
-        }
+          height: '100%',
+          top: 64, // Height of AppBar
+          zIndex: 1100, // Lower than the mini drawer
+          // position: 'absolute',
+          position: 'fixed',
+          left: 0,
+          transition: theme => theme.transitions.create('transform', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+          }),
+          transform: open ? 'translateX(0)' : 'translateX(-100%)',
+          marginLeft:"15rem"
+        },
       }}
     >
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2, height: '100%', overflowY: 'auto' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>Select Template</Typography>
           <IconButton onClick={onClose}>
@@ -168,8 +193,11 @@ SelectTemplates.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onSelectTemplate: PropTypes.func.isRequired,
-  activeTemplateId: PropTypes.number, // Prop type for active template id
+  activeTemplateId: PropTypes.number,
 };
 
 export default SelectTemplates;
+
+
+
 

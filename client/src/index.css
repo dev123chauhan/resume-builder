@@ -70,10 +70,20 @@ section {
   border-radius: 3px;
 }
 
-.css-19z1ozs-MuiPaper-root-MuiAppBar-root{
+/* .css-19z1ozs-MuiPaper-root-MuiAppBar-root{
   background-color: #027b9a !important;
 }
 
 .css-1191obr-MuiPaper-root-MuiAppBar-root{
   background-color: #027b9a !important;
+} */
+
+.css-jzurkx-MuiPaper-root-MuiAppBar-root{
+  background-color: #027b9a !important;
+}
+.css-mfcln5-MuiPaper-root-MuiAppBar-root{
+  background-color: #027b9a !important;
+}
+.css-h4y409-MuiList-root{
+  padding-top: 0px !important;
 }

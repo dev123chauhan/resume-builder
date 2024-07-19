@@ -1,4 +1,4 @@
-import * as React from "react";
+import {useEffect, useState} from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -28,6 +28,8 @@ import ShareIcon from "@mui/icons-material/Share";
 import EditableResume from "./EditResume";
 import AddSection from "./AddSection";
 import SelectTemplates from "./SelectTemplates";
+import DesignPanel from "./DesignPanel";
+// import Rearrange from "./Rearrange";
 
 const drawerWidth = 240;
 
@@ -86,6 +88,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  height: "100vh",
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -110,18 +113,53 @@ const menuItems = [
 
 export default function MiniDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState();
-  const [sections, setSections] = React.useState([]);
-  const [isTemplateDrawerOpen, setIsTemplateDrawerOpen] = React.useState(false);
-  // const [selectedTemplate, setSelectedTemplate] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
+  const [sections, setSections] = useState([]);
+  const [isTemplateDrawerOpen, setIsTemplateDrawerOpen] = useState(false);
+  const [isDesignPanelOpen, setIsDesignPanelOpen] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [fontStyle, setFontStyle] = useState(() => {
+    // Initialize from localStorage, default to 'Arial' if not found
+    return localStorage.getItem('fontStyle') || 'Arial';
+  });
+  // const [isRearrangeOpen, setIsRearrangeOpen] = React.useState(false);
+
+  const [resumeLayout, setResumeLayout] = useState({
+    header: {},
+    education: {},
+    experience: {},
+    summary: {},
+    techStack: {},
+    projects: {},
+    languages: {}
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem('fontStyle', fontStyle);
+    console.log('Font style changed:', fontStyle);
+  }, [fontStyle]); 
+
+
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
+
+    // Close all other drawers/popups first
+    setIsPopupOpen(false);
+    setIsTemplateDrawerOpen(false);
+    setIsDesignPanelOpen(false);
+
+    // Open the selected drawer/popup
     if (menuItems[index].text === "Add section") {
       setIsPopupOpen(true);
     } else if (menuItems[index].text === "Templates") {
       setIsTemplateDrawerOpen(true);
+    } else if (menuItems[index].text === "Design & Font") {
+      setIsDesignPanelOpen(true);
+    } else if (menuItems[index].text === "Rearrange") {
+      // setIsRearrangeOpen(true);
     }
   };
 
@@ -138,18 +176,124 @@ export default function MiniDrawer() {
     setIsPopupOpen(false); // Close the popup after adding the section
   };
 
-  // const handleSelectTemplate = (template) => {
-  //   // Handle template selection logic here
-  //   console.log("Selected template:", template);
-  //   setSelectedTemplate(template);
-  //   // Optionally, close the drawer after selecting a template
-  //   // setIsTemplateDrawerOpen(false);
-  // };
+  const handleSelectTemplate = (template) => {
+    setSelectedTemplate(template);
+    if (template.id === 1) {
+      setResumeLayout({
+        header: { 
+          name: 'ISABELLE TODD',
+          title: 'I solve problems and help people overcome obstacles.',
+          contact: {
+            phone: '+1 000 *** ** **',
+            email: 'isabelle.todd@gmail.com',
+            linkedin: 'www.linkedin.com/isabelle',
+            location: 'London, UK'
+          }
+        },
+        education: {
+          title: 'EDUCATION',
+          items: [
+            {
+              degree: 'MSc Project and Process Management',
+              school: 'Van Hall Larenstein University',
+              date: '10/2008 - 01/2010',
+              gpa: '8.7 / 10'
+            },
+            {
+              degree: 'BSc Operations Management',
+              school: 'Technical University Berlin',
+              date: '09/2005 - 05/2008',
+              gpa: '4.7 / 5.0'
+            }
+          ]
+        },
+        experience: {
+          title: 'EXPERIENCE',
+          items: [
+            {
+              role: 'Product Owner',
+              company: 'Lab Services',
+              date: '02/2010 - 04/2012',
+              location: 'Hamburg, Germany',
+              responsibilities: [
+                'Brought in the user perspective to 4 successfully launched projects',
+                'Decisions affected a total user base of 400,000+',
+                'Led the launch of a new invoicing software in just 4 months',
+                'Successful launch of the Technical Alliance Program',
+                'On-boarded RegHat, Thales, PicaB, and Del'
+              ]
+            },
+            {
+              role: 'Internal Project Manager',
+              company: 'Sunrise HLP',
+              date: '04/2012 - 03/2014',
+              location: 'Berlin, Germany',
+              responsibilities: [
+                'Planned, beta-tested and led the rollout of a new internal communications system to all 400+ employees in 6 locations',
+                'Led the research for building the personal development platform (Sunrise employees still use currently)',
+                'Managed recruitment and resources training (more than 50 resources trained and onboarded)',
+                'Managed the research and built the new pricing strategy',
+                'Led a team of 16 engineers working on a new media library solution',
+                'Cut Prospect application time in half, increased application submit rates by 30%, and improved approval rates by 20%'
+              ]
+            }
+          ]
+        },
+        summary: {
+          title: 'SUMMARY',
+          content: 'Dynamic Product Marketing Professional with a strong concentration in project management and 5+ years of experience. Proven ability to lead teams and implement measurable change to improve efficiency and achieve customer satisfaction. Experience working with multimillion-dollar budgets that improved results within a dynamic environment.'
+        },
+        techStack: {
+          title: 'TECH STACK',
+          items: ['Zoho Sprints', 'UserVoice', 'Intercom', 'VWO', 'Taboola', 'Stata', 'Maven', 'Jenkins', 'Oracle', 'Hotjar']
+        },
+        projects: {
+          title: 'PROJECTS',
+          items: [
+            {
+              name: 'Get2Vote',
+              description: 'A web based gamification platform for improving voting turnout rates.',
+              details: [
+                'Researched, tested and devised full gamification framework'
+              ]
+            },
+            {
+              name: 'New Horizons Adoption Days',
+              description: 'A series of events where shelter dogs meet potential families.',
+              details: [
+                'Planned event calendar & communications for 23 events',
+                'On-site help and communications'
+              ]
+            },
+            {
+              name: 'Learn Your Way',
+              description: 'An organization helping high-school students build personal efficiency habits.',
+              details: [
+                'Speaker at 8 events showing how Kanban principles can be used for managing school workload',
+                'Personally mentored 5 young adults through their last 2 years of high school'
+              ]
+            }
+          ]
+        },
+        languages: {
+          title: 'LANGUAGES',
+          items: [
+            { language: 'German', level: 'Native' },
+            { language: 'English', level: 'Proficient' },
+            { language: 'Spanish', level: 'Proficient' },
+            { language: 'Italian', level: 'Beginner' }
+          ]
+        }
+      });
+    }
+    
+    // Add other template layouts here...
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ zIndex: 1300 }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -168,7 +312,35 @@ export default function MiniDrawer() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        sx={{
+          zIndex: 1200, // Higher than SelectTemplates
+          "& .MuiDrawer-paper": {
+            // position: 'relative',
+            position: "fixed",
+            whiteSpace: "nowrap",
+            width: drawerWidth,
+            transition: theme.transitions.create("width", {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.enteringScreen,
+            }),
+            boxSizing: "border-box",
+            ...(!open && {
+              overflowX: "hidden",
+              transition: theme.transitions.create("width", {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen,
+              }),
+              width: theme.spacing(7),
+              [theme.breakpoints.up("sm")]: {
+                width: theme.spacing(9),
+              },
+            }),
+          },
+        }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -215,7 +387,14 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <EditableResume />
+        <EditableResume
+          isTemplateDrawerOpen={isTemplateDrawerOpen}
+          isDesignPanelOpen={isDesignPanelOpen}
+          layout={resumeLayout}
+          setLayout={setResumeLayout}
+          fontStyle={fontStyle}
+          
+        />
       </Box>
       {isPopupOpen && (
         <AddSection
@@ -227,18 +406,28 @@ export default function MiniDrawer() {
       <SelectTemplates
         open={isTemplateDrawerOpen}
         onClose={() => setIsTemplateDrawerOpen(false)}
-        onSelectTemplate={(template) => {
-          // Handle template selection here
-          console.log("Selected template:", template);
-          setIsTemplateDrawerOpen(false);
-        }}
-      />
-      {/* <SelectTemplates
-        open={isTemplateDrawerOpen}
-        onClose={() => setIsTemplateDrawerOpen(false)}
         onSelectTemplate={handleSelectTemplate}
-        activeTemplateId={selectedTemplate ? selectedTemplate.id : null}
+        activeTemplateId={selectedTemplate ? selectedTemplate.id : null} // Add this prop if you want to highlight the active template
+      />
+
+      <DesignPanel
+        open={isDesignPanelOpen}
+        onClose={() => setIsDesignPanelOpen(false)}
+        fontStyle={fontStyle}
+        setFontStyle={setFontStyle}
+      />
+
+      {/* <Rearrange
+        open={isRearrangeOpen}
+        onClose={() => setIsRearrangeOpen(false)}
       /> */}
     </Box>
   );
 }
+
+
+
+
+
+
+

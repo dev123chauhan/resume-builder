@@ -1,64 +1,51 @@
-
-
-
-
-import { Container, Typography, Box } from '@mui/material';
-
+import  { useEffect, useState } from 'react';
+import { Container, Typography, Box, List, ListItem } from '@mui/material';
+import axios from 'axios';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 const PrivacyPolicy = () => {
+  const [policy, setPolicy] = useState(null);
+
+  useEffect(() => {
+    const fetchPolicy = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/privacy-policy');
+        setPolicy(response.data);
+      } catch (error) {
+        console.error('Error fetching privacy policy:', error);
+      }
+    };
+
+    fetchPolicy();
+  }, []);
+
+  // if (!policy) return <div>Loading...</div>;
+
   return (
-    <Container style={{ marginTop: "6rem" }}>
+    <Container style={{ marginTop: "7rem" }}>
       <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Privacy Policy
+        <Typography style={{fontWeight:"bold"}} variant="h4" component="h1" gutterBottom>
+          {policy?.title}
         </Typography>
         <Typography variant="body1" paragraph>
-          Welcome to our Resume Builder web app! This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service.
+          {policy?.introduction}
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          1. Information We Collect
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We may collect information about you in a variety of ways, including:
-        </Typography>
-        <ul>
-          <li>Personal Data: Name, email address, phone number, etc.</li>
-          <li>Usage Data: Information about how you use our web app.</li>
-          <li>Cookies and Tracking Technologies: We may use cookies to collect data.</li>
-        </ul>
-        <Typography variant="h5" component="h2" gutterBottom>
-          2. Use of Your Information
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We use the information we collect to:
-        </Typography>
-        <ul>
-          <li>Provide and manage our services.</li>
-          <li>Improve user experience.</li>
-          <li>Communicate with you.</li>
-        </ul>
-        <Typography variant="h5" component="h2" gutterBottom>
-          3. Disclosure of Your Information
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We may share information we have collected about you in certain situations:
-        </Typography>
-        <ul>
-          <li>By Law or to Protect Rights: If required by law, we may disclose your information.</li>
-          <li>Third-Party Service Providers: We may share information with third parties that perform services for us.</li>
-        </ul>
-        {/* Add more sections as necessary */}
-        <Typography variant="h5" component="h2" gutterBottom>
-          4. Security of Your Information
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We use administrative, technical, and physical security measures to help protect your personal information.
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          5. Contact Us
-        </Typography>
-        <Typography variant="body1" paragraph>
-          If you have any questions about this Privacy Policy, please contact us.
-        </Typography>
+        {policy?.sections.map((section, index) => (
+          <div key={index}>
+            <Typography variant="h5" component="h2" gutterBottom>
+              {section?.title}
+            </Typography>
+            <Typography variant="body1" paragraph>
+              {section?.content}
+            </Typography>
+            {section?.items && (
+              <List>
+                {section?.items.map((item, idx) => (
+              <ListItem key={idx}> <ArrowRightAltIcon color='primary'/> {item}</ListItem>
+                ))}
+              </List>
+            )}
+          </div>
+        ))}
       </Box>
     </Container>
   );

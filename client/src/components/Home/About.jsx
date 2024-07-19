@@ -1,5 +1,3 @@
-
-
 import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import aboutImg from "../../assets/banner.jpg";
@@ -31,11 +29,11 @@ const About = () => {
         <div className="text-container">
           {aboutData?.sections.map((section, index) => (
             <div key={index}>
-              <h2>{section.title}</h2>
-              {section.content.map((item, idx) => (
+              <h2>{section?.title}</h2>
+              {section?.content.map((item, idx) => (
                 <div key={idx}>
-                  {item.subtitle && <h3>{item.subtitle}</h3>}
-                  <p>{item.text}</p>
+                  {item?.subtitle && <h3>{item?.subtitle}</h3>}
+                  <p>{item?.text}</p>
                 </div>
               ))}
             </div>

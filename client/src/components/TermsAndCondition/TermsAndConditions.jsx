@@ -1,53 +1,44 @@
-// import React from 'react';
-import { Container, Typography, Box } from '@material-ui/core';
+import  { useEffect, useState } from 'react';
+import { Container, Typography, Box } from '@mui/material';
+import axios from 'axios';
 
 const TermsAndConditions = () => {
+  const [terms, setTerms] = useState(null);
+
+  useEffect(() => {
+    const fetchTerms = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/terms-and-conditions');
+        setTerms(response.data);
+      } catch (error) {
+        console.error('Error fetching terms and conditions:', error);
+      }
+    };
+
+    fetchTerms();
+  }, []);
+
+  // if (!terms) return <div>Loading...</div>;
+
   return (
-    <Container style={{marginTop:"6rem"}}>
+    <Container style={{ marginTop: "6rem" }}>
       <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Terms and Conditions
+        <Typography style={{fontWeight:"bold"}} variant="h4" component="h1" gutterBottom>
+          {terms?.title}
         </Typography>
         <Typography variant="body1" paragraph>
-          Welcome to our Resume Builder web app! Please read these terms and conditions carefully before using our service.
+          {terms?.introduction}
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          1. Introduction
-        </Typography>
-        <Typography variant="body1" paragraph>
-          By accessing or using our web app, you agree to be bound by these terms and conditions.
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          2. User Responsibilities
-        </Typography>
-        <Typography variant="body1" paragraph>
-          You are responsible for maintaining the confidentiality of your account and password.
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          3. Use of the Service
-        </Typography>
-        <Typography variant="body1" paragraph>
-          You agree not to use the service for any unlawful or prohibited activities.
-        </Typography>
-        {/* Add more sections as necessary */}
-        <Typography variant="h5" component="h2" gutterBottom>
-          4. Termination
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We may terminate or suspend access to our service immediately, without prior notice or liability, for any reason whatsoever.
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          5. Changes to Terms
-        </Typography>
-        <Typography variant="body1" paragraph>
-          We reserve the right to modify or replace these terms at any time.
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          6. Contact Us
-        </Typography>
-        <Typography variant="body1" paragraph>
-          If you have any questions about these Terms, please contact us.
-        </Typography>
+        {terms?.sections.map((section, index) => (
+          <div key={index}>
+            <Typography variant="h5" component="h2" gutterBottom>
+              {section?.title}
+            </Typography>
+            <Typography variant="body1" paragraph>
+              {section?.content}
+            </Typography>
+          </div>
+        ))}
       </Box>
     </Container>
   );
