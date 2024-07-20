@@ -2,8 +2,31 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"; // Your custom CSS file for styles
 import "../../css/features.css";
+import { useEffect, useRef, useState } from "react";
 
 export default function Features() {
+  const [visibleItems, setVisibleItems] = useState([]);
+  const featureRefs = useRef([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const visible = featureRefs.current.map((ref) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+        }
+        return false;
+      });
+      setVisibleItems(visible);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const features = [
     {
       title: "Easy to Use",
@@ -84,17 +107,21 @@ export default function Features() {
   return (
     <section className="features-section">
       <div className="container">
-        <h2 className="features-title">Features</h2>
-        <Slider {...sliderSettings}>
-          {features.map((feature, index) => (
-            <div key={index} className="feature-item">
-              <div className={`feature-icon fa ${feature.icon}`}></div>
-              <h3 className="feature-title">{feature.title}</h3>
-              <p className="feature-description">{feature.description}</p>
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <h2 className="features-title">Features</h2>
+      <Slider {...sliderSettings}>
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className={`feature-item ${visibleItems[index] ? 'animate' : ''}`}
+            ref={(el) => featureRefs.current[index] = el}
+          >
+            <div className={`feature-icon fa ${feature.icon}`}></div>
+            <h3 className="feature-title">{feature.title}</h3>
+            <p className="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </Slider>
+    </div>
     </section>
   );
 }

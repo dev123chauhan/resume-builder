@@ -29,7 +29,8 @@ import EditableResume from "./EditResume";
 import AddSection from "./AddSection";
 import SelectTemplates from "./SelectTemplates";
 import DesignPanel from "./DesignPanel";
-// import Rearrange from "./Rearrange";
+import ImprovedText from "./ImprovedText";
+import Rearrange from "./Rearrange";
 
 const drawerWidth = 240;
 
@@ -124,7 +125,8 @@ export default function MiniDrawer() {
     // Initialize from localStorage, default to 'Arial' if not found
     return localStorage.getItem('fontStyle') || 'Arial';
   });
-  // const [isRearrangeOpen, setIsRearrangeOpen] = React.useState(false);
+  const [isRearrangeOpen, setIsRearrangeOpen] = useState(false);
+  const [improvedTextOpen, setImprovedTextOpen] = useState(false);
 
   const [resumeLayout, setResumeLayout] = useState({
     header: {},
@@ -150,6 +152,7 @@ export default function MiniDrawer() {
     setIsPopupOpen(false);
     setIsTemplateDrawerOpen(false);
     setIsDesignPanelOpen(false);
+    setImprovedTextOpen(false)
 
     // Open the selected drawer/popup
     if (menuItems[index].text === "Add section") {
@@ -159,7 +162,9 @@ export default function MiniDrawer() {
     } else if (menuItems[index].text === "Design & Font") {
       setIsDesignPanelOpen(true);
     } else if (menuItems[index].text === "Rearrange") {
-      // setIsRearrangeOpen(true);
+      setIsRearrangeOpen(true);
+    }else if(menuItems[index].text === "Improve text"){
+      setImprovedTextOpen(true);
     }
   };
 
@@ -390,6 +395,7 @@ export default function MiniDrawer() {
         <EditableResume
           isTemplateDrawerOpen={isTemplateDrawerOpen}
           isDesignPanelOpen={isDesignPanelOpen}
+          improvedTextOpen={improvedTextOpen}
           layout={resumeLayout}
           setLayout={setResumeLayout}
           fontStyle={fontStyle}
@@ -417,10 +423,14 @@ export default function MiniDrawer() {
         setFontStyle={setFontStyle}
       />
 
-      {/* <Rearrange
+      <Rearrange
         open={isRearrangeOpen}
         onClose={() => setIsRearrangeOpen(false)}
-      /> */}
+      />
+      <ImprovedText 
+        open={improvedTextOpen}
+        onClose={()=> setImprovedTextOpen(false)}
+      />
     </Box>
   );
 }

@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
 //   },
 }), { name: 'EditableResume' });
 
-const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLayout,  fontStyle  }) => {
+const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLayout,  fontStyle, improvedTextOpen  }) => {
   const classes = useStyles({ fontStyle, });
 
   const getFontClass = () => {
@@ -197,7 +197,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
   };
 
   return (
-    <div className={`${classes.container} ${isTemplateDrawerOpen || isDesignPanelOpen ? classes.containerShift : ''} ${getFontClass()}`}>
+    <div className={`${classes.container} ${isTemplateDrawerOpen || isDesignPanelOpen || improvedTextOpen ? classes.containerShift : ''} ${getFontClass()}`}>
       <div className={`${classes.header} ${classes.fontStyleDynamic}`}>
         <div className={classes.headerInfo}>
           <EditableDiv
@@ -446,6 +446,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
 EditableResume.propTypes = {
   isTemplateDrawerOpen: PropTypes.bool.isRequired,
   isDesignPanelOpen: PropTypes.bool.isRequired,
+  improvedTextOpen: PropTypes.bool.isRequired,
   layout: PropTypes.object.isRequired,
   setLayout: PropTypes.func.isRequired,
   fontStyle: PropTypes.string.isRequired, 

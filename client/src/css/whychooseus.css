@@ -1,4 +1,4 @@
-.why-choose-us {
+/* .why-choose-us {
     background-color: #027b9a;
     color: white;
     text-align: center;
@@ -37,4 +37,63 @@
   .start-now:hover {
     background-color: white;
     color: black;
+  } */
+
+
+
+  .why-choose-us {
+    background-color: #027b9a;
+    color: white;
+    text-align: center;
+    position: relative;
   }
+  
+  .why-choose-us h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: white;
+    opacity: 0; /* Start hidden */
+    transform: translateY(80px); /* Start below */
+    transition: opacity 1s ease, transform 1s ease; /* Animation properties */
+  }
+    .content-box p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: white;
+  }
+  .content-box {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    opacity: 0; /* Start hidden */
+    transform: translateY(80px); /* Start below */
+    transition: opacity 1s ease, transform 1s ease; /* Animation properties */
+  }
+  
+  .content-box.fade-in {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+  }
+  
+  .why-choose-us h2.fade-in {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+  }
+  
+  .start-now {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    
+  }
+  
+  .start-now:hover {
+    background-color: white;
+    color: black;
+  }
+  
