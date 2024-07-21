@@ -22,7 +22,6 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import FontDownloadIcon from "@mui/icons-material/FontDownload";
 import TextsmsIcon from "@mui/icons-material/Textsms";
 import CheckIcon from "@mui/icons-material/Check";
-import AssistantIcon from "@mui/icons-material/Assistant";
 import DownloadIcon from "@mui/icons-material/Download";
 import ShareIcon from "@mui/icons-material/Share";
 import EditableResume from "./EditResume";
@@ -107,7 +106,6 @@ const menuItems = [
   { text: "Design & Font", icon: <FontDownloadIcon /> },
   { text: "Improve text", icon: <TextsmsIcon /> },
   { text: "Check", icon: <CheckIcon /> },
-  { text: "AI Assistant", icon: <AssistantIcon /> },
   { text: "Download", icon: <DownloadIcon /> },
   { text: "Share", icon: <ShareIcon /> },
 ];
@@ -137,13 +135,12 @@ export default function MiniDrawer() {
     projects: {},
     languages: {}
   });
-
+  const [textColor, setTextColor] = useState('#000000');
 
   useEffect(() => {
     localStorage.setItem('fontStyle', fontStyle);
     console.log('Font style changed:', fontStyle);
-  }, [fontStyle]); 
-
+  }, [fontStyle]);
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
@@ -185,7 +182,7 @@ export default function MiniDrawer() {
     setSelectedTemplate(template);
     if (template.id === 1) {
       setResumeLayout({
-        header: { 
+        header: {
           name: 'ISABELLE TODD',
           title: 'I solve problems and help people overcome obstacles.',
           contact: {
@@ -291,7 +288,7 @@ export default function MiniDrawer() {
         }
       });
     }
-    
+
     // Add other template layouts here...
   };
 
@@ -399,7 +396,7 @@ export default function MiniDrawer() {
           layout={resumeLayout}
           setLayout={setResumeLayout}
           fontStyle={fontStyle}
-          
+          textColor={textColor}
         />
       </Box>
       {isPopupOpen && (
@@ -421,19 +418,24 @@ export default function MiniDrawer() {
         onClose={() => setIsDesignPanelOpen(false)}
         fontStyle={fontStyle}
         setFontStyle={setFontStyle}
+        textColor={textColor}
+        setTextColor={setTextColor}
       />
 
       <Rearrange
         open={isRearrangeOpen}
         onClose={() => setIsRearrangeOpen(false)}
       />
-      <ImprovedText 
+      <ImprovedText
         open={improvedTextOpen}
         onClose={()=> setImprovedTextOpen(false)}
       />
+
+      
     </Box>
   );
 }
+
 
 
 

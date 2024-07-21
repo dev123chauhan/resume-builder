@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import { Avatar, Box, Typography, IconButton, Button, Grid } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { RiDeleteBin6Line } from "react-icons/ri";
 import AddIcon from '@mui/icons-material/Add';
 import EditableDiv from './EditableDiv';
-
+import useAuth from "../../hooks/useAuth";
+ import noProfile from "../../assets/noProfile.jpg"
+// import React, { useRef } from 'react';
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: theme.spacing(4),
@@ -124,25 +126,11 @@ const useStyles = makeStyles((theme) => ({
   deleteButton: {
     marginLeft: theme.spacing(1),
   },
-// fontStyleDynamic: {
-//     fontFamily: (props) => {
-//       switch(props.fontStyle) {
-//         case 'Rubik':
-//           return "'Rubik', sans-serif";
-//         case 'Arial':
-//           return "Arial, sans-serif";
-//         case 'Times New Roman':
-//           return "'Times New Roman', serif";
-//         default:
-//           return "Arial, sans-serif";
-//       }
-//     },
-//   },
 }), { name: 'EditableResume' });
 
-const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLayout,  fontStyle, improvedTextOpen  }) => {
+const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLayout,  fontStyle, improvedTextOpen, textColor   }) => {
   const classes = useStyles({ fontStyle, });
-
+  const {user} = useAuth()
   const getFontClass = () => {
     switch(fontStyle) {
       case 'Roboto': return 'font-roboto';
@@ -159,7 +147,6 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
       default: return 'font-roboto';
     }
   };
-
 
   const handleEdit = (section, field, value) => {
     setLayout(prevLayout => ({
@@ -197,7 +184,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
   };
 
   return (
-    <div className={`${classes.container} ${isTemplateDrawerOpen || isDesignPanelOpen || improvedTextOpen ? classes.containerShift : ''} ${getFontClass()}`}>
+    <div   style={{ color: textColor }} className={`${classes.container} ${isTemplateDrawerOpen || isDesignPanelOpen || improvedTextOpen  ? classes.containerShift : ''} ${getFontClass()}`}>
       <div className={`${classes.header} ${classes.fontStyleDynamic}`}>
         <div className={classes.headerInfo}>
           <EditableDiv
@@ -211,7 +198,8 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
             className={classes.title}
           />
         </div>
-        <Avatar className={classes.avatar} />
+     <Avatar   style={{ width: 80, height: 80 }}  className={classes.avatar}  src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile}  /> 
+      
       </div>
       <div className={`${classes.contactInfo} ${classes.fontStyleDynamic}`}>
         <EditableDiv
@@ -277,7 +265,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                   className={classes.deleteButton}
                   onClick={() => handleDelete('education', index)}
                 >
-                  <DeleteIcon />
+                <RiDeleteBin6Line />
                 </IconButton>
               </Box>
             ))}
@@ -325,7 +313,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                   className={classes.deleteButton}
                   onClick={() => handleDelete('experience', index)}
                 >
-                  <DeleteIcon />
+            <RiDeleteBin6Line />
                 </IconButton>
               </Box>
             ))}
@@ -355,7 +343,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                   className={classes.deleteButton}
                   onClick={() => handleDelete('languages', index)}
                 >
-                  <DeleteIcon />
+               <RiDeleteBin6Line />
                 </IconButton>
               </Box>
             ))}
@@ -365,7 +353,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
         {/* Right Column: Summary, Tech Stack, Projects */}
         <Grid item xs={12} md={6}>
           {/* Summary Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
+          <div style={{marginTop:"4px"}} className={`${classes.section} ${classes.fontStyleDynamic}`}>
             <div className={classes.sectionTitle}>
               <Typography variant="h6">{layout.summary?.title || ''}</Typography>
             </div>
@@ -377,7 +365,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
           </div>
 
           {/* Tech Stack Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
+          <div style={{marginTop:"32px"}}  className={`${classes.section} ${classes.fontStyleDynamic}`}>
             <div className={classes.sectionTitle}>
               <Typography variant="h6">{layout.techStack?.title || ''}</Typography>
             </div>
@@ -432,13 +420,14 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                   className={classes.deleteButton}
                   onClick={() => handleDelete('projects', index)}
                 >
-                  <DeleteIcon />
+             <RiDeleteBin6Line />
                 </IconButton>
               </Box>
             ))}
           </div>
         </Grid>
       </Grid>
+   
     </div>
   );
 };
@@ -450,9 +439,17 @@ EditableResume.propTypes = {
   layout: PropTypes.object.isRequired,
   setLayout: PropTypes.func.isRequired,
   fontStyle: PropTypes.string.isRequired, 
+  textColor: PropTypes.string.isRequired,
 };
 
 export default EditableResume;
+
+
+
+
+
+
+
 
 
 

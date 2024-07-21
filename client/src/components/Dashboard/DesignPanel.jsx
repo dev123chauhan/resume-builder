@@ -3,11 +3,10 @@ import { useState } from 'react';
 import { Slider, Select, MenuItem, Typography, Box, IconButton, Drawer } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const DesignPanel = ({ onClose, open, fontStyle, setFontStyle }) => {
+const DesignPanel = ({ onClose, open, fontStyle, setFontStyle, textColor, setTextColor }) => {
   const [pageMargins, setPageMargins] = useState(5);
   const [sectionSpacing, setSectionSpacing] = useState(3);
   const [fontSize, setFontSize] = useState('medium');
-  const [selectedColor, setSelectedColor] = useState('#000000');
 
   const colors = ['#000000', '#808080', '#008000', '#FFA500', '#0000FF', '#800080', '#008080', '#DAA520'];
 
@@ -102,8 +101,8 @@ const DesignPanel = ({ onClose, open, fontStyle, setFontStyle }) => {
               height={30}
               bgcolor={color}
               borderRadius="50%"
-              border={selectedColor === color ? '2px solid #000' : 'none'}
-              onClick={() => setSelectedColor(color)}
+              border={textColor === color ? '2px solid #000' : 'none'}
+              onClick={() => setTextColor(color)}
               sx={{ cursor: 'pointer' }}
             />
           ))}
@@ -119,6 +118,11 @@ DesignPanel.propTypes = {
   open: PropTypes.bool.isRequired,
   fontStyle: PropTypes.string.isRequired,
   setFontStyle: PropTypes.func.isRequired,
+  textColor: PropTypes.string.isRequired,
+  setTextColor: PropTypes.func.isRequired,
 };
 
 export default DesignPanel;
+
+
+

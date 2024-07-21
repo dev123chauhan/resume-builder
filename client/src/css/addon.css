@@ -1,4 +1,4 @@
-.resume-feature {
+/* .resume-feature {
   display: flex;
   background-color: #f5f5f5;
   padding: 40px;
@@ -69,5 +69,114 @@
   
   .left-section, .right-section {
     width: 100%;
+  }
+} */
+
+
+.resume-feature {
+  display: flex;
+  padding: 40px;
+  color: #333;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  position: relative; /* Make sure absolute positioning works within this container */
+}
+
+.left-section {
+  position: relative;
+  width: 45%;
+  max-width: 450px; /* Limit the width of the left section */
+}
+
+.job-description {
+  background-color: #e0f7fa;
+  padding: 40px;
+  border-radius: 10px;
+  z-index: -1; /* Make sure job description is on top */
+  position: absolute; /* Position it absolutely within left section */
+  top: 50%; /* Center it vertically */
+  left: 0%; /* Center it horizontally */
+  transform: translate(-50%, -50%); /* Center it properly */
+}
+
+.job-lines .line {
+  height: 10px;
+  background-color: #b2ebf2;
+  margin: 10px 0;
+}
+
+.apply-button {
+  background-color: #027b9a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.resume-preview {
+  z-index: 0; /* Make sure resume preview is below job description */
+}
+
+.resume-image {
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-left: 4rem;
+  margin-bottom: 20px;
+}
+
+.right-section {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.right-section h2 {
+  color: #027b9a;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.feature-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.feature-list li {
+  margin-bottom: 10px;
+}
+
+.feature-list li::before {
+  content: '✓';
+  color: #027b9a;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .resume-feature {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .right-section{
+    margin-left: 2rem;
+  }
+
+  .left-section {
+    width: 100%;
+    max-width: none;
+    position: relative;
+  }
+
+  .job-description {
+   display: none;
+  }
+
+  .resume-preview {
+    position: relative;
+  }
+}
+@media (max-width: 1400px){
+  .job-description{
+    display: none;
   }
 }

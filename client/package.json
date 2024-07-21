@@ -23,6 +23,8 @@
     "axios": "^1.7.2",
     "framer-motion": "^11.3.8",
     "google-maps-react": "^2.0.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
@@ -35,8 +37,10 @@
     "react-scroll-to-top": "^3.0.0",
     "react-slick": "^0.30.2",
     "react-spinners": "^0.14.1",
+    "react-to-pdf": "^1.0.1",
     "react-toastify": "^10.0.5",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
