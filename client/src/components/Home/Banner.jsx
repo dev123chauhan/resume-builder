@@ -68,7 +68,7 @@ export default function Banner() {
           Easily create a professional-looking resume with our user-friendly
           resume builder. Customize templates, add your own content.
         </p>
-        <Link className="get-started" to="#">
+        <Link className="get-started" to="/dashboard">
           Get Started
         </Link>
       </div>
