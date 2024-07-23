@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "../../css/resumebuilder.css"
 const ResumeBuilder = ({ resumes }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const resumesPerSlide = 3;
+  const resumesPerSlide = 4;
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -1,15 +1,17 @@
-import  { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import bannerImage from "../../assets/banner.jpg";
-import { motion, useAnimation } from 'framer-motion';
-import { Link } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 import "../../css/banner.css";
+import useAuth from "../../hooks/useAuth";
 
 export default function Banner() {
+  const { user } = useAuth();
   const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
   const imageRef = useRef(null);
   const contentRef = useRef(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const imageRefCurrent = imageRef.current;
     const contentRefCurrent = contentRef.current;
@@ -60,17 +62,25 @@ export default function Banner() {
     };
   }, [controls]);
 
+  const handleGetStartedClick = () => {
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="banner">
-      <div className={`content ${isVisible ? 'animate' : ''}`} ref={contentRef}>
+      <div className={`content ${isVisible ? "animate" : ""}`} ref={contentRef}>
         <h1>Create Professional Resumes with Our Resume Builder</h1>
         <p>
           Easily create a professional-looking resume with our user-friendly
           resume builder. Customize templates, add your own content.
         </p>
-        <Link className="get-started" to="/dashboard">
-          Get Started
-        </Link>
+        <button className="get-started" onClick={handleGetStartedClick}>
+          <Link>Get Started</Link>
+        </button>
       </div>
       <motion.div
         className="image"
@@ -83,8 +93,3 @@ export default function Banner() {
     </div>
   );
 }
-
-
-
-
-

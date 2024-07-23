@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="footer-content-column">
               <div className="footer-logo">
                 <a className="footer-logo-link" href="#">
-                  <img src={footer2logo} className="logo" alt="" />
+                  <img src={footer2logo} className="footerLogo" alt="" />
                 </a>
                 <h6>Craft Your Future, One Resume at a Time</h6>
               </div>

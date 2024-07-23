@@ -1,22 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { DndContext, closestCenter } from '@dnd-kit/core';
-import { arrayMove, SortableContext } from '@dnd-kit/sortable';
-import { useSortable } from '@dnd-kit/sortable';
-import { Box, Button, Typography, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import React from "react";
+import PropTypes from "prop-types";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { arrayMove, SortableContext } from "@dnd-kit/sortable";
+import { useSortable } from "@dnd-kit/sortable";
+import { Box, Button, Typography, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 const initialItems = [
-  { id: '1', content: 'Section 1' },
-  { id: '2', content: 'Section 2' },
-  { id: '3', content: 'Section 3' },
+  { id: "1", content: "Section 1" },
+  { id: "2", content: "Section 2" },
+  { id: "3", content: "Section 3" },
 ];
 
 const Item = ({ id, content }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const style = {
-    transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
+    transform: transform
+      ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+      : undefined,
     transition,
   };
 
@@ -28,8 +31,8 @@ const Item = ({ id, content }) => {
       sx={{
         padding: 2,
         marginBottom: 1,
-        backgroundColor: 'lightgray',
-        borderRadius: '4px',
+        backgroundColor: "lightgray",
+        borderRadius: "4px",
         ...style,
       }}
     >
@@ -60,26 +63,40 @@ const Rearrange = ({ open, onClose }) => {
   return (
     <Box
       sx={{
-        display: open ? 'block' : 'none',
-        position: 'fixed',
+        display: open ? "block" : "none",
+        position: "fixed",
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         zIndex: 1300,
-        overflow: 'auto',
+        overflow: "auto",
         p: 2,
+        // display: "flex",
+        // alignItems: "center",
+        // justifyContent: "center",
       }}
     >
-      <Box sx={{ backgroundColor: 'white', borderRadius: '8px', padding: 2, position: 'relative' }}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          borderRadius: "8px",
+          padding: 2,
+          position: "relative",
+          width: "50%",
+          height: "50%",
+        }}
+      >
         <IconButton
           onClick={onClose}
-          sx={{ position: 'absolute', top: 8, right: 8 }}
+          sx={{ position: "absolute", top: 8, right: 8 }}
         >
           <CloseIcon />
         </IconButton>
-        <Typography variant="h6" sx={{ mb: 2 }}>Rearrange Sections</Typography>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Rearrange Sections
+        </Typography>
         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext items={items.map((item) => item.id)}>
             {items.map((item) => (
