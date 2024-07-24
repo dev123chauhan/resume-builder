@@ -180,7 +180,7 @@ const EditableResume = ({
           {/* Education Section */}
           <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+              <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.education?.title || ""}
               </Typography>
               <Button
@@ -260,9 +260,9 @@ const EditableResume = ({
           </div>
 
           {/* Experience Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
-            <div    style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+          <div className={`${classes.section}`}>
+            <div  style={{ color: textColor }} className={classes.sectionTitle}>
+              <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.experience?.title || ""}
               </Typography>
               <Button
@@ -344,7 +344,7 @@ const EditableResume = ({
           {/* Languages Section */}
           <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+              <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.languages?.title || ""}
               </Typography>
               <Button
@@ -396,7 +396,7 @@ const EditableResume = ({
             className={`${classes.section} ${classes.fontStyleDynamic}`}
           >
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+              <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.summary?.title || ""}
               </Typography>
             </div>
@@ -412,8 +412,8 @@ const EditableResume = ({
             style={{ marginTop: "32px" }}
             className={`${classes.section} ${classes.fontStyleDynamic}`}
           >
-            <div    style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+            <div  style={{ color: textColor }} className={classes.sectionTitle}>
+              <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.techStack?.title || ""}
               </Typography>
             </div>
@@ -440,7 +440,7 @@ const EditableResume = ({
           {/* Projects Section */}
           <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
             <div  style={{ color: textColor }} className={classes.sectionTitle}>
-              <Typography variant="h6">
+              <Typography className={`${classes.projectName} ${getFontClass()}`} variant="h6">
                 {layout.projects?.title || ""}
               </Typography>
               <Button

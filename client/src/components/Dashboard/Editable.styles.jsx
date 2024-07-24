@@ -101,7 +101,7 @@ const useStyles = makeStyles(
         marginBottom: theme.spacing(2),
       },
       projectName: {
-        fontWeight: "bold",
+        fontWeight: "bold !important",
       },
       projectDescription: {
         fontStyle: "italic",

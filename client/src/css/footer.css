@@ -1,10 +1,7 @@
 .footerLogo {
     max-width: 150px;
   }
-  .pg-footer {
-    font-family: "Roboto", sans-serif;
-  }
-  
+
   .footer {
     background-color: #027b9a;
     color: #fff;
@@ -234,7 +231,7 @@
     cursor: pointer;
   }
   
-  .fa-youtube {
+  /* .fa-youtube {
     color: red;
     font-size: 2rem;
   }
@@ -250,4 +247,4 @@
   .fa-facebook {
     color: #1877f2;
     font-size: 2rem;
-  }
+  } */

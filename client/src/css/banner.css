@@ -60,6 +60,7 @@
     font-weight: bold;
     border: none;
     font-size: 1rem;
+    cursor: pointer;
   }
   
   .image {
