@@ -176,7 +176,7 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
       </div>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={7}>
           {/* Education Section */}
           <div className={`${classes.section}`}>
             <Typography variant="h6" className={`${classes.sectionTitle} ${getFontClass()}`}>{layout.education?.title}</Typography>
@@ -212,7 +212,7 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
           </div>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={5}>
           {/* Summary Section */}
           <div className={`${classes.section}`}>
             <Typography variant="h6" className={`${classes.sectionTitle} ${getFontClass()}`}>{layout.summary?.title}</Typography>

@@ -259,7 +259,9 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 import EditableDiv from "./EditableDiv";
-
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { Button, IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 const SectionTitle = styled(Typography)(() => ({
   fontWeight: "bold",
   fontSize: "1.25rem",
@@ -269,27 +271,25 @@ const SectionContent = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(1),
 }));
 
-const SkillItem = styled(Typography)(({ theme }) => ({
-  display: "inline-block",
-  margin: theme.spacing(0.5),
-  padding: theme.spacing(0.5, 1),
-  // backgroundColor: theme.palette.primary.light,
-  borderRadius: theme.spacing(1),
-  // color: theme.palette.primary.contrastText,
-}));
+// const SkillItem = styled(Typography)(({ theme }) => ({
+//   display: "inline-block",
+//   margin: theme.spacing(0.5),
+//   padding: theme.spacing(0.5, 1),
+//   // backgroundColor: theme.palette.primary.light,
+//   borderRadius: theme.spacing(1),
+//   // color: theme.palette.primary.contrastText,
+// }));
 
-const ExperienceItem = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(1),
-  marginBottom: theme.spacing(1),
-  // borderLeft: `4px solid ${theme.palette.primary.main}`,
-}));
+// const ExperienceItem = styled(Box)(({ theme }) => ({
+//   padding: theme.spacing(1),
+//   marginBottom: theme.spacing(1),
+//   // borderLeft: `4px solid ${theme.palette.primary.main}`,
+// }));
 
-const EducationItem = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(1),
-  marginBottom: theme.spacing(1),
-}));
-
-
+// const EducationItem = styled(Box)(({ theme }) => ({
+//   padding: theme.spacing(1),
+//   marginBottom: theme.spacing(1),
+// }));
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -324,34 +324,101 @@ export default function SecondTemplate({
       email: "name@gmail.com",
       linkedin: "linkedin.com/in/jonwrightjr",
     },
-    summary: "I am an experienced Business Analyst...",
-    skills: ["Budgeting", "Financial Analysis", "Project Management" /* ... */],
-    experience: [
-      {
-        company: "Network Solutions LLC",
-        role: "Lead Business Analyst & Project Manager",
-        location: "Dallas, TX",
-        duration: "2019-Ongoing",
-        responsibilities: [
-          "Created new strategies to manage $2 million of accounts at risk...",
-          // ...
-        ],
-      },
-      // ... other experience items
-    ],
-    education: [
-      {
-        school: "University of Wisconsin",
-        degree: "M.Sc. in Finance",
-        location: "Wisconsin",
-        duration: "2012-2013",
-      },
-      // ... other education items
-    ],
-    courses: [
-      "PMI Professional in Business Analysis (PBA) - PMI, 2019",
-      // ... other courses
-    ],
+    summary: {
+      title: "SUMMARY",
+      content: `I am an experienced Business Analyst with a strong technical
+      background and great project management skills. I am able to work on
+      multiple projects at the same time, which over the years at Network
+      Solutions have led to eight-digit efficiencies for the business.
+      Furthermore, I immensely enjoy the process of deriving critical
+      business insights using analytics, and then supporting or directly
+      managing the efficiency implementation projects. My ability to move
+      from analysis or leading a team of analysts to supporting or leading
+      the actual project is something that could help further accelerate the
+      velocity of work at Ion Insights.`,
+    },
+    skills: {
+      title: "SKILLS",
+      items: [
+        "Budgeting",
+        "Financial Analysis",
+        "Project Management",
+        "Stakeholder Management",
+        "Excel",
+        "VBA",
+        "SQL",
+        "QuickBooks",
+        "Power BI",
+        "Tableau",
+        "Python",
+      ],
+    },
+    experience: {
+      title: "EXPERIENCE",
+      items: [
+        {
+          role: "Lead Business Analyst & Project Manager",
+          company: "Network Solutions LLC",
+          date: "2019-Ongoing",
+          location: "Dallas, TX",
+          responsibilities: [
+            `Created new strategies to manage $2 million of accounts at risk,
+        resulting in an increase of 4% in revenue in 6 months.`,
+            `Led the effort to deploy an automated time & expense reporting
+        system for more than 90 onsite and offsite personnel across 3
+        locations.`,
+            `Oversaw the budget and schedule of a project to recruit, hire, and
+        train 150 new employees at five new locations.`,
+          ],
+        },
+        {
+          role: "Buisness Analyst",
+          company: "Lauzon",
+          date: "2013-2016",
+          location: "Dallas, TX",
+          responsibilities: [
+            "Planned, beta-tested and led the rollout of a new internal communications system to all 400+ employees in 6 locations",
+            "Led the research for building the personal development platform (Sunrise employees still use currently)",
+            "Managed recruitment and resources training (more than 50 resources trained and onboarded)",
+            "Managed the research and built the new pricing strategy",
+            "Led a team of 16 engineers working on a new media library solution",
+            "Cut Prospect application time in half, increased application submit rates by 30%, and improved approval rates by 20%",
+          ],
+        },
+      ],
+    },
+    education: {
+      title: "EDUCATION",
+      items: [
+        {
+          school: "University of Wisconsin",
+          degree: "M.Sc. in Finance",
+          location: "Wisconsin",
+          duration: "2012-2013",
+        },
+        {
+          school: "University of Wisconsin",
+          degree: "BBA: Business, Supply Chain Management",
+          location: "Wisconsin",
+          duration: "2008-2012",
+        },
+      ]
+    },
+     
+    
+    // courses: [
+
+    //   "PMI Professional in Business Analysis (PBA) - PMI, 2019",
+    //   // ... other courses
+    // ],
+    courses: {
+      title: "COURSE AND CERTIFICATE",
+      items: [
+        "PMI Professional in Business Analysis (PBA) - PMI, 2019",
+        "Certified Associate in Project Management (CAPM) - PMI, 2018",
+        "High-Dimensional Data Analysis - Harvard, 2017",
+      ],
+    },
   });
 
   const handleEdit = (section, field, value) => {
@@ -398,9 +465,28 @@ export default function SecondTemplate({
   // };
 
   const getStringContent = (content) => {
-    return typeof content === 'string' ? content : '';
+    return typeof content === "string" ? content : "";
   };
 
+  const handleDelete = (section, index) => {
+    setLayout((prevLayout) => ({
+      ...prevLayout,
+      [section]: {
+        ...prevLayout[section],
+        items: prevLayout[section].items.filter((_, idx) => idx !== index),
+      },
+    }));
+  };
+
+  const handleAdd = (section) => {
+    setLayout((prevLayout) => ({
+      ...prevLayout,
+      [section]: {
+        ...prevLayout[section],
+        items: [...(prevLayout[section]?.items || []), {}], // Add an empty item
+      },
+    }));
+  };
 
   return (
     <div
@@ -411,15 +497,15 @@ export default function SecondTemplate({
       } ${getFontClass()}`}
     >
       <div style={{ textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>
-      <EditableDiv
-         content={getStringContent(layout.name)}
-         onEdit={(value) => handleEdit("header", "name", value)}
-        //  className={classes.name}
-       />
-       </Typography>
+        <Typography variant="h4" gutterBottom>
+          <EditableDiv
+            content={getStringContent(layout.name)}
+            onEdit={(value) => handleEdit("name", value)}
+            //  className={classes.name}
+          />
+        </Typography>
         <Typography variant="p" gutterBottom>
-        <EditableDiv
+          <EditableDiv
             content={getStringContent(layout.title)}
             onEdit={(value) => handleEdit("title", value)}
           />
@@ -442,7 +528,7 @@ export default function SecondTemplate({
             <EditableDiv
               content={layout.contact.phone}
               onEdit={(value) => handleEdit("contact", "phone", value)}
-          />
+            />
           </Typography>
 
           <Typography
@@ -454,55 +540,134 @@ export default function SecondTemplate({
             <EditableDiv
               content={layout.contact.email}
               onEdit={(value) => handleEdit("contact", "email", value)}
-          />
+            />
           </Typography>
 
           <Typography
             style={{ alignItems: "center", display: "flex" }}
             variant="body2"
           >
-            <LinkedInIcon />    <EditableDiv
+            <LinkedInIcon />{" "}
+            <EditableDiv
               content={layout.contact.linkedin}
               onEdit={(value) => handleEdit("contact", "linkedin", value)}
-          />
+            />
           </Typography>
         </div>
       </div>
 
       <Grid item xs={12} md={8}>
-        <SectionTitle style={{ textAlign: "center" }}>Summary</SectionTitle>
+        <SectionTitle style={{ textAlign: "center" }}>
+          {layout.summary?.title || ""}
+        </SectionTitle>
         <hr />
         <SectionContent>
-          I am an experienced Business Analyst with a strong technical
-          background and great project management skills. I am able to work on
-          multiple projects at the same time, which over the years at Network
-          Solutions have lead to eight-digit efficiencies for the business.
-          Furthermore, I immensely enjoy the process of deriving critical
-          business insights using analytics, and then supporting or directly
-          managing the efficiency implementation projects. My ability to move
-          from analysis or leading a team of analysts to supporting or leading
-          the actual project is something that could help further accelerate the
-          velocity of work at lon Insights.
+          <EditableDiv
+            content={getStringContent(layout.summary?.content)}
+            onEdit={(value) => handleEdit("summary", "content", value)}
+            className={classes.summary}
+          />
         </SectionContent>
 
-        <SectionTitle>Skills</SectionTitle>
-        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-          <SkillItem>Budgeting</SkillItem>
-          <SkillItem>Financial Analysis</SkillItem>
-          <SkillItem>Project Management</SkillItem>
-          <SkillItem>Stakeholder Management</SkillItem>
-          <SkillItem>Business Strategy</SkillItem>
-          <SkillItem>Excel</SkillItem>
-          <SkillItem>VBA</SkillItem>
-          <SkillItem>SQL</SkillItem>
-          <SkillItem>QuickBooks</SkillItem>
-          <SkillItem>Power BI</SkillItem>
-          <SkillItem>Tableau</SkillItem>
-          <SkillItem>Python</SkillItem>
+        <SectionTitle>{layout.skills?.title || ""}</SectionTitle>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          {layout.skills?.items?.map((item, index) => (
+            <EditableDiv
+              key={index}
+              content={getStringContent(item)}
+              onEdit={(value) =>
+                handleEdit(
+                  "skills",
+                  "items",
+                  layout.skills.items.map((i, idx) =>
+                    idx === index ? value : i
+                  )
+                )
+              }
+            />
+          ))}
         </Box>
 
-        <SectionTitle>Experience</SectionTitle>
-        <ExperienceItem>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <SectionTitle>{layout.experience?.title}</SectionTitle>
+          <Button
+            variant="outlined"
+            color="primary"
+            startIcon={<AddIcon />}
+            onClick={() => handleAdd("experience")}
+          >
+            Add
+          </Button>
+        </div>
+        {layout.experience?.items?.map((item, index) => (
+          <Box key={index} mb={2} display="flex" alignItems="center">
+            <Box flexGrow={1}>
+              <EditableDiv
+                content={getStringContent(item.company)}
+                onEdit={(value) =>
+                  handleEdit(
+                    "experience",
+                    "items",
+                    layout.experience.items.map((i, idx) =>
+                      idx === index ? { ...i, company: value } : i
+                    )
+                  )
+                }
+                className={classes.company}
+              />
+              <EditableDiv
+                content={getStringContent(item.role)}
+                onEdit={(value) =>
+                  handleEdit(
+                    "experience",
+                    "items",
+                    layout.experience.items.map((i, idx) =>
+                      idx === index ? { ...i, role: value } : i
+                    )
+                  )
+                }
+                className={classes.role}
+              />
+
+              <EditableDiv
+                content={getStringContent(item.location)}
+                onEdit={(value) =>
+                  handleEdit(
+                    "experience",
+                    "items",
+                    layout.experience.items.map((i, idx) =>
+                      idx === index ? { ...i, location: value } : i
+                    )
+                  )
+                }
+                className={classes.location}
+              />
+              
+              <EditableDiv
+                    content={getStringContent(item.responsibilities)}
+                    onEdit={(value) =>
+                      handleEdit(
+                        "experience",
+                        "items",
+                        layout.experience.items.map((i, idx) =>
+                          idx === index ? { ...i, responsibilities: value } : i
+                        )
+                      )
+                    }
+                    className={classes.responsibilities}
+                  />
+           
+            </Box>
+            <IconButton
+              className={classes.deleteButton}
+              onClick={() => handleDelete("experience", index)}
+            >
+              <RiDeleteBin6Line />
+            </IconButton>
+          </Box>
+        ))}
+
+        {/* <ExperienceItem>
           <Typography variant="h6" gutterBottom>
             Network Solutions LLC
           </Typography>
@@ -580,10 +745,23 @@ export default function SecondTemplate({
             </li>
             <li>Designed and maintained 10+ data integration jobs.</li>
           </ul>
-        </ExperienceItem>
+        </ExperienceItem> */}
+  
 
-        <SectionTitle>Education</SectionTitle>
-        <EducationItem>
+  <div style={{display:"flex", justifyContent:"space-between"}}>
+
+        <SectionTitle>     {layout.education?.title || ""}</SectionTitle>
+        <Button
+                variant="outlined"
+                color="primary"
+                className={classes.addButton}
+                startIcon={<AddIcon />}
+                onClick={() => handleAdd("education")}
+              >
+                Add
+              </Button>
+  </div>
+        {/* <EducationItem>
           <Typography variant="h6" gutterBottom>
             University of Wisconsin
           </Typography>
@@ -608,18 +786,99 @@ export default function SecondTemplate({
             <br />
             2008-2012
           </Typography>
-        </EducationItem>
+        </EducationItem> */}
 
-        <SectionTitle>Courses & Certificates</SectionTitle>
-        <SectionContent>
-          PMI Professional in Business Analysis (PBA) - PMI, 2019
-          <br />
-          Certified Associate in Project Management (CAPM) - PMI, 2018
-          <br />
-          High-Dimensional Data Analysis - Harvard, 2017
-        </SectionContent>
+   
+              {/* <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
+                {layout.education?.title || ""}
+              </Typography> */}
+            
+     
+            {layout.education?.items?.map((item, index) => (
+              <Box key={index} mb={2} display="flex" alignItems="center">
+                <Box flexGrow={1}>
+                <EditableDiv
+                    content={getStringContent(item.school)}
+                    onEdit={(value) =>
+                      handleEdit(
+                        "education",
+                        "items",
+                        layout.education.items.map((i, idx) =>
+                          idx === index ? { ...i, school: value } : i
+                        )
+                      )
+                    }
+                    className={classes.school}
+                  />
+                  <EditableDiv
+                    content={getStringContent(item.degree)}
+                    onEdit={(value) =>
+                      handleEdit(
+                        "education",
+                        "items",
+                        layout.education.items.map((i, idx) =>
+                          idx === index ? { ...i, degree: value } : i
+                        )
+                      )
+                    }
+                    className={classes.degree}
+                  />
+               
+                  <EditableDiv
+                    content={getStringContent(item.location)}
+                    onEdit={(value) =>
+                      handleEdit(
+                        "education",
+                        "items",
+                        layout.education.items.map((i, idx) =>
+                          idx === index ? { ...i, date: value } : i
+                        )
+                      )
+                    }
+                    className={classes.date}
+                  />
+                  <EditableDiv
+                    content={getStringContent(item.duration)}
+                    onEdit={(value) =>
+                      handleEdit(
+                        "education",
+                        "items",
+                        layout.education.items.map((i, idx) =>
+                          idx === index ? { ...i, gpa: value } : i
+                        )
+                      )
+                    }
+                    className={classes.gpa}
+                  />
+                </Box>
+                <IconButton
+                  className={classes.deleteButton}
+                  onClick={() => handleDelete("education", index)}
+                >
+                  <RiDeleteBin6Line />
+                </IconButton>
+              </Box>
+            ))}
+       
+
+        <SectionTitle>{layout.courses?.title}</SectionTitle>
+        {/* <SectionContent> */}
+        {layout.courses?.items?.map((item, index) => (
+          <EditableDiv
+            key={index}
+            content={getStringContent(item)}
+            onEdit={(value) =>
+              handleEdit(
+                "courses",
+                "items",
+                layout.courses.items.map((i, idx) =>
+                  idx === index ? value : i
+                )
+              )
+            }
+          />
+        ))}
       </Grid>
-
     </div>
   );
 }
