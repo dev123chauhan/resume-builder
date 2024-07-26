@@ -148,7 +148,6 @@ export default function MiniDrawer() {
   const { user } = useAuth();
   useEffect(() => {
     localStorage.setItem("fontStyle", fontStyle);
-    console.log("Font style changed:", fontStyle);
   }, [fontStyle]);
 
   const handleListItemClick = (index) => {
@@ -549,6 +548,7 @@ export default function MiniDrawer() {
             isDesignPanelOpen={isDesignPanelOpen}
             improvedTextOpen={improvedTextOpen}
             fontStyle={fontStyle}
+            textColor={textColor}
           />
         ) : (
           <EditableResume

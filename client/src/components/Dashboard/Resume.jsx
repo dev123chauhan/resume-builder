@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   name: {
     fontSize: '28px !important',
     fontWeight: 'bold !important',
-    color: 'blue',
     marginBottom: theme.spacing(1),
   },
   title: {
@@ -162,8 +161,8 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
     <div style={{ color: textColor }} className={`${classes.container} ${getFontClass()}`}>
       <div className={`${classes.header}`}>
         <div className={classes.headerInfo}>
-          <Typography  className={`${classes.name} ${getFontClass()}`}>{layout.header?.name}</Typography>
-          <Typography   className={`${classes.title} ${getFontClass()}`}>{layout.header?.title}</Typography>
+          <Typography variant='h3'  className={`${classes.name} ${getFontClass()}`}>{layout.header?.name}</Typography>
+          <Typography className={`${classes.title} ${getFontClass()}`}>{layout.header?.title}</Typography>
         </div>
         <Avatar className={classes.avatar} src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile} />
       </div>
