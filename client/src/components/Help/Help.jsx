@@ -19,8 +19,8 @@ const Help = () => {
 
   return (
     <Container>
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
+      <Box sx={{ my: 12 }}>
+        <Typography  style={{fontWeight:"bold"}} variant="h4" component="h1" gutterBottom>
           Help & Support
         </Typography>
 

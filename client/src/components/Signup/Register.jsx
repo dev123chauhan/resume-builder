@@ -35,7 +35,7 @@ const Register = () => {
       setTimeout(() => {
         setLoading(false);
         navigate("/login");
-      }, 2000);
+      }, 1200);
     } catch (error) {
       toast.error("Registration failed");
       console.error("Error registering user:", error);

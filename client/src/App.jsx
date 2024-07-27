@@ -1,4 +1,4 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "react-scroll-to-top";
 import { ArrowUpwardRounded } from "@material-ui/icons";
@@ -21,7 +21,39 @@ import Help from "./components/Help/Help";
 export default function App() {
   const location = useLocation();
 
-  
+  useEffect(() => {
+    const path = location.pathname;
+    let pageTitle = "Resume Builder"; // Default title
+
+    switch (path) {
+      case "/":
+        pageTitle = "Home | Resume Builder";
+        break;
+      case "/features":
+        pageTitle = "Features | Resume Builder";
+        break;
+      case "/about":
+        pageTitle = "About | Resume Builder";
+        break;
+      case "/contact":
+        pageTitle = "Contact | Resume Builder";
+        break;
+      case "/login":
+        pageTitle = "Login | Resume Builder";
+        break;
+      case "/register":
+        pageTitle = "Register | Resume Builder";
+        break;
+      case "/dashboard":
+        pageTitle = "dashboard | Resume Builder";
+        break;
+      default:
+        pageTitle = "Resume Builder";
+    }
+
+    document.title = pageTitle;
+  }, [location]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -31,7 +63,7 @@ export default function App() {
       <ScrollToTop
         className="scrollToTop"
         smooth
-        component={<ArrowUpwardRounded className="upArrow" />} 
+        component={<ArrowUpwardRounded className="upArrow" />}
       />
       <Routes>
         <Route
@@ -69,21 +101,63 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/account" element={<Layout><ProfileDashboard /></Layout>} />
-        <Route path="/terms-and-conditions" element={<Layout><TermsAndConditions /></Layout>} />
-        <Route path="/privacy-policy" element={<Layout><PrivacyPolicy /></Layout>} />
-        <Route path="/faq" element={<Layout><Faq /></Layout>} />
-        <Route path="/blog" element={<Layout><Blog /></Layout>} />
-        <Route path="/review" element={<Layout><Review /></Layout>} />
-        <Route path="/help" element={<Layout><Help /></Layout>} />
+        <Route
+          path="/account"
+          element={
+            <Layout>
+              <ProfileDashboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/terms-and-conditions"
+          element={
+            <Layout>
+              <TermsAndConditions />
+            </Layout>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <Layout>
+              <PrivacyPolicy />
+            </Layout>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <Layout>
+              <Faq />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <Layout>
+              <Blog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/review"
+          element={
+            <Layout>
+              <Review />
+            </Layout>
+          }
+        />
+        <Route
+          path="/help"
+          element={
+            <Layout>
+              <Help />
+            </Layout>
+          }
+        />
       </Routes>
     </div>
   );
 }
-
-
-
-
-
-
-

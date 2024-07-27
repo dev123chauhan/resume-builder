@@ -72,6 +72,8 @@
   .footer-menu-list li {
     margin-top: 5px;
     margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
   }
   
   .footer-call-to-action-description {
@@ -229,6 +231,8 @@
   
   .social-icon {
     cursor: pointer;
+    display: flex;
+    gap: 10px;
   }
   
   /* .fa-youtube {

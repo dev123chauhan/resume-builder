@@ -1,4 +1,4 @@
-import { Container, Typography, Paper, Grid, Button } from '@mui/material';
+import { Container, Typography, Paper } from '@mui/material';
 
 const Review = () => {
   const mockData = {
@@ -31,7 +31,7 @@ const Review = () => {
 
   return (
     <Container style={{marginTop:"100px"}}>
-      <Typography variant="h4" gutterBottom>
+      <Typography style={{color:"#027b9a", fontWeight:"bold"}} variant="h4" gutterBottom>
         Review Your Resume
       </Typography>
       <Paper style={{ padding: '16px', marginBottom: '16px' }}>
@@ -62,18 +62,6 @@ const Review = () => {
           </div>
         ))}
       </Paper>
-      <Grid container spacing={2}>
-        <Grid item>
-          <Button variant="contained" color="primary">
-            Edit
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button variant="contained" color="secondary">
-            Submit
-          </Button>
-        </Grid>
-      </Grid>
     </Container>
   );
 };

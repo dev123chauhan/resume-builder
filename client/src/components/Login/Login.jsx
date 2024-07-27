@@ -32,7 +32,7 @@ const Login = () => {
       setTimeout(() => {
         setLoading(false); // Hide spinner
         navigate('/');
-      }, 1500);
+      }, 1200);
     } catch (error) {
       toast.error('Login failed. Please check your credentials.');
       setLoading(false); // Hide spinner

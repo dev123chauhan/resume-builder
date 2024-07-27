@@ -6,7 +6,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -30,13 +30,28 @@ import DesignPanel from "./DesignPanel";
 import ImprovedText from "./ImprovedText";
 import Rearrange from "./Rearrange";
 import PDFResume from "./Resume";
-// import noProfile from "../../assets/noProfile.jpg";
+import noProfile from "../../assets/noProfile.jpg";
 import "react-toastify/dist/ReactToastify.css";
 import { usePDF } from "react-to-pdf";
-import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import useAuth from "../../hooks/useAuth";
 import SelectTemplates from "./SelectTemplates";
 import SecondTemplate from "./SecondTemplate";
+import ThirdTemplate from "./ThirdTemplate";
+import { Link } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
+import { CiSettings } from "react-icons/ci";
 
 const drawerWidth = 240;
 
@@ -188,6 +203,8 @@ export default function MiniDrawer() {
     setIsPopupOpen(false); // Close the popup after adding the section
   };
   const [showSecondTemplate, setShowSecondTemplate] = useState(false);
+  const [isThirdTemplateSelected, setIsThirdTemplateSelected] = useState(false);
+
   // const handleSelectTemplate = (template) => {
   //   setSelectedTemplate(template);
   //   if (template.id === 1) {
@@ -308,6 +325,7 @@ export default function MiniDrawer() {
       // If the same template is clicked again, reset the selection
       setSelectedTemplate(null);
       setShowSecondTemplate(false);
+      setIsThirdTemplateSelected(false);
     } else {
       setSelectedTemplate(template);
       if (template.id === 1) {
@@ -433,8 +451,13 @@ export default function MiniDrawer() {
           },
         });
         setShowSecondTemplate(false);
+        setIsThirdTemplateSelected(false);
       } else if (template.id === 2) {
-        setShowSecondTemplate(true); // Set flag to show the second template
+        setShowSecondTemplate(true);
+        setIsThirdTemplateSelected(false); // Set flag to show the second template
+      } else if (template.id === 3) {
+        setIsThirdTemplateSelected(true); // Show the third template
+        setShowSecondTemplate(false);
       }
     }
   };
@@ -443,7 +466,25 @@ export default function MiniDrawer() {
     setIsPreviewOpen(false);
     // toast.success("Resume Downloaded successfully")
   };
+  const navLinks = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Features", url: "/features" },
+    { name: "Contact", url: "/contact" },
+  ];
+  const settings = [
+    { name: "Account", url: "/account", icon: <MdOutlineAccountCircle style={{fontSize:"2rem"}}/> },
+    { name: "Settings", url: "/setting", icon: <CiSettings style={{fontSize:"2rem"}}/> },
+    { name: "Logout", url: "/logout", icon: <IoIosLogOut style={{fontSize:"2rem"}}/> },
+  ];
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -461,10 +502,53 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Dashboard
-          </Typography>
-          {/* <img  className="avatar" src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile} alt="" /> */}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {navLinks.map((link, index) => (
+              <Button key={index}>
+                <Link to={link.url}>{link.name}</Link>
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  src={
+                    user?.profileImage
+                      ? `http://localhost:5000/uploads/${user.profileImage}`
+                      : noProfile
+                  }
+                  alt=""
+                />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((link, index) => (
+                <MenuItem  key={index} onClick={handleCloseUserMenu}>
+                  <Link to={link.url}>
+                {/* <Typography>{link.name} <span>{link.icon}</span></Typography> */}
+                <Typography sx={{display:"flex", alignItems:"center", gap:"5px"}}>{link.icon}<span>{link.name}</span></Typography>
+                  </Link>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -542,7 +626,15 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {showSecondTemplate ? (
+        {isThirdTemplateSelected ? (
+          <ThirdTemplate
+            isTemplateDrawerOpen={isTemplateDrawerOpen}
+            isDesignPanelOpen={isDesignPanelOpen}
+            improvedTextOpen={improvedTextOpen}
+            fontStyle={fontStyle}
+            textColor={textColor}
+          />
+        ) : showSecondTemplate ? (
           <SecondTemplate
             isTemplateDrawerOpen={isTemplateDrawerOpen}
             isDesignPanelOpen={isDesignPanelOpen}

@@ -1,32 +1,41 @@
 // import React from 'react';
 import { Container, Typography, Box, Grid, Card, CardContent, CardMedia } from '@material-ui/core';
-
+import Blog1 from "../../assets/Blog 1.jpg"
+import Blog2 from "../../assets/Blog 2.jpg"
+import Blog3 from "../../assets/Blog 3.jpg"
 const Blog = () => {
   const posts = [
     {
       id: 1,
       title: "How to Write a Great Resume",
       excerpt: "Learn the best tips for writing a professional resume...",
-      image: "https://via.placeholder.com/150"
+      image: Blog1
     },
     {
       id: 2,
       title: "Resume Builder Features",
       excerpt: "Explore the features of our resume builder...",
-      image: "https://via.placeholder.com/150"
+      image: Blog2
     },
     {
       id: 3,
       title: "The Importance of a Well-Crafted Resume",
       excerpt: "Understand why a well-crafted resume is essential for job hunting...",
-      image: "https://via.placeholder.com/150"
-    }
+      image: Blog3
+    },
+  
   ];
-
+  const maxTitleLength = 30;
+  const maxExcerptLength = 52;
+  const truncateText = (title, maxLength) => {
+    if (title.length <= maxLength) return title;
+    return title.substring(0, maxLength) + '...';
+  };
+  
   return (
     <Container style={{marginTop:"6rem"}}>
       <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography style={{fontWeight:"bold"}}  variant="h4" component="h1" gutterBottom>
           Blog
         </Typography>
         <Grid container spacing={4}>
@@ -42,10 +51,10 @@ const Blog = () => {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {post.title}
+                  {truncateText(post.title, maxTitleLength)}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    {post.excerpt}
+                  {truncateText(post.excerpt, maxExcerptLength)}
                   </Typography>
                 </CardContent>
               </Card>

@@ -327,19 +327,24 @@ const EditableResume = ({
                     }
                     className={classes.location}
                   />
-                  <EditableDiv
-                    content={getStringContent(item.responsibility)}
+                  <ul>
+                    <li>
+                    <EditableDiv
+                    content={getStringContent(item.responsibilities)}
                     onEdit={(value) =>
                       handleEdit(
                         "experience",
                         "items",
                         layout.experience.items.map((i, idx) =>
-                          idx === index ? { ...i, responsibility: value } : i
+                          idx === index ? { ...i, responsibilities: value } : i
                         )
                       )
                     }
                     className={classes.responsibility}
                   />
+                    </li>
+                  </ul>
+              
                 </Box>
                 <IconButton
                   className={classes.deleteButton}
