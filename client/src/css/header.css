@@ -501,7 +501,7 @@
     margin-right: 0.5rem;
   }
   
-  .active {
+  .activeLink {
     color: #027b9a;
     font-weight: bold;
     border-bottom: 3px solid #027b9a;

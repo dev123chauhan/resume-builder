@@ -105,8 +105,8 @@ export default function App() {
           path="/account"
           element={
             <Layout>
-              <ProfileDashboard />
-            </Layout>
+                  <ProfileDashboard />
+             </Layout> 
           }
         />
         <Route

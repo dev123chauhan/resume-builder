@@ -554,7 +554,7 @@ export default function Header() {
                 <li key={index}>
                   <Link
                     to={link.url}
-                    className={location.pathname === link.url ? "active" : ""}
+                    className={location.pathname === link.url ? "activeLink" : ""}
                     onClick={handleLinkClick}
                   >
                     {link.name}

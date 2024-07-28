@@ -1,14 +1,5 @@
 import PropTypes from "prop-types";
-import {
-  Avatar,
-  Box,
-  Typography,
-  IconButton,
-  Button,
-  Grid, Dialog, DialogContent,
-  DialogActions,
-  LinearProgress
-} from "@mui/material";
+import { Avatar, Box, Typography, IconButton, Button, Grid, Dialog, DialogContent, DialogActions, LinearProgress } from "@mui/material";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import AddIcon from "@mui/icons-material/Add";
 import EditableDiv from "./EditableDiv";
@@ -18,19 +9,11 @@ import useStyles from "./Editable.styles";
 import { useState } from "react";
 import PDFResume from "./Resume";
 
-const EditableResume = ({
-  isTemplateDrawerOpen,
-  isDesignPanelOpen,
-  layout,
-  setLayout,
-  fontStyle,
-  improvedTextOpen,
-  textColor,
-}) => {
+const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLayout, fontStyle, improvedTextOpen, textColor}) => {
   const classes = useStyles({ fontStyle });
   const { user } = useAuth();
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  
+
   const getFontClass = () => {
     switch (fontStyle) {
       case "Roboto":
@@ -95,8 +78,6 @@ const EditableResume = ({
     return Array.isArray(content) ? content.join(", ") : content || "";
   };
 
-
-
   const handleClosePreview = () => {
     setIsPreviewOpen(false);
   };
@@ -108,11 +89,11 @@ const EditableResume = ({
       case 'beginner': return 30;
       default: return 50; // डिफ़ॉल्ट मान
     }
-  }; 
+  };
 
   return (
     <div
-   
+
       className={`${classes.container} ${
         isTemplateDrawerOpen || isDesignPanelOpen || improvedTextOpen
           ? classes.containerShift
@@ -123,7 +104,7 @@ const EditableResume = ({
         <div className={classes.headerInfo}>
         <div style={{ color: textColor }}>
           <EditableDiv
-         
+
             content={getStringContent(layout.header?.name)}
             onEdit={(value) => handleEdit("header", "name", value)}
             className={classes.name}
@@ -327,8 +308,7 @@ const EditableResume = ({
                     }
                     className={classes.location}
                   />
-                  <ul>
-                    <li>
+
                     <EditableDiv
                     content={getStringContent(item.responsibilities)}
                     onEdit={(value) =>
@@ -342,9 +322,7 @@ const EditableResume = ({
                     }
                     className={classes.responsibility}
                   />
-                    </li>
-                  </ul>
-              
+
                 </Box>
                 <IconButton
                   className={classes.deleteButton}
@@ -453,11 +431,11 @@ const EditableResume = ({
       <Grid container spacing={2}>
         {layout.languages?.items?.map((item, index) => (
           <Grid item xs={12} sm={6} key={index}>
-            {/* <Box 
-              display="flex" 
-              flexDirection="column" 
-              border="1px solid #e0e0e0" 
-              borderRadius={2} 
+            {/* <Box
+              display="flex"
+              flexDirection="column"
+              border="1px solid #e0e0e0"
+              borderRadius={2}
               p={2}
             > */}
               <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
@@ -525,8 +503,8 @@ const EditableResume = ({
               className={classes.summary}
             />
           </div>
- 
-          {/* Tech Stack Section */} 
+
+          {/* Tech Stack Section */}
           <div
             style={{ marginTop: "32px" }}
             className={`${classes.section} ${classes.fontStyleDynamic}`}
@@ -683,21 +661,3 @@ EditableResume.propTypes = {
 };
 
 export default EditableResume;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

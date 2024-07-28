@@ -99,13 +99,14 @@ section {
 
 /* template 3  */
 .css-wg4xta-MuiGrid-root{
-  background-color: #027b9a !important;
+  /* background-color: rgb(34, 64, 92) !important; */
+  background-color: rgb(44, 81, 115) !important;
   color: white !important;
 }
-/* .css-83ijpv-MuiTypography-root{
+.css-83ijpv-MuiTypography-root{
   color: white !important;
 }
-.css-i4bv87-MuiSvgIcon-root{
+/* .css-i4bv87-MuiSvgIcon-root{
   color: white !important;
 } */
 
@@ -113,3 +114,9 @@ section {
 .css-zcbmsk-MuiButtonBase-root-MuiButton-root{
   background-color: #027b9a !important;
 }
+
+
+
+/* .css-ahj2mt-MuiTypography-root{
+  color: white !important;
+} */

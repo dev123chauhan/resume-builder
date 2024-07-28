@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { Phone, Email, LinkedIn, LocationOn, Star } from "@mui/icons-material";
 import { makeStyles } from "@material-ui/core";
+import useAuth from "../../hooks/useAuth";
+import noProfile from "../../assets/noProfile.jpg";
 const useStyles = makeStyles(
   () => ({
     container: {
@@ -24,6 +26,9 @@ const useStyles = makeStyles(
     containerShift: {
       transform: "translateX(100px)",
     },
+    colorText: {
+      color: "white",
+    },
   }),
   { name: "SecondTemplate" }
 );
@@ -31,7 +36,7 @@ function ThirdTemplate({
   isTemplateDrawerOpen,
   isDesignPanelOpen,
   improvedTextOpen,
-  fontStyle,
+  fontStyle, 
   textColor,
 }) {
   const getFontClass = () => {
@@ -62,7 +67,7 @@ function ThirdTemplate({
         return "font-roboto";
     }
   };
-  // maxWidth="md" sx={{ mt: 4, mb: 4 }}
+  const { user } = useAuth();
   const classes = useStyles({ fontStyle });
   return (
     <div style={{color:textColor}} className={`${classes.container} ${
@@ -197,12 +202,19 @@ function ThirdTemplate({
               </Typography>
             </Box>
           </Grid>
+       
           <Grid item xs={12} sm={4}>
-            <Avatar
-              alt="James Moore"
-              src="/static/images/avatar/1.jpg"
-              sx={{ width: 120, height: 120, mb: 2 }}
-            />
+           <span  style={{alignItems:"center", justifyContent:"center", display:"flex"}}>
+          <Avatar 
+          src={
+            user?.profileImage
+              ? `http://localhost:5000/uploads/${user.profileImage}`
+              : noProfile
+          }
+          sx={{ width: 100, height: 100,  }}
+        />
+
+           </span>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
                 Strengths
@@ -210,7 +222,7 @@ function ThirdTemplate({
               <List>
                 <ListItem>
                   <ListItemIcon>
-                    <Star />
+                    <Star className={classes.colorText}/>
                   </ListItemIcon>
                   <ListItemText
                     primary="Strategic Planner"
@@ -219,7 +231,7 @@ function ThirdTemplate({
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <Star />
+                  <Star className={classes.colorText}/>
                   </ListItemIcon>
                   <ListItemText
                     primary="Flexible"
@@ -236,7 +248,7 @@ function ThirdTemplate({
               <List>
                 <ListItem>
                   <ListItemIcon>
-                    <Star />
+                  <Star className={classes.colorText}/>
                   </ListItemIcon>
                   <ListItemText
                     primary="Cost Saving Of $100M"
@@ -245,7 +257,7 @@ function ThirdTemplate({
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <Star />
+                  <Star className={classes.colorText}/>
                   </ListItemIcon>
                   <ListItemText
                     primary="Exceeded throughput target by 90%"
@@ -259,26 +271,26 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Skills
               </Typography>
-              <Typography variant="body1">
+              <Typography className={classes.colorText} variant="body1">
                 Product Development · Scrum · SQL · Tableau · JIRA · Stakeholder
                 Management
               </Typography>
             </Box>
             <Box mb={4}>
-              <Typography variant="h6" component="h4">
+              <Typography  variant="h6" component="h4">
                 Languages
               </Typography>
-              <Typography variant="body1">English · Native</Typography>
-              <Typography variant="body1">
+              <Typography className={classes.colorText} variant="body1">English · Native</Typography>
+              <Typography className={classes.colorText} variant="body1">
                 Spanish: Castilian · Advanced
               </Typography>
-              <Typography variant="body1">German · Intermediate</Typography>
+              <Typography className={classes.colorText} variant="body1">German · Intermediate</Typography>
             </Box>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
                 Passions
               </Typography>
-              <Typography variant="body1">
+              <Typography className={classes.colorText} variant="body1">
                 Family · Adrenaline Sports · Composing music
               </Typography>
             </Box>
