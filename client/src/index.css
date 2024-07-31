@@ -24,7 +24,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
 }
  
 .container {
@@ -124,4 +124,10 @@ section {
 .css-9mgopn-MuiDivider-root{
   border-color: rgba(0, 0, 0, 0.24) !important;
 
+}
+.css-10hburv-MuiTypography-root{
+  font-family: "IBM Plex Sans", sans-serif !important;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  font-family: "IBM Plex Sans", sans-serif !important;
 }

@@ -30,9 +30,9 @@ const Login = () => {
       login(token);
       toast.success('Successfully logged in!');
       setTimeout(() => {
-        setLoading(false); // Hide spinner
         navigate('/');
-      }, 1200);
+      }, 2000);
+      setLoading(false); // Hide spinner
     } catch (error) {
       toast.error('Login failed. Please check your credentials.');
       setLoading(false); // Hide spinner

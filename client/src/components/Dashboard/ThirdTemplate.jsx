@@ -23,13 +23,13 @@ const useStyles = makeStyles(
   () => ({
     container: {
       maxWidth: "800px",
-      margin: "0 auto",
+      // margin: "0 auto",
       backgroundColor: "white",
       boxShadow: "0 0 10px rgba(0,0,0,0.1)",
       transition: "transform 0.3s ease-in-out",
     },
     containerShift: {
-      transform: "translateX(100px)",
+      transform: "translateX(300px)",
     },
     colorText: {
       color: "white",
@@ -250,9 +250,10 @@ function ThirdTemplate({
                 />
               </span>
             </Typography>
-            <Box mt={2}>
+        
+               <Box  style={{ alignItems: "center", display: "flex", gap:"110px"}}>
               <Typography
-                style={{ alignItems: "center", display: "flex" }}
+                  style={{ alignItems: "center", display: "flex"}}
                 variant="body2"
               >
                 <Phone />
@@ -265,7 +266,7 @@ function ThirdTemplate({
               </Typography>
 
               <Typography
-                style={{ alignItems: "center", display: "flex" }}
+                  style={{ alignItems: "center", display: "flex"}}
                 variant="body2"
               >
                 <Email />
@@ -276,6 +277,9 @@ function ThirdTemplate({
                   />
                 </span>
               </Typography>
+               </Box>
+
+              <Box      style={{ alignItems: "center", display: "flex", gap:"50px" }}>
 
               <Typography
                 style={{ alignItems: "center", display: "flex" }}
@@ -304,7 +308,8 @@ function ThirdTemplate({
                   />
                 </span>
               </Typography>
-            </Box>
+              </Box>
+        
             <Box mt={4}>
               <Typography variant="h5" component="h3" className={`${getFontClass()}`}>
               {layout.summary?.title || ""}
@@ -609,6 +614,7 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Strengths
               </Typography>
+              <hr />
               <List>
                 <ListItem>
                   <ListItemIcon>
@@ -635,6 +641,7 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Achievements
               </Typography>
+              <hr />
               <List>
                 <ListItem>
                   <ListItemIcon>
@@ -661,6 +668,7 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Skills
               </Typography>
+              <hr />
               <Typography className={classes.colorText} variant="body1">
                 Product Development · Scrum · SQL · Tableau · JIRA · Stakeholder
                 Management
@@ -670,6 +678,7 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Languages
               </Typography>
+              <hr />
               <Typography className={classes.colorText} variant="body1">
                 English · Native
               </Typography>
@@ -684,6 +693,7 @@ function ThirdTemplate({
               <Typography variant="h6" component="h4">
                 Passions
               </Typography>
+              <hr />
               <Typography className={classes.colorText} variant="body1">
                 Family · Adrenaline Sports · Composing music
               </Typography>

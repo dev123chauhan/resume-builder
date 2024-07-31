@@ -4,13 +4,14 @@ const useStyles = makeStyles(
       container: {
         padding: theme.spacing(4),
         maxWidth: "800px",
-        margin: "0 auto",
+        // margin: "0 auto",
         backgroundColor: "white",
         boxShadow: "0 0 10px rgba(0,0,0,0.1)",
         transition: "transform 0.3s ease-in-out",
+        height:"630px"
       },
       containerShift: {
-        transform: "translateX(100px)",
+        transform: "translateX(300px)",
       },
       header: {
         display: "flex",

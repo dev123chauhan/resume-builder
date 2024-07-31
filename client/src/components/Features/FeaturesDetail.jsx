@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold !important",
   },
   accordion: {
-    marginBottom: theme.spacing(4),
+    // marginBottom: theme.spacing(4),
     backgroundColor: "white",
     boxShadow: "none",
     "&:before": {
@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   featureTitle: {
     marginBottom: theme.spacing(2),
+    color: "#027b9a",
   },
 }));
 
@@ -71,7 +72,7 @@ const FeaturesDetail = () => {
         Features
       </Typography>
       <Container className={classes.root}>
-        <Grid container spacing={4}>
+        <Grid container>
           {features?.map((feature, index) => (
             <Grid item xs={12} key={index}>
               <Accordion className={classes.accordion}>

@@ -54,6 +54,7 @@ import FourthTemplate from "./FourthTemplate";
 import FifthTemplate from "./FifthTemplate";
 import SixthTemplate from "./SixthTemplate";
 import SeventhTemplate from "./SeventhTemplate";
+import EighthTemplate from "./EighthTemplate";
 
 const drawerWidth = 240;
 
@@ -209,8 +210,8 @@ export default function MiniDrawer() {
     useState(false);
   const [isFifthTemplateSelected, setIsFifthTemplateSelected] = useState(false);
   const [isSixthTemplateSelected, setIsSixthTemplateSelected] = useState(false);
-  const [isSeventhTemplateSelected, setIsSevethTemplateSelected] =
-    useState(false);
+  const [isSeventhTemplateSelected, setIsSevethTemplateSelected] = useState(false);
+  const [isEighthTemplateSelected, setIsEighthTemplateSelected] = useState(false);
 
   const handleSelectTemplate = (template) => {
     const isSelected = template.id === selectedTemplate?.id;
@@ -222,6 +223,7 @@ export default function MiniDrawer() {
     setIsFifthTemplateSelected(template.id === 5 && !isSelected);
     setIsSixthTemplateSelected(template.id === 6 && !isSelected);
     setIsSevethTemplateSelected(template.id === 7 && !isSelected);
+    setIsEighthTemplateSelected(template.id === 8 && !isSelected);
     if (template.id === 1 && !isSelected) {
       setResumeLayout({
         header: {
@@ -359,7 +361,16 @@ export default function MiniDrawer() {
     setAnchorElUser(null);
   };
   const TemplateComponent = () => {
-    if (isSeventhTemplateSelected) {
+    if(isEighthTemplateSelected){
+      return (
+        <EighthTemplate    isTemplateDrawerOpen={isTemplateDrawerOpen}
+        isDesignPanelOpen={isDesignPanelOpen}
+        improvedTextOpen={improvedTextOpen}
+        fontStyle={fontStyle}
+        textColor={textColor}/>
+      )
+    }
+  else   if (isSeventhTemplateSelected) {
       return (
         <SeventhTemplate
           isTemplateDrawerOpen={isTemplateDrawerOpen}
@@ -601,14 +612,15 @@ export default function MiniDrawer() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {TemplateComponent()}
+
       </Box>
+      
       {isPopupOpen && (
         <AddSection
           onClose={() => setIsPopupOpen(false)}
           onAddSection={handleAddSection}
         /> // Pass onAddSection prop
       )}
-
       <SelectTemplates
         open={isTemplateDrawerOpen}
         onClose={() => setIsTemplateDrawerOpen(false)}

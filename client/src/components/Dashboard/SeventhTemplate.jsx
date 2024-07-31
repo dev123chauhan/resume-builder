@@ -18,13 +18,13 @@ const useStyles = makeStyles(
   () => ({
     container: {
       maxWidth: "800px",
-      margin: "0 auto",
+      // margin: "0 auto",
       backgroundColor: "white",
       boxShadow: "0 0 10px rgba(0,0,0,0.1)",
       transition: "transform 0.3s ease-in-out",
     },
     containerShift: {
-      transform: "translateX(100px)",
+      transform: "translateX(300px)",
     },
   }),
   { name: "SecondTemplate" }
