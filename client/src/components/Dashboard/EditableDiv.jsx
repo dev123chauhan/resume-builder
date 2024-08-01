@@ -4,12 +4,13 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles(() => ({
   editable: {
     '&:hover': {
-      backgroundColor: '#f0f0f0',
+      // backgroundColor: '#f0f0f0',
       cursor: 'text',
+
     },
     '&:focus': {
       outline: 'none',
-      backgroundColor: '#e0e0e0',
+      // backgroundColor: '#e0e0e0',
     },
   },
 }));
@@ -28,6 +29,7 @@ const EditableDiv = ({
 
   return (
     <div
+      
       contentEditable
       onBlur={handleBlur}
       className={`${classes.editable} ${className}`}

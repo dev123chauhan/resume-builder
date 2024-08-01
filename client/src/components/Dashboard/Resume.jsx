@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
-import { Avatar, Box, Typography, Grid, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { Avatar, Box, Typography, Grid, Button, Dialog, DialogTitle, DialogContent, DialogActions, LinearProgress } from '@mui/material';
 import noProfile from "../../assets/noProfile.jpg";
 
 const useStyles = makeStyles((theme) => ({
@@ -156,7 +156,14 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
       case 'Courier New': return 'font-courier-new';
     }
   };
-
+  const getLevelPercentage = (level) => {
+    switch (level.toLowerCase()) {
+      case 'native': return 100;
+      case 'proficient': return 80;
+      case 'beginner': return 30;
+      default: return 50; // डिफ़ॉल्ट मान
+    }
+  };
   return (
     <div style={{ color: textColor }} className={`${classes.container} ${getFontClass()}`}>
       <div className={`${classes.header}`}>
@@ -197,7 +204,7 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
                 <Typography className={`${classes.role} ${getFontClass()}`}>{item.role}</Typography>
                 <Typography className={`${classes.company} ${getFontClass()}`}>{item.company}</Typography>
                 <Typography className={`${classes.location} ${getFontClass()}`}>{item.location}</Typography>
-                <Typography className={`${classes.responsibility} ${getFontClass()}`}>{item.responsibility}</Typography>
+                <Typography className={`${classes.responsibilities} ${getFontClass()}`}>{item.responsibilities}</Typography>
               </Box>
             ))}
           </div>
@@ -206,7 +213,12 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
           <div className={`${classes.section}`}>
             <Typography variant="h6" className={`${classes.sectionTitle} ${getFontClass()}`}>{layout.languages?.title}</Typography>
             {layout.languages?.items?.map((item, index) => (
+              <>
               <Typography className={`${getFontClass()}`}  key={index}>{item.language}</Typography>
+              <LinearProgress      variant="determinate"
+                  value={getLevelPercentage(item.level)}
+                  sx={{ flexGrow: 1, height: 8, borderRadius: 5,  }}/>
+              </>
             ))}
           </div>
         </Grid>

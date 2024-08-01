@@ -4,12 +4,9 @@ import {
   Typography,
   Box,
   Avatar,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Divider,
-  IconButton, Button
+  IconButton,
+  Button,
 } from "@mui/material";
 import { Phone, Email, LinkedIn, LocationOn, Star } from "@mui/icons-material";
 import { makeStyles } from "@material-ui/core";
@@ -96,17 +93,28 @@ function ThirdTemplate({
     skills: {
       title: "SKILLS",
       items: [
-        "Budgeting",
-        "Financial Analysis",
-        "Project Management",
-        "Stakeholder Management",
-        "Excel",
-        "VBA",
+        "Product Development",
+        "Scrum",
         "SQL",
-        "QuickBooks",
-        "Power BI",
         "Tableau",
-        "Python",
+        "JIRA ",
+        "Stakeholder Management",
+      ],
+    },
+    language: {
+      title: "LANGUAGE",
+      items: [
+        "English Native",
+        "Spanish: Castilian · Advanced",
+       "German · Intermediate"
+      ],
+    },
+    passion: {
+      title: "PASSION",
+      items: [
+        "Family",
+        "Adrenaline Sports",
+       "Composing music"
       ],
     },
     experience: {
@@ -133,7 +141,7 @@ function ThirdTemplate({
           company: "Tesla",
           date: "2013-2016",
           location: "Dallas, TX",
-          desc:"Tesla is an electric vehicle manufacturer that is revolutionizing the automobile industry energy and transportation",
+          desc: "Tesla is an electric vehicle manufacturer that is revolutionizing the automobile industry energy and transportation",
           responsibilities: [
             "Planned, beta-tested and led the rollout of a new internal communications system to all 400+ employees in 6 locations",
             "Led the research for building the personal development platform (Sunrise employees still use currently)",
@@ -148,7 +156,7 @@ function ThirdTemplate({
           company: "Wolf Industry",
           date: "2013-2016",
           location: "Dallas, TX",
-          desc:"Wolf Industries is a home appliance part supplier to leading appliance manufacturers including GE",
+          desc: "Wolf Industries is a home appliance part supplier to leading appliance manufacturers including GE",
           responsibilities: [
             "Planned, beta-tested and led the rollout of a new internal communications system to all 400+ employees in 6 locations",
             "Led the research for building the personal development platform (Sunrise employees still use currently)",
@@ -184,6 +192,32 @@ function ThirdTemplate({
         "PMI Professional in Business Analysis (PBA) - PMI, 2019",
         "Certified Associate in Project Management (CAPM) - PMI, 2018",
         "High-Dimensional Data Analysis - Harvard, 2017",
+      ],
+    },
+    strengths: {
+      title: "STRENGTHS",
+      items: [
+        {
+          title: "Strategic Planner",
+          desc: "Developing steps along the way to achieve `big picture` results with market & stackholder input",
+        },
+        {
+          title: "Flexible",
+          desc: "Comfortable with ambiguity and able to thrive in fast-paced environment",
+        },
+      ],
+    },
+    achivements: {
+      title: "ACHIEVEMENTS",
+      items: [
+        {
+          title: "Cost Savings Of $100M",
+          desc: "Through efficient project management and teamwork, my team saved the divison at tesla over $100 Million in the engine assembly department",
+        },
+        {
+          title: "Exceeded throughout target by 90%",
+          desc: "Cutting loading time & fixing key security issues by moving key remote workers successfully online at scale",
+        },
       ],
     },
   });
@@ -250,10 +284,12 @@ function ThirdTemplate({
                 />
               </span>
             </Typography>
-        
-               <Box  style={{ alignItems: "center", display: "flex", gap:"110px"}}>
+
+            <Box
+              style={{ alignItems: "center", display: "flex", gap: "110px" }}
+            >
               <Typography
-                  style={{ alignItems: "center", display: "flex"}}
+                style={{ alignItems: "center", display: "flex" }}
                 variant="body2"
               >
                 <Phone />
@@ -266,7 +302,7 @@ function ThirdTemplate({
               </Typography>
 
               <Typography
-                  style={{ alignItems: "center", display: "flex"}}
+                style={{ alignItems: "center", display: "flex" }}
                 variant="body2"
               >
                 <Email />
@@ -277,10 +313,9 @@ function ThirdTemplate({
                   />
                 </span>
               </Typography>
-               </Box>
+            </Box>
 
-              <Box      style={{ alignItems: "center", display: "flex", gap:"50px" }}>
-
+            <Box style={{ alignItems: "center", display: "flex", gap: "50px" }}>
               <Typography
                 style={{ alignItems: "center", display: "flex" }}
                 variant="body2"
@@ -294,8 +329,6 @@ function ThirdTemplate({
                 </span>
               </Typography>
 
-      
-
               <Typography
                 style={{ alignItems: "center", display: "flex" }}
                 variant="body2"
@@ -308,28 +341,36 @@ function ThirdTemplate({
                   />
                 </span>
               </Typography>
-              </Box>
-        
+            </Box>
+
             <Box mt={4}>
-              <Typography variant="h5" component="h3" className={`${getFontClass()}`}>
-              {layout.summary?.title || ""}
+              <Typography
+                variant="h5"
+                component="h3"
+                className={`${getFontClass()}`}
+              >
+                {layout.summary?.title || ""}
               </Typography>
-              <Divider style={{marginBottom:"5px"}}/>
+              <Divider style={{ marginBottom: "5px" }} />
               <Typography variant="body1">
-              <span className={`${getFontClass()}`}>
-            <EditableDiv
-              content={getStringContent(layout.summary?.content)}
-              onEdit={(value) => handleEdit("summary", "content", value)}
-              className={classes.summary}
-            />
-          </span>
+                <span className={`${getFontClass()}`}>
+                  <EditableDiv
+                    content={getStringContent(layout.summary?.content)}
+                    onEdit={(value) => handleEdit("summary", "content", value)}
+                    className={classes.summary}
+                  />
+                </span>
               </Typography>
             </Box>
-            <Box mt={4}> 
-              <Typography variant="h5" component="h3"  className={`${getFontClass()}`}>
-              {layout.experience?.title || ""}
+            <Box mt={4}>
+              <Typography
+                variant="h5"
+                component="h3"
+                className={`${getFontClass()}`}
+              >
+                {layout.experience?.title || ""}
               </Typography>
-              <Divider style={{marginBottom:"5px"}}/>
+              <Divider style={{ marginBottom: "5px" }} />
               {/* <Typography variant="h6" component="h4">
                 Senior IT Product Manager
               </Typography>
@@ -341,190 +382,199 @@ function ThirdTemplate({
                 that has successful titles such as Drink...
               </Typography> */}
               {layout.experience?.items?.map((item, index) => (
-          <Box key={index} mb={2} display="flex" alignItems="center">
-            <Box flexGrow={1}>
-            <span style={{display:"flex", alignItems:"center", justifyContent:"space-between"}} className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.role)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "experience",
-                      "items",
-                      layout.experience.items.map((i, idx) =>
-                        idx === index ? { ...i, role: value } : i
-                      )
-                    )
-                  }
-                
-                />
-                 <span>
-              <Button
-            style={{color:"black"}}
-            startIcon={<AddIcon />}
-            onClick={() => handleAdd("experience")}
-          >
-            Add
-          </Button>
-            <IconButton
-              className={classes.deleteButton}
-              onClick={() => handleDelete("experience", index)}
-            >
-              <RiDeleteBin6Line />
-            </IconButton>
-            </span>
-              </span>
-              <span  className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.company)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "experience",
-                      "items",
-                      layout.experience.items.map((i, idx) =>
-                        idx === index ? { ...i, company: value } : i
-                      )
-                    )
-                  }
-                  className={classes.company}
-                />
-               
-              </span>
-          
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.desc)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "experience",
-                      "items",
-                      layout.experience.items.map((i, idx) =>
-                        idx === index ? { ...i, desc: value } : i
-                      )
-                    )
-                  }
-                  className={classes.location}
-                />
-              </span>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.location)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "experience",
-                      "items",
-                      layout.experience.items.map((i, idx) =>
-                        idx === index ? { ...i, location: value } : i
-                      )
-                    )
-                  }
-                  className={classes.location}
-                />
-              </span>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.responsibilities)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "experience",
-                      "items",
-                      layout.experience.items.map((i, idx) =>
-                        idx === index ? { ...i, responsibilities: value } : i
-                      )
-                    )
-                  }
-                  className={classes.responsibilities}
-                />
-              </span>
-            </Box>
-       
-          </Box>
-        ))}
-          
+                <Box key={index} mb={2} display="flex" alignItems="center">
+                  <Box flexGrow={1}>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                      className={`${getFontClass()}`}
+                    >
+                      <EditableDiv
+                        content={getStringContent(item.role)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "experience",
+                            "items",
+                            layout.experience.items.map((i, idx) =>
+                              idx === index ? { ...i, role: value } : i
+                            )
+                          )
+                        }
+                      />
+                      <span>
+                        <Button
+                          style={{ color: "black" }}
+                          startIcon={<AddIcon />}
+                          onClick={() => handleAdd("experience")}
+                        >
+                          Add
+                        </Button>
+                        <IconButton
+                          className={classes.deleteButton}
+                          onClick={() => handleDelete("experience", index)}
+                        >
+                          <RiDeleteBin6Line />
+                        </IconButton>
+                      </span>
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.company)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "experience",
+                            "items",
+                            layout.experience.items.map((i, idx) =>
+                              idx === index ? { ...i, company: value } : i
+                            )
+                          )
+                        }
+                        className={classes.company}
+                      />
+                    </span>
+
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.desc)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "experience",
+                            "items",
+                            layout.experience.items.map((i, idx) =>
+                              idx === index ? { ...i, desc: value } : i
+                            )
+                          )
+                        }
+                        className={classes.location}
+                      />
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.location)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "experience",
+                            "items",
+                            layout.experience.items.map((i, idx) =>
+                              idx === index ? { ...i, location: value } : i
+                            )
+                          )
+                        }
+                        className={classes.location}
+                      />
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.responsibilities)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "experience",
+                            "items",
+                            layout.experience.items.map((i, idx) =>
+                              idx === index
+                                ? { ...i, responsibilities: value }
+                                : i
+                            )
+                          )
+                        }
+                        className={classes.responsibilities}
+                      />
+                    </span>
+                  </Box>
+                </Box>
+              ))}
             </Box>
             <Box mt={4}>
-              <Typography className={`${getFontClass()}`} variant="h5" component="h3">
-              {layout.education?.title || ""}
+              <Typography
+                className={`${getFontClass()}`}
+                variant="h5"
+                component="h3"
+              >
+                {layout.education?.title || ""}
               </Typography>
-              <Divider style={{marginBottom:"5px"}}/>
+              <Divider style={{ marginBottom: "5px" }} />
               {layout.education?.items?.map((item, index) => (
-          <Box key={index} mb={2} display="flex" alignItems="center">
-            <Box flexGrow={1}>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.school)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "education",
-                      "items",
-                      layout.education.items.map((i, idx) =>
-                        idx === index ? { ...i, school: value } : i
-                      )
-                    )
-                  }
-                  className={classes.school}
-                />
-              </span>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.degree)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "education",
-                      "items",
-                      layout.education.items.map((i, idx) =>
-                        idx === index ? { ...i, degree: value } : i
-                      )
-                    )
-                  }
-                  className={classes.degree}
-                />
-              </span>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.location)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "education",
-                      "items",
-                      layout.education.items.map((i, idx) =>
-                        idx === index ? { ...i, location: value } : i
-                      )
-                    )
-                  }
-                  className={classes.location}
-                />
-              </span>
-              <span className={`${getFontClass()}`}>
-                <EditableDiv
-                  content={getStringContent(item.duration)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "education",
-                      "items",
-                      layout.education.items.map((i, idx) =>
-                        idx === index ? { ...i, duration: value } : i
-                      )
-                    )
-                  }
-                  className={classes.duration}
-                />
-              </span>
-            </Box>
-            <Button
-            style={{color:"black"}}
-            startIcon={<AddIcon />}
-            onClick={() => handleAdd("education")}
-          >
-            Add
-          </Button>
-            <IconButton
-              className={classes.deleteButton}
-              onClick={() => handleDelete("education", index)}
-            >
-              <RiDeleteBin6Line />
-            </IconButton>
-          </Box>
-        ))}
+                <Box key={index} mb={2} display="flex" alignItems="center">
+                  <Box flexGrow={1}>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.school)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "education",
+                            "items",
+                            layout.education.items.map((i, idx) =>
+                              idx === index ? { ...i, school: value } : i
+                            )
+                          )
+                        }
+                        className={classes.school}
+                      />
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.degree)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "education",
+                            "items",
+                            layout.education.items.map((i, idx) =>
+                              idx === index ? { ...i, degree: value } : i
+                            )
+                          )
+                        }
+                        className={classes.degree}
+                      />
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.location)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "education",
+                            "items",
+                            layout.education.items.map((i, idx) =>
+                              idx === index ? { ...i, location: value } : i
+                            )
+                          )
+                        }
+                        className={classes.location}
+                      />
+                    </span>
+                    <span className={`${getFontClass()}`}>
+                      <EditableDiv
+                        content={getStringContent(item.duration)}
+                        onEdit={(value) =>
+                          handleEdit(
+                            "education",
+                            "items",
+                            layout.education.items.map((i, idx) =>
+                              idx === index ? { ...i, duration: value } : i
+                            )
+                          )
+                        }
+                        className={classes.duration}
+                      />
+                    </span>
+                  </Box>
+                  <Button
+                    style={{ color: "black" }}
+                    startIcon={<AddIcon />}
+                    onClick={() => handleAdd("education")}
+                  >
+                    Add
+                  </Button>
+                  <IconButton
+                    className={classes.deleteButton}
+                    onClick={() => handleDelete("education", index)}
+                  >
+                    <RiDeleteBin6Line />
+                  </IconButton>
+                </Box>
+              ))}
             </Box>
             {/* <Box mt={4}>
               <Typography variant="h5" component="h3">
@@ -612,91 +662,134 @@ function ThirdTemplate({
             </span>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
-                Strengths
+                {layout?.strengths?.title}
               </Typography>
               <hr />
-              <List>
-                <ListItem>
-                  <ListItemIcon>
+
+              {layout?.strengths?.items?.map((item, index) => (
+                <Box style={{display:"flex", marginTop:"10px"}} key={index}>
                     <Star className={classes.colorText} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Strategic Planner"
-                    secondary="Developing steps along the way to achieve..."
+                
+                  <span>
+                  <EditableDiv
+                    content={getStringContent(item.title)}
+                    // onEdit={(value) =>
+                    //       handleEdit(
+                    //         "strengths",
+                    //         "items",
+                    //         layout.strengths.items.map((i, idx) =>
+                    //           idx === index ? { ...i, title: value } : i
+                    //         )
+                    //       )
+                    //     }
+                    
                   />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <Star className={classes.colorText} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Flexible"
-                    secondary="Comfortable with ambiguity and able to thrive..."
+                  <EditableDiv
+                     content={getStringContent(item.desc)}
                   />
-                </ListItem>
-                {/* Add other strengths here */}
-              </List>
+                  </span>
+                </Box>
+              ))}
             </Box>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
-                Achievements
+            {layout?.achivements?.title}
               </Typography>
               <hr />
-              <List>
-                <ListItem>
-                  <ListItemIcon>
+              {layout?.achivements?.items?.map((item, index) => (
+                <Box style={{display:"flex", marginTop:"10px"}} key={index}>
                     <Star className={classes.colorText} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Cost Saving Of $100M"
-                    secondary="Through efficient project management..."
+                
+                  <span>
+                  <EditableDiv
+                    content={getStringContent(item.title)}
+                    // onEdit={(value) =>
+                    //       handleEdit(
+                    //         "strengths",
+                    //         "items",
+                    //         layout.strengths.items.map((i, idx) =>
+                    //           idx === index ? { ...i, title: value } : i
+                    //         )
+                    //       )
+                    //     }
+                    
                   />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <Star className={classes.colorText} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Exceeded throughput target by 90%"
-                    secondary="Cutting loading time & fixing key security..."
+                  <EditableDiv
+                     content={getStringContent(item.desc)}
                   />
-                </ListItem>
-                {/* Add other achievements here */}
-              </List>
+                  </span>
+                </Box>
+              ))}
             </Box>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
-                Skills
+                {layout?.skills?.title}
               </Typography>
               <hr />
-              <Typography className={classes.colorText} variant="body1">
-                Product Development · Scrum · SQL · Tableau · JIRA · Stakeholder
-                Management
+              <Grid container gap={1}>
+              {layout.skills?.items?.map((item, index) => (
+                <EditableDiv
+                  key={index}
+                  content={getStringContent(item)}
+                  // onEdit={(value) =>
+                  //   handleEdit(
+                  //     "skills",
+                  //     "items",
+                  //     layout.skills.items.map((i, idx) =>
+                  //       idx === index ? value : i
+                  //     )
+                  //   )
+                  // }
+                />
+              ))}
+              </Grid>
+         
+            </Box>
+            <Box mb={4}>
+            <Typography variant="h6" component="h4">
+                {layout?.language?.title}
               </Typography>
+              <hr />
+            <Grid container gap={1}>
+              {layout.language?.items?.map((item, index) => (
+                <EditableDiv
+                  key={index}
+                  content={getStringContent(item)}
+                  // onEdit={(value) =>
+                  //   handleEdit(
+                  //     "skills",
+                  //     "items",
+                  //     layout.skills.items.map((i, idx) =>
+                  //       idx === index ? value : i
+                  //     )
+                  //   )
+                  // }
+                />
+              ))}
+              </Grid>
             </Box>
             <Box mb={4}>
               <Typography variant="h6" component="h4">
-                Languages
+                {layout?.passion?.title}
               </Typography>
               <hr />
-              <Typography className={classes.colorText} variant="body1">
-                English · Native
-              </Typography>
-              <Typography className={classes.colorText} variant="body1">
-                Spanish: Castilian · Advanced
-              </Typography>
-              <Typography className={classes.colorText} variant="body1">
-                German · Intermediate
-              </Typography>
-            </Box>
-            <Box mb={4}>
-              <Typography variant="h6" component="h4">
-                Passions
-              </Typography>
-              <hr />
-              <Typography className={classes.colorText} variant="body1">
-                Family · Adrenaline Sports · Composing music
-              </Typography>
+              <Grid container gap={1}>
+              {layout.passion?.items?.map((item, index) => (
+                <EditableDiv
+                  key={index}
+                  content={getStringContent(item)}
+                  // onEdit={(value) =>
+                  //   handleEdit(
+                  //     "skills",
+                  //     "items",
+                  //     layout.skills.items.map((i, idx) =>
+                  //       idx === index ? value : i
+                  //     )
+                  //   )
+                  // }
+                />
+              ))}
+              </Grid>
             </Box>
           </Grid>
         </Grid>
