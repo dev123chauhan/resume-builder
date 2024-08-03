@@ -1,7 +1,3 @@
-
-
-
-
 import { useState } from 'react';
 import axios from 'axios';
 import { IconButton, Avatar, Box,  Typography } from '@mui/material';

@@ -70,13 +70,7 @@ section {
   border-radius: 3px;
 }
 
-/* .css-19z1ozs-MuiPaper-root-MuiAppBar-root{
-  background-color: #027b9a !important;
-}
 
-.css-1191obr-MuiPaper-root-MuiAppBar-root{
-  background-color: #027b9a !important;
-} */
 
 .css-jzurkx-MuiPaper-root-MuiAppBar-root{
   background-color: #027b9a !important;
@@ -106,9 +100,7 @@ section {
 .css-83ijpv-MuiTypography-root{
   color: white !important;
 }
-/* .css-i4bv87-MuiSvgIcon-root{
-  color: white !important;
-} */
+
 
 
 .css-zcbmsk-MuiButtonBase-root-MuiButton-root{
@@ -117,9 +109,7 @@ section {
 
 
 
-/* .css-ahj2mt-MuiTypography-root{
-  color: white !important;
-} */
+
 
 .css-9mgopn-MuiDivider-root{
   border-color: rgba(0, 0, 0, 0.24) !important;
@@ -130,4 +120,8 @@ section {
 }
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root{
   font-family: "IBM Plex Sans", sans-serif !important;
+}
+
+.css-lll1vm-MuiButtonBase-root-MuiButton-root{
+  background-color: #027b9a !important;
 }

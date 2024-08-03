@@ -93,14 +93,13 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
 
   return (
     <div
-
       className={`${classes.container} ${
         isTemplateDrawerOpen || isDesignPanelOpen || improvedTextOpen
           ? classes.containerShift
           : ""
       } ${getFontClass()}`}
     >
-      <div className={`${classes.header} ${classes.fontStyleDynamic}`}>
+      <div className={classes.header}>
         <div className={classes.headerInfo}>
         <div style={{ color: textColor }}>
           <EditableDiv
@@ -126,7 +125,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
           }
         />
       </div>
-      <div className={`${classes.contactInfo} ${classes.fontStyleDynamic}`}>
+      <div className={classes.contactInfo}>
         <EditableDiv
           content={getStringContent(layout.header?.contact?.phone)}
           onEdit={(value) =>
@@ -169,7 +168,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
         {/* Left Column: Education, Experience, Languages */}
         <Grid item xs={12} md={7}>
           {/* Education Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
+          <div className={classes.section}>
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
               <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.education?.title || ""}
@@ -320,7 +319,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                         )
                       )
                     }
-                    className={classes.responsibility}
+                    className={classes.responsibility}  
                   />
 
                 </Box>
@@ -335,7 +334,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
           </div>
 
           {/* Languages Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
+          <div className={classes.section}>
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
               <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
                 {layout.languages?.title || ""}
@@ -350,94 +349,12 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
                 Add
               </Button>
             </div>
-            {/* {layout.languages?.items?.map((item, index) => (
-              <Box
-                key={index}
-                mb={2}
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <EditableDiv
-                  content={getStringContent(item.language)}
-                  onEdit={(value) =>
-                    handleEdit(
-                      "languages",
-                      "items",
-                      layout.languages.items.map((i, idx) =>
-                        idx === index ? { ...i, language: value } : i
-                      )
-                    )
-                  }
-                />
-                <IconButton
-                  className={classes.deleteButton}
-                  onClick={() => handleDelete("languages", index)}
-                >
-                  <RiDeleteBin6Line />
-                </IconButton>
-              </Box>
-            ))} */}
-            {/* {layout.languages?.items?.map((item, index) => (
-        <Box
-          key={index}
-          mb={2}
-          display="flex"
-          flexDirection="column"
-        >
-          <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-            <EditableDiv
-              content={getStringContent(item.language)}
-              onEdit={(value) =>
-                handleEdit(
-                  "languages",
-                  "items",
-                  layout.languages.items.map((i, idx) =>
-                    idx === index ? { ...i, language: value } : i
-                  )
-                )
-              }
-            />
-            <IconButton
-              className={classes.deleteButton}
-              onClick={() => handleDelete("languages", index)}
-            >
-              <RiDeleteBin6Line />
-            </IconButton>
-          </Box>
-          <Box display="flex" alignItems="center" width="100%">
-            <LinearProgress
-              variant="determinate"
-              value={getLevelPercentage(item.level)}
-              sx={{ flexGrow: 1, height: 8, borderRadius: 5 }}
-            />
-            <EditableDiv
-              content={getStringContent(item.level)}
-              onEdit={(value) =>
-                handleEdit(
-                  "languages",
-                  "items",
-                  layout.languages.items.map((i, idx) =>
-                    idx === index ? { ...i, level: value } : i
-                  )
-                )
-              }
-              sx={{ ml: 1, minWidth: 80 }}
-            />
-          </Box>
-        </Box>
-      ))} */}
+        
 
       <Grid container spacing={2}>
         {layout.languages?.items?.map((item, index) => (
           <Grid item xs={12} sm={6} key={index}>
-            {/* <Box
-              display="flex"
-              flexDirection="column"
-              border="1px solid #e0e0e0"
-              borderRadius={2}
-              p={2}
-            > */}
+         
               <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
                 <EditableDiv
                   content={getStringContent(item.language)}
@@ -490,7 +407,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
           {/* Summary Section */}
           <div
             style={{ marginTop: "4px" }}
-            className={`${classes.section} ${classes.fontStyleDynamic}`}
+            className={classes.section}
           >
             <div    style={{ color: textColor }} className={classes.sectionTitle}>
               <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
@@ -507,7 +424,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
           {/* Tech Stack Section */}
           <div
             style={{ marginTop: "32px" }}
-            className={`${classes.section} ${classes.fontStyleDynamic}`}
+            className={classes.section}
           >
             <div  style={{ color: textColor }} className={classes.sectionTitle}>
               <Typography style={{fontWeight:"bold"}} className={`${getFontClass()}`} variant="h6">
@@ -535,7 +452,7 @@ const EditableResume = ({ isTemplateDrawerOpen, isDesignPanelOpen, layout, setLa
 
           {/* Projects Section */}
           {/* Projects Section */}
-          <div className={`${classes.section} ${classes.fontStyleDynamic}`}>
+          <div className={classes.section}>
             <div  style={{ color: textColor }} className={classes.sectionTitle}>
               <Typography className={`${classes.projectName} ${getFontClass()}`} variant="h6">
                 {layout.projects?.title || ""}

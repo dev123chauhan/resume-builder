@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
   header: {
     display: 'flex',
     alignItems: 'flex-start',
-    marginBottom: theme.spacing(3),
+    // marginBottom: theme.spacing(3),
   },
   avatar: {
-    width: "100px !important",
-    height: "100px !important",
+    width: theme.spacing(10),
+    height: theme.spacing(10),
     marginRight: theme.spacing(2),
     objectFit:"cover !important"
   },
@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
   name: {
     fontSize: '28px !important',
     fontWeight: 'bold !important',
-    marginBottom: theme.spacing(1),
+    // marginBottom: theme.spacing(1),
   },
   title: {
     fontSize: '18px',
-    color: '#666',
-    marginBottom: theme.spacing(1),
+    color: 'blue',
+    // marginBottom: theme.spacing(1),
   },
   contactInfo: {
     display: 'flex',
@@ -68,7 +68,8 @@ const useStyles = makeStyles((theme) => ({
     color:"black !important"
   },
   school: {
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
+    color:"blue"
   },
   date: {
     color: '#666',
@@ -82,14 +83,15 @@ const useStyles = makeStyles((theme) => ({
       color:"black !important"
   },
   company: {
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
+       color:"blue"
     
-  },
+  }, 
   location: {
     color: '#666',
   },
   responsibility: {
-    marginLeft: theme.spacing(2),
+    // marginLeft: theme.spacing(2),
     '&:before': {
       content: '"•"',
       marginRight: theme.spacing(1),
@@ -112,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
       color:"black !important"
   },
   projectDescription: {
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
   },
   projectDetail: {
     marginLeft: theme.spacing(2),
@@ -171,15 +173,15 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
           <Typography variant='h3'  className={`${classes.name} ${getFontClass()}`}>{layout.header?.name}</Typography>
           <Typography className={`${classes.title} ${getFontClass()}`}>{layout.header?.title}</Typography>
         </div>
-        <Avatar className={classes.avatar} src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile} />
+        <Avatar    style={{ width: 80, height: 80 }} className={classes.avatar} src={user?.profileImage ? `http://localhost:5000/uploads/${user.profileImage}` : noProfile} />
       </div>
-
       <div className={`${classes.contactInfo}`}>
         <Typography className={`${getFontClass()}`}>{layout.header?.contact?.phone}</Typography>
         <Typography className={`${getFontClass()}`}>{layout.header?.contact?.email}</Typography>
         <Typography className={`${getFontClass()}`}>{layout.header?.contact?.linkedin}</Typography>
         <Typography className={`${getFontClass()}`}>{layout.header?.contact?.location}</Typography>
       </div>
+
 
       <Grid container spacing={3}>
         <Grid item xs={12} md={7}>
@@ -213,12 +215,12 @@ const PDFResume = ({ layout, user, fontStyle, textColor }) => {
           <div className={`${classes.section}`}>
             <Typography variant="h6" className={`${classes.sectionTitle} ${getFontClass()}`}>{layout.languages?.title}</Typography>
             {layout.languages?.items?.map((item, index) => (
-              <>
-              <Typography className={`${getFontClass()}`}  key={index}>{item.language}</Typography>
+              <div key={index}>
+              <Typography className={`${getFontClass()}`}>{item.language}</Typography>
               <LinearProgress      variant="determinate"
                   value={getLevelPercentage(item.level)}
                   sx={{ flexGrow: 1, height: 8, borderRadius: 5,  }}/>
-              </>
+              </div>
             ))}
           </div>
         </Grid>

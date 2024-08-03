@@ -8,7 +8,6 @@ const useStyles = makeStyles(
         backgroundColor: "white",
         boxShadow: "0 0 10px rgba(0,0,0,0.1)",
         transition: "transform 0.3s ease-in-out",
-        height:"630px"
       },
       containerShift: {
         transform: "translateX(300px)",
@@ -16,7 +15,7 @@ const useStyles = makeStyles(
       header: {
         display: "flex",
         alignItems: "flex-start",
-        marginBottom: theme.spacing(3),
+        // marginBottom: theme.spacing(3),
       },
       avatar: {
         width: theme.spacing(10),
@@ -29,18 +28,18 @@ const useStyles = makeStyles(
       name: {
         fontSize: "28px",
         fontWeight: "bold",
-        marginBottom: theme.spacing(1),
+        // marginBottom: theme.spacing(1),
       },
       title: {
         fontSize: "18px",
-        color: "#666",
-        marginBottom: theme.spacing(1),
+        color: "blue",
+        // marginBottom: theme.spacing(1),
       },
       contactInfo: {
         display: "flex",
         flexWrap: "wrap",
         gap: theme.spacing(2),
-        marginBottom: theme.spacing(3),
+        marginBottom: "20px !important",
         "& > div": {
           flex: "1 1 auto",
           minWidth: "120px",
@@ -66,7 +65,8 @@ const useStyles = makeStyles(
         fontWeight: "bold",
       },
       school: {
-        fontStyle: "italic",
+        // fontStyle: "italic",
+        color:"blue"
       },
       date: {
         color: "#666",
@@ -78,13 +78,14 @@ const useStyles = makeStyles(
         fontWeight: "bold",
       },
       company: {
-        fontStyle: "italic",
+        // fontStyle: "italic",
+         color:"blue"
       },
       location: {
         color: "#666",
       },
       responsibility: {
-        marginLeft: theme.spacing(2),
+        // marginLeft: theme.spacing(2),
         "&:before": {
           content: '"•"',
           marginRight: theme.spacing(1),
@@ -105,10 +106,10 @@ const useStyles = makeStyles(
         fontWeight: "bold !important",
       },
       projectDescription: {
-        fontStyle: "italic",
+        // fontStyle: "italic",
       },
       projectDetail: {
-        marginLeft: theme.spacing(2),
+        // marginLeft: theme.spacing(2),
         "&:before": {
           content: '"•"',
           marginRight: theme.spacing(1),

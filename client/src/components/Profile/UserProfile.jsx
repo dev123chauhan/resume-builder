@@ -1,7 +1,3 @@
-
-
-
-
 import useAuth from "../../hooks/useAuth";
 import { Box, Typography, Grid, Paper } from "@mui/material";
 
