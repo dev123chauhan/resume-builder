@@ -4,24 +4,26 @@ import "../../css/footer.css"
 import { Link } from "react-router-dom";
 export default function Footer() {
   const resources = [
-    { text: "Template", link: "" },
-    { text: "Pricing", link: "" },
+    { text: "Review", link: "/review" },
     { text: "Blog", link: "/blog" },
-    { text: "Help", link: "/help" },
+  
+    { text: "FAQs", link: "/faq" },
   ];
 
   const company = [
     { text: "About Us", link: "/about" },
-    { text: "Careers", link: "" },
     { text: "Contact", link: "/contact" },
-    { text: "Review", link: "/review" },
+    { text: "Features", link: "/features" },
+
+
   ];
 
   const support = [
-    { text: "FAQs", link: "/faq" },
+ 
     { text: "Terms", link: "/terms-and-conditions" },
     { text: "Privacy", link: "/privacy-policy" },
-    { text: "Sitemap", link: "" },
+    { text: "Help", link: "/help" },
+
   ];
 
   const renderMenu = (title, items) => (

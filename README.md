@@ -20,15 +20,16 @@ A Resume Builder web application built with the MERN stack (MongoDB, Express.js,
 [Live Demo Link](#)
 
 ## Features
-
+- Home, Contact, About, Features, Faq, Terms, Privacy, Blog, Help, Review Pages 
 - User authentication (Registration & Login)
 - Create, edit, and manage resumes
-- Dynamic 'About Us' page
-- User profile management
+- User profile management (Create, read, update, delete)
 - Responsive design
-<!-- - Drag-and-drop functionality
+- Choose templates in template section
+- Customize resume template
+- Drag-and-drop functionality
+- Display a live preview of the resume as it is being edited
 - Export resume as PDF (One click download)
-- Display a live previem of the resume as it is being edited -->
 
 ## Technologies Used
 

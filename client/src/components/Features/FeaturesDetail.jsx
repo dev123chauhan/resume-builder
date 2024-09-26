@@ -75,7 +75,7 @@ const FeaturesDetail = () => {
         <Grid container>
           {features?.map((feature, index) => (
             <Grid item xs={12} key={index}>
-              <Accordion className={classes.accordion}>
+              <Accordion defaultExpanded className={classes.accordion}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={`panel${index}-content`}
