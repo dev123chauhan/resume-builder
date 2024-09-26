@@ -123,8 +123,10 @@
     color: #fff;
     cursor: pointer;
     font-size: 1.1em;
+    font-family: "Poppins", sans-serif !important;
   }
   
   button[type="submit"]:hover {
     background: #027b9a;
   }
+  

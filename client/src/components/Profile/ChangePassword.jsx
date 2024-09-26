@@ -47,6 +47,7 @@ const ChangePassword = () => {
       setLoading(false);
     }
   };
+ 
 
   return (
     <Box className="changePassword" sx={{ mt: 4, mb:12 }}>

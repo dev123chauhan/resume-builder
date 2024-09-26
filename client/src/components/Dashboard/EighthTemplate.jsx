@@ -10,10 +10,7 @@ import {
   Chip,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
-// import { Phone, Email } from "@mui/icons-material";
-// import  ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-// import  GroupsIcon from '@mui/icons-material/GroupsIcon';
-// import  LinkIcon from '@mui/icons-material/LinkIcon';
+
 
 const useStyles = makeStyles(
   () => ({

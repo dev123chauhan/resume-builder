@@ -11,10 +11,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-// import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-// import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-// import CloudUploadOutlinedIcon from "@mui/icons-material/CloudUploadOutlined";
-// import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
+
 const ProfileSidebar = ({ activeTab, setActiveTab }) => {
   const { user, logout } = useAuth();
 

@@ -27,56 +27,7 @@ export default function Features() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  // const features = [
-  //   {
-  //     title: "Easy to Use",
-  //     description:
-  //       "Our resume builder is user-friendly and intuitive, making it simple to create a professional resume.",
-  //     icon: <FaCheck />,
-  //   },
-  //   {
-  //     title: "Customizable Templates",
-  //     description:
-  //       "Choose from a variety of templates that you can customize to fit your personal style and job application.",
-  //     icon: <FaBook />,
-  //   },
-  //   {
-  //     title: "Expert Tips",
-  //     description:
-  //       "Get tips and examples from experts to make sure your resume stands out.",
-  //     icon: <FaQuestionCircle />,
-  //   },
-  //   {
-  //     title: "Mobile Optimized",
-  //     description:
-  //       "Create or edit your resume on the go, our app works seamlessly on mobile devices.",
-  //     icon: <FaMobileAlt />,
-  //   },
-  //   {
-  //     title: "Downloadable PDF",
-  //     description:
-  //       "Download your resume in PDF format to easily share with employers.",
-  //     icon: <FaFilePdf />,
-  //   },
-  //   {
-  //     title: "Collaboration Tools",
-  //     description:
-  //       "Share and collaborate on resumes with team members or friends.",
-  //     icon: <FaUsers />,
-  //   },
-  //   {
-  //     title: "Integration with LinkedIn",
-  //     description:
-  //       "Import your LinkedIn profile data to populate your resume effortlessly.",
-  //     icon: <FaLinkedin />,
-  //   },
-  //   {
-  //     title: "Feedback and Revision History",
-  //     description:
-  //       "Track changes and receive feedback to improve your resume over time.",
-  //     icon: <FaHistory />,
-  //   },
-  // ];
+  
 
   const sliderSettings = {
     dots: true,
@@ -105,24 +56,7 @@ export default function Features() {
   };
 
   return (
-    // <section className="features-section">
-    //   <div className="container">
-    //   <h2 className="features-title">Features</h2>
-    //   <Slider {...sliderSettings}>
-    //     {features.map((feature, index) => (
-    //       <div
-    //         key={index}
-    //         className={`feature-item ${visibleItems[index] ? 'animate' : ''}`}
-    //         ref={(el) => featureRefs.current[index] = el}
-    //       >
-    //         <div className={`feature-icon ${feature.icon}`}></div>
-    //         <h3 className="feature-title">{feature.title}</h3>
-    //         <p className="feature-description">{feature.description}</p>
-    //       </div>
-    //     ))}
-    //   </Slider>
-    // </div>
-    // </section>
+  
     <section className="features-section">
     <div className="container">
       <h2 className="features-title">Features</h2>

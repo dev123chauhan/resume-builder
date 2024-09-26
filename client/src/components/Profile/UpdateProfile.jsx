@@ -108,25 +108,7 @@ const UpdateProfile = () => {
               />
             {/* </Paper> */}
           </Grid>
-          {/* <TextField
-            fullWidth
-            margin="normal"
-            label="Username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          /> */}
+         
 
           <Grid item xs={12} sm={6}>
             <TextField
@@ -149,21 +131,7 @@ const UpdateProfile = () => {
             </RadioGroup>
           </FormControl>
 
-            {/* <FormControl component="fieldset" margin="normal" fullWidth>
-              <InputLabel id="gender-label">Gender</InputLabel>
-              <Select
-                labelId="gender-label"
-                id="gender-select"
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                label="Gender"
-              >
-                <MenuItem value="Male">Male</MenuItem>
-                <MenuItem value="Female">Female</MenuItem>
-                <MenuItem value="Other">Other</MenuItem>
-              </Select>
-            </FormControl> */}
+       
           </Grid>
 
           <TextField

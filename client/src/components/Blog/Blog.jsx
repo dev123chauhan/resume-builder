@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Container, Typography, Box, Grid, Card, CardContent, CardMedia } from '@material-ui/core';
 import Blog1 from "../../assets/Blog 1.jpg"
 import Blog2 from "../../assets/Blog 2.jpg"

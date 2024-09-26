@@ -371,16 +371,7 @@ function ThirdTemplate({
                 {layout.experience?.title || ""}
               </Typography>
               <Divider style={{ marginBottom: "5px" }} />
-              {/* <Typography variant="h6" component="h4">
-                Senior IT Product Manager
-              </Typography>
-              <Typography variant="body2">
-                Rover Games | 02/2019 - Ongoing | San Francisco, CA
-              </Typography>
-              <Typography variant="body1">
-                Rover Games is a multi-play mobile game app development firm
-                that has successful titles such as Drink...
-              </Typography> */}
+          
               {layout.experience?.items?.map((item, index) => (
                 <Box key={index} mb={2} display="flex" alignItems="center">
                   <Box flexGrow={1}>
@@ -576,71 +567,7 @@ function ThirdTemplate({
                 </Box>
               ))}
             </Box>
-            {/* <Box mt={4}>
-              <Typography variant="h5" component="h3">
-                Education
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, MSc | University of California, Berkeley
-                | 2000 - 2002
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, BSc | University of California, Berkeley
-                | 1996 - 2000
-              </Typography>
-            </Box>
-            <Box mt={4}>
-              <Typography variant="h5" component="h3">
-                Education
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, MSc | University of California, Berkeley
-                | 2000 - 2002
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, BSc | University of California, Berkeley
-                | 1996 - 2000
-              </Typography>
-            </Box>
-            <Box mt={4}>
-              <Typography variant="h5" component="h3">
-                Education
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, MSc | University of California, Berkeley
-                | 2000 - 2002
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, BSc | University of California, Berkeley
-                | 1996 - 2000
-              </Typography>
-            </Box>
-            <Box mt={4}>
-              <Typography variant="h5" component="h3">
-                Education
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, MSc | University of California, Berkeley
-                | 2000 - 2002
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, BSc | University of California, Berkeley
-                | 1996 - 2000
-              </Typography>
-            </Box>
-            <Box mt={4}>
-              <Typography variant="h5" component="h3">
-                Education
-              </Typography>
-              <Typography variant="body1">
-                Industrial Engineering, MSc | University of California, Berkeley
-                | 2000 - 2002
-              </Typography>
-              <Typography sx={{ mb: 4 }} variant="body1">
-                Industrial Engineering, BSc | University of California, Berkeley
-                | 1996 - 2000
-              </Typography>
-            </Box> */}
+          
           </Grid>
 
           <Grid item xs={12} sm={4}>
@@ -673,15 +600,7 @@ function ThirdTemplate({
                   <span>
                   <EditableDiv
                     content={getStringContent(item.title)}
-                    // onEdit={(value) =>
-                    //       handleEdit(
-                    //         "strengths",
-                    //         "items",
-                    //         layout.strengths.items.map((i, idx) =>
-                    //           idx === index ? { ...i, title: value } : i
-                    //         )
-                    //       )
-                    //     }
+                  
                     
                   />
                   <EditableDiv
@@ -703,15 +622,7 @@ function ThirdTemplate({
                   <span>
                   <EditableDiv
                     content={getStringContent(item.title)}
-                    // onEdit={(value) =>
-                    //       handleEdit(
-                    //         "strengths",
-                    //         "items",
-                    //         layout.strengths.items.map((i, idx) =>
-                    //           idx === index ? { ...i, title: value } : i
-                    //         )
-                    //       )
-                    //     }
+                  
                     
                   />
                   <EditableDiv
@@ -731,15 +642,7 @@ function ThirdTemplate({
                 <EditableDiv
                   key={index}
                   content={getStringContent(item)}
-                  // onEdit={(value) =>
-                  //   handleEdit(
-                  //     "skills",
-                  //     "items",
-                  //     layout.skills.items.map((i, idx) =>
-                  //       idx === index ? value : i
-                  //     )
-                  //   )
-                  // }
+                
                 />
               ))}
               </Grid>
@@ -755,15 +658,7 @@ function ThirdTemplate({
                 <EditableDiv
                   key={index}
                   content={getStringContent(item)}
-                  // onEdit={(value) =>
-                  //   handleEdit(
-                  //     "skills",
-                  //     "items",
-                  //     layout.skills.items.map((i, idx) =>
-                  //       idx === index ? value : i
-                  //     )
-                  //   )
-                  // }
+                  
                 />
               ))}
               </Grid>
@@ -778,15 +673,7 @@ function ThirdTemplate({
                 <EditableDiv
                   key={index}
                   content={getStringContent(item)}
-                  // onEdit={(value) =>
-                  //   handleEdit(
-                  //     "skills",
-                  //     "items",
-                  //     layout.skills.items.map((i, idx) =>
-                  //       idx === index ? value : i
-                  //     )
-                  //   )
-                  // }
+                 
                 />
               ))}
               </Grid>
@@ -807,3 +694,13 @@ ThirdTemplate.propTypes = {
 };
 
 export default ThirdTemplate;
+  // onEdit={(value) =>
+                  //   handleEdit(
+                  //     "skills",
+                  //     "items",
+                  //     layout.skills.items.map((i, idx) =>
+                  //       idx === index ? value : i
+                  //     )
+                  //   )
+                  // }
+                  

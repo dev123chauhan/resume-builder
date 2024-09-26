@@ -1,7 +1,3 @@
-
-
-
-
 import { useState } from "react";
 import { Container,  Grid, Paper } from "@mui/material";
 import ProfileSidebar from "./ProfileSidebar";

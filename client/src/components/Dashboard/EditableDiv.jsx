@@ -24,7 +24,7 @@ const EditableDiv = ({
   const classes = useStyles();
 
   const handleBlur = (e) => {
-    onEdit(e.target.innerText); // Use innerText to avoid issues with HTML tags
+    onEdit(e.target.innerText); 
   };
 
   return (
@@ -33,7 +33,7 @@ const EditableDiv = ({
       onBlur={handleBlur}
       className={`${classes.editable} ${className}`}
       data-placeholder={placeholder}
-      suppressContentEditableWarning={true} // Suppress warning for contentEditable
+      suppressContentEditableWarning={true} 
     >
       {content}
     </div>
