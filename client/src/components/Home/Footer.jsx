@@ -79,7 +79,7 @@ export default function Footer() {
             <div className="footer-copyright-wrapper">
               <p className="footer-copyright-text">
                 <a className="footer-copyright-link" href="#" target="_self">
-                  ©2020. | Designed By: Devesh Chauhan | All rights reserved.
+                  ©2024. | Designed By: Devesh Chauhan | All rights reserved.
                 </a>
               </p>
             </div>
