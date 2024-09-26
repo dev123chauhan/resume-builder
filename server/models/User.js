@@ -12,6 +12,7 @@ const UserSchema = new Schema(
     dateOfBirth: { type: Date },
     address: { type: String, trim: true },
     date: { type: Date, default: Date.now },
+    googleId: String,
   },
   {
     timestamps: true,

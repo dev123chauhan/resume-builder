@@ -6,6 +6,10 @@ const authMiddleware = require('../middleware/auth');
 const router = express.Router();
 const path = require('path');
 const upload = require('../middleware/upload');
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const dotenv = require("dotenv");
+dotenv.config();
 // Registration Route
 router.post('/register', async (req, res) => {
   try {
@@ -105,5 +109,46 @@ router.post('/update-profile', authMiddleware, async (req, res) => {
 });
 
 
+
+// Google Login Route
+router.post('/google-login', async (req, res) => {
+  try {
+    const { credential } = req.body;
+    const ticket = await client.verifyIdToken({
+      idToken: credential,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    const { email, name, picture } = payload;
+
+    // This is where the code you asked about goes:
+    let user = await User.findOne({ $or: [{ email }, { googleId: payload.sub }] });
+    if (!user) {
+      // If user doesn't exist, create a new one
+      const username = email.split('@')[0];
+      const password = await bcrypt.hash(Math.random().toString(36).slice(-8), 10);
+      user = new User({
+        username,
+        email,
+        password,
+        profileImage: picture,
+        googleId: payload.sub
+      });
+      await user.save();
+    } else if (!user.googleId) {
+      // If user exists but doesn't have a googleId, add it
+      user.googleId = payload.sub;
+      await user.save();
+    }
+
+    // Generate JWT
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '3d' });
+
+    res.json({ token, user: { id: user._id, username: user.username, email: user.email } });
+  } catch (error) {
+    console.error('Error during Google authentication:', error);
+    res.status(401).json({ error: 'Authentication failed' });
+  }
+});
 
 module.exports = router;

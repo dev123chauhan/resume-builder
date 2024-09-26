@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Twitter, YouTube } from "@material-ui/icons";
-import footer2logo from "../../assets/footer2logo.png"
+import logo2image from "../../assets/logo2image.png"
 import "../../css/footer.css"
 import { Link } from "react-router-dom";
 export default function Footer() {
@@ -58,7 +58,7 @@ export default function Footer() {
             <div className="footer-content-column">
               <div className="footer-logo">
                 <a className="footer-logo-link" href="#">
-                  <img src={footer2logo} className="footerLogo" alt="" />
+                  <img src={logo2image} className="footerLogo" alt="" />
                 </a>
                 <h6>Craft Your Future, One Resume at a Time</h6>
               </div>

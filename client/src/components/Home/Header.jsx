@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import footer2logo from "../../assets/footer2logo.png";
+// import footer2logo from "../../assets/footer2logo.png";
 import logo2image from "../../assets/logo2image.png";
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import "../../css/header.css";
@@ -86,10 +86,10 @@ export default function Header() {
   };
 
   const navLinks = [
-    { name: "HOME", url: "/" },
-    { name: "ABOUT", url: "/about" },
-    { name: "FEATURES", url: "/features" },
-    { name: "CONTACT", url: "/contact" },
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Features", url: "/features" },
+    { name: "Contact", url: "/contact" },
   ];
 
   return (
@@ -102,7 +102,9 @@ export default function Header() {
               className="menu-icon"
               id="menu-icon"
               onClick={toggleSidebar}
-              style={{ color: isScrolled ? "white" : "black" }}
+              // style={{ color: isScrolled ? "white" : "black" }}
+              
+              
             >
               ☰
             </div>
@@ -110,7 +112,8 @@ export default function Header() {
             <Link to="/">
               <img
                 onClick={handleLinkClick}
-                src={isScrolled ? footer2logo : logo2image}
+                // src={isScrolled ? footer2logo : logo2image}
+                src={logo2image}
                 id="logo"
                 className="logo"
                 alt="Logo"
@@ -163,16 +166,19 @@ export default function Header() {
                 </div>
               </div>
             ) : (
-              <Link  to="/login"  className={`loginButton ${isScrolled ? 'scrolled' : ''}`}  onClick={handleLoginClick}>
+              /* <Link  to="/login"  className={`loginButton ${isScrolled ? 'scrolled' : ''}`}  onClick={handleLoginClick}> */
+              <Link  to="/login"  className="loginButton"  onClick={handleLoginClick}>
                 LOGIN
               </Link>
+              
+              
             )}
           </nav>
         </div>
       </div>
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <img className="logoMenu" src={footer2logo} alt="" />
+          <img className="logoMenu" src={logo2image} alt="" />
           <IoMdClose className="close-icon" onClick={toggleSidebar} />
         </div>
         <ul>

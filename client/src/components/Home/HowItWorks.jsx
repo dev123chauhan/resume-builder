@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { makeStyles, Step, Stepper, StepLabel, Typography, Container, Box } from '@material-ui/core';
 import "../../css/howitworks.css";
+import image1 from "../../assets/image1.jpg"
+import image2 from "../../assets/image2.jpg"
+import image3 from "../../assets/image3.jpg"
 
 const useStyles = makeStyles(() => ({
   stepperRoot: {
@@ -60,15 +63,15 @@ const useStyles = makeStyles(() => ({
 const steps = [
   {
     label: 'Choose a Template',
-    bgImage: 'https://img.freepik.com/free-vector/sharing-content-social-media_23-2148508446.jpg?t=st=1719493721~exp=1719497321~hmac=4a06640d9c970fc21dd063829489cc034259433ecc1517a786eaf568aae67e62&w=740',
+    bgImage: image3,
   },
   {
     label: 'Customize Your Resume',
-    bgImage: 'https://img.freepik.com/free-vector/online-certification-with-computer_23-2148571755.jpg?t=st=1719493871~exp=1719497471~hmac=aaa2e7d0dcf255e6eed0e618b22e32ea49c6e129eac04a75f5efde975964da8e&w=740',
+    bgImage: image2,
   },
   {
     label: 'Download and Share',
-    bgImage: 'https://img.freepik.com/free-vector/image-upload-concept-landing-page_23-2148298503.jpg?t=st=1719494061~exp=1719497661~hmac=9cffb7f81a8c8f230e775c091507020aba9763a8fbbd2a6f288e7d2f08ba554c&w=1060',
+    bgImage:  image1,
   },
 ];
 
