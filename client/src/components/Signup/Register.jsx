@@ -1,7 +1,6 @@
 import loginImage from "../../assets/loginImage.jpg";
 import TextField from "@mui/material/TextField";
 import { FormGroup, IconButton, InputAdornment } from "@mui/material";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import logo2image from "../../assets/logo2image.png";
 import { useState } from "react";
@@ -112,10 +111,6 @@ const Register = () => {
         </form>
         <p>Or</p>
         <div>
-          <button className="formBtn">
-            <FcGoogle className="googleIcon" />
-            Continue With Google
-          </button>
           <p>
             Already have an account?{" "}
             <Link className="registerColor" to="/login">

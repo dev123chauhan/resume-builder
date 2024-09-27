@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { TextField, Checkbox, FormControlLabel, FormGroup, IconButton, InputAdornment } from "@mui/material";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import axios from "axios";
@@ -95,11 +94,7 @@ const Login = () => {
           </button>
         </form>
         <p>Or</p>
-        <div>
-          <button className="formBtn">
-            <FcGoogle className="googleIcon" />
-            Continue With Google
-          </button>
+        <div> 
           <p>
             Don’t have an Account?{" "}
             <Link className="registerColor" to="/register">
