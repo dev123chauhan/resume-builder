@@ -47,9 +47,4 @@ To get a local copy up and running, follow these simple steps.
 - npm or yarn
 - MongoDB (Local or Atlas)
 
-### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/your-username/resume-builder-web-app.git
-   cd resume-builder-web-app
